@@ -1,0 +1,496 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import { Image } from 'astro:assets';
+import clinicImage from '../assets/images/clinic-image.png';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Appointments — Dr. Cuterus</title>
+    <meta name="description" content="Book an online consultation with Dr. Tanaya Narendra — confidential, judgment-free." />
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- SECTION 1: Hero with floating tags -->
+    <div class="appt-hero-outer">
+      <div class="appt-hero-top">
+        <p class="appt-hero__label">Online consultations available</p>
+        <h1 class="appt-hero__heading">Does any of these sound like you?</h1>
+      </div>
+
+      <!-- Purple grid tag cloud — full viewport width -->
+      <div class="appt-hero__tag-cloud">
+        <div class="appt-tag appt-tag--yellow" style="left: 25%; top: 20%; transform: rotate(-5.77deg);">Irregular or painful periods</div>
+        <div class="appt-tag appt-tag--purple-dark" style="left: 28.6%; top: 40%; transform: rotate(1.26deg);">PCOS symptoms</div>
+        <div class="appt-tag appt-tag--beige" style="left: 40.9%; top: 28%;">HPV, STIs?<br/>Don't know where to start.</div>
+        <div class="appt-tag appt-tag--yellow-light" style="left: 50.7%; top: 53%; transform: rotate(1.09deg);">Questions about fertility<br/>or egg health</div>
+        <div class="appt-tag appt-tag--purple-dark" style="left: 32%; top: 56%; transform: rotate(-4.06deg);">Confused about<br/>contraception options</div>
+        <div class="appt-tag appt-tag--purple-dark" style="left: 58.3%; top: 7%; transform: rotate(-2.03deg);">Want a second opinion<br/>without judgment</div>
+      </div>
+
+      <div class="appt-hero-bottom">
+        <p class="appt-hero__tagline">For all these and more, you deserve a doctor who actually listens.</p>
+        <a href="#" class="btn-primary appt-hero__cta">Book Via WhatsApp →</a>
+        <p class="appt-hero__disclaimer">*All consultations are confidential and judgment-free.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Doctor + booking -->
+    <div class="appt-book-outer">
+    <section class="appt-book">
+      <div class="appt-book__photo-wrap">
+        <Image
+          src={clinicImage}
+          alt="Dr. Tanaya Narendra in her clinic"
+          class="appt-book__photo"
+          widths={[400, 700]}
+          sizes="348px"
+        />
+      </div>
+
+      <div class="appt-book__content">
+        <p class="appt-book__bio">
+          Dr. Tanaya Narendra is an IVF specialist and sexual health educator.<br/>
+          She believes every body deserves honest, shame-free medical care.<br/>
+          Known online as Dr. Cuterus, she answers the questions nobody else will.<br/>
+          All consultations are private, professional, and completely judgment-free.
+        </p>
+
+        <h2 class="appt-book__heading">Book an Appointment for<br/>following problems:</h2>
+
+        <div class="appt-book__categories">
+          <div class="appt-cats-row">
+            <span class="appt-cat">Menstrual Health</span>
+            <span class="appt-cat">Sexual Health</span>
+            <span class="appt-cat">Contraception</span>
+            <span class="appt-cat">Fertility</span>
+          </div>
+          <div class="appt-cats-row">
+            <span class="appt-cat">PCOS / PCOD</span>
+            <span class="appt-cat">STIs / STDs</span>
+            <span class="appt-cat">Second Opinion</span>
+            <span class="appt-cat">General Gynaecology</span>
+          </div>
+        </div>
+
+        <a href="#" class="btn-primary appt-book__cta">Book Via WhatsApp →</a>
+      </div>
+    </section>
+    </div>
+
+    <!-- SECTION 3: Reviews -->
+    <section class="appt-reviews">
+      <div class="appt-reviews__left">
+        <h2 class="appt-reviews__heading">What People Say</h2>
+        <p class="appt-reviews__sub">
+          Real experiences from patients who took that first step.<br/>
+          See what they have to say about their consultation.
+        </p>
+        <a href="#" class="appt-reviews__cta">Give Review</a>
+        <p class="appt-reviews__have-say">Have something to say as well?</p>
+      </div>
+
+      <div class="appt-reviews__panel">
+        <div class="appt-review-card appt-review-card--yellow">
+          <p class="appt-review-card__text">Placeholder for Google review 1</p>
+        </div>
+        <div class="appt-review-card appt-review-card--purple">
+          <p class="appt-review-card__text">Placeholder for Google review 2</p>
+        </div>
+        <div class="appt-review-card appt-review-card--yellow">
+          <p class="appt-review-card__text">Placeholder for Google review 3</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="appt-footer">
+      <p class="appt-footer__heading">Found something you liked? Let's talk.</p>
+      <p class="appt-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
+      <a href="/#contact" class="btn-primary">Work with Me</a>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    background-color: var(--color-beige-500);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── SECTION 1: HERO ── */
+  .appt-hero-outer {
+    padding-top: 80px;
+  }
+
+  .appt-hero-top,
+  .appt-hero-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 60px;
+  }
+
+  .appt-hero-bottom {
+    padding-bottom: 40px;
+  }
+
+  .appt-hero__label {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(28, 20, 23, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 24px 0 8px;
+    text-align: center;
+  }
+
+  .appt-hero__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2rem, 3.75vw, 3rem);
+    color: var(--color-brand-400);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    margin: 0 0 16px;
+    text-align: center;
+  }
+
+  /* Tag cloud: purple grid bg */
+  .appt-hero__tag-cloud {
+    width: 100%;
+    height: 283px;
+    background-color: var(--color-brand-100);
+    background-image:
+      linear-gradient(rgba(110, 57, 151, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 57, 151, 0.15) 1px, transparent 1px);
+    background-size: 32px 32px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Individual floating tags */
+  .appt-tag {
+    position: absolute;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--color-black);
+    text-align: center;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .appt-tag--yellow {
+    background-color: var(--color-yellow-500);
+    color: var(--color-black);
+  }
+
+  .appt-tag--yellow-light {
+    background-color: #ffe07f;
+    color: var(--color-black);
+  }
+
+  .appt-tag--purple-dark {
+    background-color: var(--color-brand-400);
+    color: var(--color-brand-50);
+  }
+
+  .appt-tag--beige {
+    background-color: var(--color-beige-500);
+    color: var(--color-black);
+  }
+
+  .appt-hero__tagline {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-brand-900);
+    margin: 28px 0 20px;
+    text-align: center;
+  }
+
+  .appt-hero__cta {
+    font-size: 1.5rem;
+    padding: 12px 24px;
+  }
+
+  .appt-hero__disclaimer {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 12px 0 0;
+    text-align: center;
+  }
+
+  /* ── SECTION 2: BOOKING ── */
+  .appt-book-outer {
+    background-color: var(--color-brand-100);
+  }
+
+  .appt-book {
+    min-height: 599px;
+    display: grid;
+    grid-template-columns: 348px 1fr;
+    gap: 60px;
+    padding: 74px 109px 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .appt-book__photo-wrap {
+    position: relative;
+    align-self: flex-start;
+  }
+
+  .appt-book__photo {
+    width: 100%;
+    height: 452px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid var(--color-yellow-500);
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.25);
+    display: block;
+  }
+
+  .appt-book__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .appt-book__bio {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .appt-book__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2rem, 3.75vw, 3rem);
+    color: var(--color-brand-400);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .appt-book__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .appt-cats-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .appt-cat {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-brand-400);
+    background-color: var(--color-brand-50);
+    border: 1px solid var(--color-brand-200);
+    border-radius: 999px;
+    padding: 4px 14px;
+    white-space: nowrap;
+  }
+
+  .appt-book__cta {
+    font-size: 1.5rem;
+    padding: 12px 24px;
+    align-self: flex-start;
+  }
+
+  /* ── SECTION 3: REVIEWS ── */
+  .appt-reviews {
+    max-width: 1280px;
+    margin: 0 auto;
+    min-height: 496px;
+    display: grid;
+    grid-template-columns: 1fr 576px;
+    align-items: start;
+    padding: 60px;
+    box-sizing: border-box;
+    gap: 40px;
+  }
+
+  .appt-reviews__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 60px;
+  }
+
+  .appt-reviews__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2rem, 3.75vw, 3rem);
+    color: var(--color-brand-400);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .appt-reviews__sub {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .appt-reviews__cta {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--color-brand-400);
+    border: 1px solid var(--color-brand-400);
+    border-radius: 8px;
+    padding: 12px 18px;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: background-color 0.15s ease;
+  }
+
+  .appt-reviews__cta:hover {
+    background-color: var(--color-brand-50);
+  }
+
+  .appt-reviews__have-say {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+
+  /* Reviews panel */
+  .appt-reviews__panel {
+    background-color: #fcf9f2;
+    box-shadow: 0px 0px 10px 4px rgba(0,0,0,0.25);
+    padding: 40px 39px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 515px;
+    box-sizing: border-box;
+  }
+
+  .appt-review-card {
+    padding: 20px 24px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+  }
+
+  .appt-review-card--yellow {
+    background-color: #ffe6a2;
+  }
+
+  .appt-review-card--purple {
+    background-color: var(--color-brand-100);
+  }
+
+  .appt-review-card__text {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+  }
+
+  /* ── FOOTER ── */
+  .appt-footer {
+    background-color: var(--color-brand-100);
+    background-image:
+      linear-gradient(rgba(110, 57, 151, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 57, 151, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    height: 266px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .appt-footer__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-brand-900);
+    margin: 0;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    text-align: center;
+  }
+
+  .appt-footer__sub {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .appt-hero__tag-cloud {
+      height: 220px;
+    }
+
+    .appt-tag {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+    }
+
+    .appt-book {
+      grid-template-columns: 1fr;
+      padding: 40px 24px;
+    }
+
+    .appt-book__photo {
+      height: 300px;
+    }
+
+    .appt-reviews {
+      grid-template-columns: 1fr;
+      padding: 40px 24px;
+    }
+
+    .appt-reviews__panel {
+      min-height: auto;
+    }
+  }
+</style>

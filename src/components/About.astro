@@ -1,0 +1,467 @@
+---
+import { Image } from 'astro:assets';
+import doctorPhoto from '../assets/images/doctor-photo.png';
+
+const pills = [
+  { text: "embryologist", style: "yellow", ellipse: "elipse-1", top: "18.4%", left: "49.7%", rotate: "9.91deg", tx: "0" },
+  { text: "hosts a podcast", style: "plain", top: "26%", left: "52.3%", tx: "0" },
+  { text: "makes sex ed safe in a country\nwhere it's still taboo", style: "plain", top: "18%", left: "75.5%", rotate: "3deg", tx: "-50%" },
+  { text: "award-winning\n creator", style: "plain", top: "29.3%", left: "80.4%", tx: "-100%" },
+  { text: "authored a book to answer\nwhat people are shy to ask", style: "plain", top: "37.1%", left: "40%", tx: "-100%" },
+  { text: "Oxford-trained", style: "purple", ellipse: "elipse-3", top: "42.6%", left: "80.3%", rotate: "7.36deg", tx: "0" },
+  { text: "Doctor", style: "purple-200", ellipse: "elipse-2", top: "57.4%", left: "42.1%", rotate: "-7.58deg", tx: "0" },
+  { text: "writes a column", style: "plain", top: "55.2%", left: "81.6%", rotate: "5deg", tx: "0" },
+  { text: "NITI Aayog\n recognized\nhealth educator", style: "plain-small", top: "74.4%", left: "45%", tx: "-100%" },
+  { text: "internationally-\ntrained", style: "yellow", ellipse: "elipse-4", top: "77.3%", left: "80.1%", rotate: "2deg", tx: "0" },
+];
+---
+
+<section class="about" id="about">
+  <div class="about__left">
+    <p class="about__meet">Meet</p>
+    <p class="about__heyi">Hey, I'm</p>
+    <div class="about__name-block">
+      <h1 class="about__name">
+        <span class="about__name-first">Doctor</span>
+        <span class="about__name-tanaya">Tanaya</span>
+        <span class="about__name-narendra">Narendra</span>
+      </h1>
+      <p class="about__aka">
+        popularly known as<br />
+        <strong class="about__drcuterus">
+          <span class="about__drcuterus-highlight"></span>
+          Dr. Cuterus
+        </strong>
+      </p>
+    </div>
+    <div class="about__ctas">
+      <a href="#contact" class="btn-primary about__btn">Work With Me</a>
+      <a href="#" class="btn-outline about__btn">Explore More</a>
+    </div>
+  </div>
+
+  <div class="about__right">
+    <div class="about__photo-wrap">
+      <Image
+        src={doctorPhoto}
+        alt="Dr. Tanaya Narendra — Dr. Cuterus"
+        class="about__photo"
+        widths={[400, 600, 900]}
+        sizes="(max-width: 768px) 80vw, 45vw"
+      />
+    </div>
+  </div>
+
+  <!-- Overlay spans the full section — positions are % of the full 1280×832 canvas -->
+  <div class="about__pills-overlay" aria-hidden="true">
+    {pills.map((pill) => (
+      <span
+        class={`about__pill about__pill--${pill.style}`}
+        style={`top:${pill.top};left:${pill.left};--rotate:${pill.rotate};--tx:${pill.tx};`}
+      >
+        {pill.ellipse && <img src={`/doodles/${pill.ellipse}.svg`} class="about__pill-ellipse" alt="" />}
+        {pill.ellipse && <img src={`/doodles/${pill.ellipse.replace('elipse-', 'elipse-outline-')}.svg`} class="about__pill-ellipse-outline" alt="" />}
+        {pill.text}
+      </span>
+    ))}
+
+    <img src="/doodles/arrow-1.svg" class="about__arrow about__arrow--1" alt="" />
+    <img src="/doodles/arrow-2.svg" class="about__arrow about__arrow--2" alt="" />
+    <img src="/doodles/arrow-3.svg" class="about__arrow about__arrow--3" alt="" />
+    <img src="/doodles/arrow-4.svg" class="about__arrow about__arrow--4" alt="" />
+    <img src="/doodles/arrow-5.svg" class="about__arrow about__arrow--5" alt="" />
+    <img src="/doodles/arrow-6.svg" class="about__arrow about__arrow--6" alt="" />
+  </div>
+
+  <div class="about__tags-mobile" aria-label="About Dr. Cuterus">
+    {pills.map((pill) => (
+      <span class={`about__tag-mobile about__tag-mobile--${pill.style.replace('-small', '')}`}>
+        {pill.text.replace("\n", " ")}
+      </span>
+    ))}
+  </div>
+
+  <div class="about__pills-mobile" aria-hidden="true">
+    <span class="about__pill about__pill--yellow" style="top:51.6%;left:11%;--rotate:9.91deg;">
+      <img src="/doodles/elipse-1.svg" class="about__pill-ellipse" alt="" />
+      <img src="/doodles/elipse-outline-1.svg" class="about__pill-ellipse-outline" alt="" />
+      embryologist
+    </span>
+
+    <span class="about__pill about__pill--purple-200" style="top:72.9%;left:73.3%;--rotate:-7.58deg;">
+      <img src="/doodles/elipse-2.svg" class="about__pill-ellipse" alt="" />
+      <img src="/doodles/elipse-outline-2.svg" class="about__pill-ellipse-outline" alt="" />
+      Doctor
+    </span>
+
+    <span class="about__pill about__pill--purple" style="top:68.3%;left:4.9%;--rotate:7.36deg;">
+      <img src="/doodles/elipse-3.svg" class="about__pill-ellipse" alt="" />
+      <img src="/doodles/elipse-outline-3.svg" class="about__pill-ellipse-outline" alt="" />
+      Oxford-trained
+    </span>
+
+    <span class="about__pill about__pill--plain" style="top:57.7%;left:5.9%;">hosts a podcast</span>
+
+    <span class="about__pill about__pill--plain" style="top:53%;right:3.6%;left:auto;--tx:0;text-align:right;">award-winning<br />creator</span>
+
+    <span class="about__pill about__pill--plain" style="top:45.3%;right:6.7%;left:auto;--tx:0;text-align:right;font-size:clamp(0.65rem,2.8vw,0.8rem);">authored a book to answer<br />what people are shy to ask</span>
+
+    <img src="/doodles/arrow-6.svg" class="about__arrow about__arrow--m1" alt="" />
+    <img src="/doodles/arrow-2.svg" class="about__arrow about__arrow--m2" alt="" />
+    <img src="/doodles/arrow-1.svg" class="about__arrow about__arrow--m3" alt="" />
+  </div>
+</section>
+
+<style>
+  .about {
+    min-height: 100svh;
+    padding-top: 80px;
+    background-color: var(--color-beige-500);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* LEFT */
+  .about__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 60px 60px 60px;
+    z-index: 2;
+  }
+
+  .about__name-block {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  .about__meet {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 2.25rem;
+    color: var(--color-brand-900);
+    margin: 0 0 0 0;
+  }
+
+  .about__name {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 8px 0;
+    line-height: 0.88;
+    gap: 0;
+  }
+
+  .about__name-first {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+    color: var(--color-black);
+  }
+
+  .about__name-tanaya,
+  .about__name-narendra {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+    color: var(--color-brand-400);
+  }
+
+  .about__aka {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--color-brand-900);
+    margin: 0 0 28px 0;
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  .about__drcuterus {
+    font-weight: 700;
+    color: var(--color-brand-900);
+    position: relative;
+    display: inline-block;
+  }
+
+  .about__drcuterus-highlight {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-yellow-400);
+    z-index: -1;
+  }
+
+  .about__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .about__btn {
+    font-size: 1.25rem;
+    padding: 12px 24px;
+  }
+
+  /* RIGHT */
+  .about__right {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-left: 60px;
+    padding-right: 60px;
+    z-index: 2;
+  }
+
+  .about__photo-wrap {
+    position: relative;
+    width: min(420px, 90%);
+    margin-top: 20px;
+  }
+
+  .about__photo {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* PILLS OVERLAY — direct child of .about, spans full section */
+  .about__pills-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .about__pill {
+    position: absolute;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    color: var(--color-brand-900);
+    letter-spacing: -0.03em;
+    white-space: pre;
+    transform: translateX(var(--tx, 0)) rotate(var(--rotate, 0deg));
+    padding: 6px 18px;
+    line-height: 1.25;
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .about__pill-ellipse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160%;
+    height: 160%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .about__pill-ellipse-outline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 185%;
+    height: 185%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .about__pill--plain {
+    background: none;
+  }
+
+  .about__pill--plain-small {
+    background: none;
+    font-size: clamp(0.65rem, 0.95vw, 0.875rem);
+  }
+
+  .about__arrow {
+    position: absolute;
+    opacity: 0.75;
+  }
+
+  /* width + height set to match natural viewBox ratio so no stretching occurs */
+  .about__arrow--1 {
+    top: 60.8%;
+    left: 82%;
+    transform: rotate(90deg) scaleY(-1);
+    width: 60px;
+    height: 62px;
+  }
+
+  .about__arrow--2 {
+    top: 24.4%;
+    left: 72.4%;
+    transform: rotate(-18.19deg);
+    width: 23px;
+    height: 65px;
+  }
+
+  .about__arrow--3 {
+    top: 30.7%;
+    left: 61.9%;
+    transform: rotate(180deg) scaleY(-1);
+    width: 29px;
+    height: 41px;
+  }
+
+  .about__arrow--4 {
+    top: 36.2%;
+    left: 79.6%;
+    width: 90px;
+    height: 29px;
+  }
+
+  .about__arrow--5 {
+    top: 68.4%;
+    left: 50.8%;
+    width: 45px;
+    height: 29px;
+  }
+
+  /* arrow pointing from photo outward toward "authored a book" label */
+  .about__arrow--6 {
+    top: 45%;
+    left: 48%;
+    width: 89px;
+    height: 81px;
+    transform: rotate(150deg) scaleX(-1);
+  }
+
+  /* Mobile-only intro text */
+  .about__heyi {
+    display: none;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.75rem;
+    color: var(--color-brand-900);
+    margin: 0 0 4px 0;
+    text-align: center;
+  }
+
+  /* Mobile pills overlay */
+  .about__pills-mobile {
+    display: none;
+  }
+
+  /* Mobile arrow positions (only used when pills-mobile is visible) */
+  .about__arrow--m1 {
+    top: 50.6%;
+    left: 44.9%;
+    transform: rotate(39.46deg) scaleY(-1);
+    width: 50px;
+    height: 60px;
+  }
+
+  .about__arrow--m2 {
+    top: 60.9%;
+    left: 20%;
+    transform: rotate(-42.24deg);
+    width: 23px;
+    height: 78px;
+  }
+
+  .about__arrow--m3 {
+    top: 58.4%;
+    left: 73.3%;
+    transform: rotate(90deg) scaleY(-1);
+    width: 60px;
+    height: 63px;
+  }
+
+  /* Mobile tags */
+  .about__tags-mobile {
+    display: none;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .about {
+      display: flex;
+      flex-direction: column;
+      height: 100svh;
+      min-height: unset;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .about__left {
+      flex: 0 0 auto;
+      padding: 20px 24px 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about__meet {
+      display: none;
+    }
+
+    .about__heyi {
+      display: block;
+    }
+
+    .about__name {
+      align-items: center;
+    }
+
+    .about__name-first,
+    .about__name-tanaya,
+    .about__name-narendra {
+      font-size: 2.5rem;
+    }
+
+    .about__aka {
+      font-size: 1.75rem;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .about__ctas {
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .about__btn {
+      font-size: 0.95rem;
+      padding: 10px 18px;
+    }
+
+    .about__right {
+      flex: 1;
+      order: 0;
+      padding: 0;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: visible;
+    }
+
+    .about__photo-wrap {
+      width: min(310px, 80vw);
+      margin: 0 auto;
+    }
+
+    .about__pills-overlay {
+      display: none;
+    }
+
+    .about__tags-mobile {
+      display: none;
+    }
+
+    .about__pills-mobile {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+  }
+</style>

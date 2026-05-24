@@ -1,0 +1,193 @@
+---
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Appointments", href: "/appointments" },
+  { label: "Blog", href: "/blog" },
+  { label: "Partnerships", href: "#" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="navbar">
+  <a href="/" class="navbar__logo">Dr. Cuterus</a>
+
+  <button class="navbar__toggle" aria-label="Toggle menu" aria-expanded="false">
+    Menu
+  </button>
+
+  <nav class="navbar__nav" id="main-nav">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`navbar__link ${currentPath === link.href ? "navbar__link--active" : ""}`}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="#contact" class="btn-primary navbar__nav-cta">Work With Me</a>
+  </nav>
+
+  <a href="#contact" class="btn-primary navbar__cta">Work With Me</a>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 80px;
+    background: rgba(247, 240, 224, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 2px solid rgba(28, 20, 23, 0.12);
+  }
+
+  .navbar__logo {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.875rem;
+    color: var(--color-black);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar__link {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--color-black);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .navbar__link:hover {
+    color: var(--color-brand-400);
+  }
+
+  .navbar__link--active {
+    font-weight: 700;
+  }
+
+  .navbar__link--active::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    height: 28px;
+    background-color: var(--color-brand-100);
+    border-radius: 15px;
+    z-index: -1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .navbar__cta {
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+
+  .navbar__nav-cta {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-black);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0 20px;
+    }
+
+    .navbar__toggle {
+      display: flex;
+    }
+
+    .navbar__cta {
+      display: none;
+    }
+
+    .navbar__nav {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 99;
+      background: var(--color-beige-500);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 40px 24px 40px 80px;
+      transform: translateY(-110%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: none;
+      overflow-y: auto;
+    }
+
+    .navbar__nav.is-open {
+      transform: translateY(0);
+    }
+
+    .navbar__link {
+      font-size: 1.125rem;
+    }
+
+    .navbar__nav-cta {
+      display: inline-flex;
+      margin-left: -64px;
+      margin-top: 8px;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.navbar__toggle') as HTMLButtonElement;
+  const nav = document.querySelector('.navbar__nav') as HTMLElement;
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  const closeMenu = () => {
+    nav?.classList.remove('is-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  nav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

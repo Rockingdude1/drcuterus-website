@@ -1,0 +1,380 @@
+---
+import { Image } from 'astro:assets';
+import columnistPhoto from '../assets/images/columnist-photo.jpg';
+---
+
+<div class="columnist-outer" id="columnist">
+
+  <section class="columnist">
+
+    <!-- LEFT: PHOTO -->
+    <div class="columnist__photo-col">
+      <div class="columnist__badge">
+        <span>answering sex queries with</span>
+        <span>aaj ki taaza khabhar</span>
+      </div>
+      <Image
+        src={columnistPhoto}
+        alt="Dr. Tanaya Narendra holding Mumbai Mirror"
+        class="columnist__photo"
+        widths={[600, 1100]}
+        sizes="42vw"
+      />
+    </div>
+
+    <!-- RIGHT: CONTENT -->
+    <div class="columnist__right">
+
+      <p class="columnist__mail-text">For sending<br/>your queries,<br/>mail to:</p>
+
+      <span class="columnist__quote-open">"</span>
+      <div class="columnist__quote-box">
+        <p>A quote by mahinder watsa/on sex ed and why it is important to discuss about.</p>
+      </div>
+      <span class="columnist__quote-close">"</span>
+
+      <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
+
+      <div class="columnist__desc-box">
+        <p>Continuing the legacy of &lt;adjective&gt; <strong>Mahindra Watsa</strong>, I reply to all of your queries on Mumbai Mirror's Sex Column. For anyone who has queries can reach out to me. It is never embarrassing to ask know more about your own body.</p>
+      </div>
+
+      <a href="#" class="btn-primary columnist__cta">Read It Now →</a>
+    </div>
+
+  </section>
+
+  <!-- SCRIBBLE: full viewport width, above section -->
+  <img src="/doodles/columnist-scribble.svg" class="columnist__scribble" alt="" aria-hidden="true" />
+
+  <!-- MIRROR TAG: above scribble -->
+  <span class="columnist__mirror-tag">Mumbai mirror's sexpert</span>
+
+</div>
+
+<style>
+  /* ── OUTER: full viewport width ── */
+  .columnist-outer {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-beige-500);
+  }
+
+  /* ── SECTION: constrained to 1280px ── */
+  .columnist {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    min-height: max(100svh, 831px);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── LEFT: PHOTO ── */
+  .columnist__photo-col {
+    position: relative;
+    overflow: hidden;
+    margin-left: min(0px, calc((100vw - 1280px) / 2));
+  }
+
+  .columnist__photo {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 80px);
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .columnist__badge {
+    position: absolute;
+    top: calc(8.33% + 63px);
+    left: 61px;
+    background-color: var(--color-yellow-500);
+    padding: 8px 12px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .columnist__badge span {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.75rem;
+    color: var(--color-brand-900);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    white-space: nowrap;
+  }
+
+  /* ── SCRIBBLE: full width of outer ── */
+  .columnist__scribble {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 90%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── MIRROR TAG: above scribble ── */
+  /* left = outer left margin + 25% of 1280px + 216.57px */
+  .columnist__mirror-tag {
+    position: absolute;
+    top: 58%;
+    left: calc((100% - min(100%, 1280px)) / 2 + min(100%, 1280px) * 0.25 + 216.57px);
+    transform: translateX(-100%) rotate(-29deg);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* ── RIGHT: CONTENT ── */
+  .columnist__right {
+    position: relative;
+    background-color: var(--color-beige-500);
+  }
+
+  /* "For sending your queries, mail to:" */
+  .columnist__mail-text {
+    position: absolute;
+    top: 161px;
+    left: calc(50% + 89px);
+    transform: translateX(-50%);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-brand-900);
+    text-align: center;
+    line-height: 1.3;
+    margin: 0;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  /* Opening quote " */
+  .columnist__quote-open {
+    position: absolute;
+    top: 350px;
+    left: calc(50% - 259px);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--color-black);
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    z-index: 2;
+  }
+
+  /* Quote box */
+  .columnist__quote-box {
+    position: absolute;
+    top: 352px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid var(--color-black);
+    border-radius: 100px;
+    padding: 8px 16px;
+    width: 540px;
+    z-index: 2;
+  }
+
+  .columnist__quote-box p {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-black);
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Closing quote " (rotated 180°) */
+  .columnist__quote-close {
+    position: absolute;
+    top: 391px;
+    left: calc(50% + 241px);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--color-black);
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    transform: rotate(180deg);
+    display: inline-block;
+    z-index: 2;
+  }
+
+  /* "Your Next Door Sexpert." */
+  .columnist__heading {
+    position: absolute;
+    top: 433px;
+    left: calc(50% + 251px);
+    transform: translateX(-100%);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2rem, 3.3vw, 3rem);
+    color: var(--color-brand-900);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    margin: 0;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  /* Description box */
+  .columnist__desc-box {
+    position: absolute;
+    top: 496px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-brand-100);
+    padding: 8px 16px;
+    width: 524px;
+    z-index: 2;
+  }
+
+  .columnist__desc-box p {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-black);
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .columnist__desc-box strong {
+    font-weight: 700;
+  }
+
+  /* CTA Button */
+  .columnist__cta {
+    position: absolute;
+    top: 701px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    padding: 12px 24px;
+    z-index: 2;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .columnist {
+      display: flex;
+      flex-direction: column;
+      min-height: unset;
+    }
+
+    .columnist__photo-col {
+      height: 55svh;
+      flex-shrink: 0;
+      margin-left: 0;
+    }
+
+    .columnist__photo {
+      top: 0;
+      height: 100%;
+    }
+
+    .columnist__badge {
+      top: 16px;
+      left: 16px;
+    }
+
+    .columnist__badge span {
+      font-size: 1.25rem;
+    }
+
+    .columnist__mirror-tag,
+    .columnist__scribble {
+      display: none;
+    }
+
+    .columnist__right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 24px 48px;
+      gap: 16px;
+      min-height: unset;
+    }
+
+    .columnist__mail-text {
+      display: none;
+    }
+
+    .columnist__quote-open {
+      position: static;
+      transform: none;
+      align-self: flex-start;
+      margin-bottom: -28px;
+      margin-left: 8px;
+      font-size: 2rem;
+      z-index: 1;
+    }
+
+    .columnist__quote-box {
+      position: static;
+      transform: none;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .columnist__quote-box p {
+      font-size: 1rem;
+    }
+
+    .columnist__quote-close {
+      position: static;
+      transform: rotate(180deg);
+      align-self: flex-end;
+      margin-top: -28px;
+      margin-right: 8px;
+      font-size: 2rem;
+      z-index: 1;
+    }
+
+    .columnist__heading {
+      position: static;
+      transform: none;
+      font-size: clamp(2.25rem, 10vw, 2.75rem);
+      text-align: center;
+      white-space: normal;
+    }
+
+    .columnist__desc-box {
+      position: static;
+      transform: none;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .columnist__desc-box p {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .columnist__cta {
+      position: static;
+      transform: none;
+      font-size: 1.125rem;
+    }
+  }
+</style>

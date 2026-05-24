@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import About from '../components/About.astro';
+import Book from '../components/Book.astro';
+import Contact from '../components/Contact.astro';
+import Fursat from '../components/Fursat.astro';
+import Columnist from '../components/Columnist.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Dr. Cuterus — Dr. Tanaya Narendra</title>
+    <meta name="description" content="Dr. Tanaya Narendra, popularly known as Dr. Cuterus — Oxford-trained doctor, sex educator, author, and award-winning creator making sex ed safe in India." />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dr. Cuterus — Dr. Tanaya Narendra" />
+    <meta property="og:description" content="Oxford-trained doctor, sex educator, author, and award-winning creator." />
+    <meta property="og:type" content="website" />
+
+    <!-- Schema.org Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tanaya Narendra",
+        "alternateName": "Dr. Cuterus",
+        "jobTitle": "Doctor, Sexual Health Educator, Author",
+        "url": "https://drcuterus.com",
+        "sameAs": [
+          "https://www.instagram.com/dr.cuterus",
+          "https://www.youtube.com/@DrCuterus"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <About />
+      <Book />
+      <Columnist />
+      <Contact />
+      <Fursat />
+    </main>
+  </body>
+</html>

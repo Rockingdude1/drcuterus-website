@@ -1,0 +1,324 @@
+---
+import { Image } from 'astro:assets';
+import contactPhoto from '../assets/images/contact-photo.jpeg';
+import samosaPhoto from '../assets/images/samosa.jpeg';
+---
+
+<section class="contact" id="contact">
+  <div class="contact__photo-col">
+    <Image
+      src={contactPhoto}
+      alt="Dr. Tanaya Narendra"
+      class="contact__photo"
+      widths={[400, 700, 1000]}
+      sizes="50vw"
+    />
+    <img src="/doodles/contact-cutout.svg" class="contact__cutout" alt="" aria-hidden="true" />
+  </div>
+
+  <div class="contact__content">
+    <img src="/doodles/contact-flower-yellow.svg" class="contact__flower contact__flower--yellow" alt="" />
+    <img src="/doodles/contact-flower-purple.svg" class="contact__flower contact__flower--purple" alt="" />
+
+    <div class="contact__text">
+      <h2 class="contact__heading">
+        Found something you liked?<br />Let's talk.
+      </h2>
+
+      <p class="contact__subheading">
+        For collabs, speaking, and partnerships — or just to say hi!
+      </p>
+
+      <div class="contact__ctas">
+        <a href="mailto:drcuterus@gmail.com" class="btn-primary">Work With Me</a>
+        <a href="#" class="btn-outline">See My Content</a>
+      </div>
+
+      <div class="contact__samosa">
+        <p class="contact__samosa-text">Samosa says hi!</p>
+        <Image
+          src={samosaPhoto}
+          alt="Samosa, Dr. Cuterus's dog"
+          class="contact__samosa-img"
+          width={140}
+          height={140}
+        />
+      </div>
+
+      <img src="/doodles/arrow-1.svg" class="contact__arrow" alt="" width="60" height="62" />
+
+      <div class="contact__footer">
+        <div class="contact__footer-top">
+          <p class="contact__email">
+            Can also reach out on:
+            <a href="mailto:drcuterus@gmail.com" class="contact__email-link">drcuterus@gmail.com</a>
+          </p>
+        </div>
+        <div class="contact__footer-divider-wrap">
+          <div class="contact__footer-divider"></div>
+        </div>
+        <p class="contact__socials">
+          Learn about your body on:
+          <a href="#" class="contact__social-link">Instagram</a>
+          <a href="#" class="contact__social-link">Youtube</a>
+          <a href="#" class="contact__social-link">Spotify</a>
+        </p>
+        <p class="contact__copyright">© 2026 Tanaya Narendra. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background-color: var(--color-beige-500);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* PHOTO COLUMN */
+  .contact__photo-col {
+    background-color: var(--color-yellow-500);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+  }
+
+  .contact__cutout {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 2;
+  }
+
+  /* CONTENT COLUMN */
+  .contact__content {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 60px 32px 40px;
+    position: relative;
+    background-color: var(--color-beige-500);
+  }
+
+  .contact__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact__flower {
+    position: absolute;
+    width: 48px;
+    height: 46px;
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .contact__flower--yellow {
+    top: 95px;
+    left: 120px;
+  }
+
+  .contact__flower--purple {
+    top: 160px;
+    right: 260px;
+  }
+
+  .contact__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    color: var(--color-brand-900);
+    margin: 60px 0 12px;
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    text-align: center;
+  }
+
+  .contact__subheading {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--color-brand-900);
+    margin: 0 0 28px;
+    max-width: 400px;
+    text-align: center;
+    align-self: center;
+  }
+
+  .contact__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    justify-content: center;
+  }
+
+  .contact__samosa {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .contact__samosa-text {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--color-brand-900);
+    margin: 0;
+  }
+
+  .contact__samosa-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .contact__arrow {
+    position: absolute;
+    width: 72px;
+    height: auto;
+    bottom: 100px;
+    left: 80px;
+    transform: rotate(180deg) scaleY(-1);
+    opacity: 0.8;
+  }
+
+  /* FOOTER */
+  .contact__footer {
+    border-top: none;
+    margin-top: auto;
+  }
+
+  .contact__footer-top {
+    margin-bottom: 4px;
+  }
+
+  .contact__email {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-brand-900);
+    margin: 0 0 4px;
+    text-align: right;
+  }
+
+  .contact__email-link {
+    color: var(--color-brand-900);
+    text-decoration: underline;
+    text-decoration-color: var(--color-brand-400);
+    text-underline-offset: 2px;
+  }
+
+  .contact__footer-divider-wrap {
+    margin-bottom: 6px;
+  }
+
+  .contact__footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-brand-900);
+    opacity: 0.3;
+  }
+
+  .contact__socials {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-brand-900);
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .contact__social-link {
+    color: var(--color-brand-400);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact__social-link:hover {
+    color: var(--color-brand-600);
+    text-decoration: underline;
+  }
+
+  .contact__copyright {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__photo-col {
+      min-height: 380px;
+    }
+
+    .contact__photo {
+      min-height: 380px;
+    }
+
+    .contact__content {
+      padding: 40px 24px 32px;
+    }
+
+    .contact__heading {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .contact__ctas {
+      justify-content: center;
+    }
+
+    .contact__samosa {
+      align-self: center;
+    }
+
+    .contact__arrow {
+      display: none;
+    }
+
+    .contact__flower--purple {
+      right: 20px;
+    }
+
+    .contact__socials {
+      justify-content: center;
+    }
+
+    .contact__email {
+      text-align: center;
+    }
+  }
+</style>

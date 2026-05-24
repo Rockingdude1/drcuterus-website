@@ -1,0 +1,535 @@
+---
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import { Image } from 'astro:assets';
+import blogPhoto from '../../assets/images/blog-photo.jpg';
+import { posts } from '../../data/posts';
+
+const categories = ['All', ...new Set(posts.map(p => p.category))];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Blog — Dr. Cuterus</title>
+    <meta name="description" content="Honest answers to the questions nobody wants to ask — by Dr. Tanaya Narendra." />
+  </head>
+  <body>
+    <Navbar />
+
+    <main class="blog">
+      <div class="blog__body">
+
+        <!-- LEFT -->
+        <div class="blog__photo-col">
+          <div class="blog__frame-outer">
+            <Image
+              src={blogPhoto}
+              alt="Dr. Tanaya Narendra"
+              class="blog__photo"
+              widths={[400, 700]}
+              sizes="340px"
+            />
+            <img src="/doodles/blog-frame.svg" class="blog__frame-svg" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="blog__content-col">
+          <div class="blog__heading-row">
+            <h1 class="blog__heading">Have Questions?</h1>
+            <div class="blog__pill-wrap">
+              <span class="blog__pill">even the awkward ones.</span>
+            </div>
+          </div>
+
+          <p class="blog__subtitle">
+            This is where I answer the questions that flood my DMs, about periods, bodies, sex, and everything the internet gets wrong.
+          </p>
+
+          <div class="blog__categories" id="blog-categories">
+            {categories.map((cat, i) => (
+              <button class={`blog__cat-btn${i === 0 ? ' blog__cat-btn--active' : ''}`} data-category={cat}>
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div class="blog__divider"></div>
+
+          <ul class="blog__questions" id="blog-questions">
+            {posts.map((post) => (
+              <li class="blog__question-item" data-category={post.category}>
+                <a href={`/blog/${post.slug}`} class="blog__question-link">{post.question}</a>
+                <div class="blog__question-divider"></div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom strip -->
+      <div class="blog__bottom-strip">
+        <div class="blog__bottom-left">
+          <div class="blog__btn-center">
+            <a href="#" class="btn-primary">Book an Appointment</a>
+            <img src="/doodles/arrow-3.svg" class="blog__arrow-icon" alt="" width="29" height="41" />
+          </div>
+          <p class="blog__confused-text">Still confused?<br /> That's what I'm here for.</p>
+        </div>
+        <div class="blog__mail">
+          <div class="blog__mail-body">
+            <div class="blog__mail-flap"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="blog-footer">
+      <div class="blog-footer__flower blog-footer__flower--yellow"></div>
+      <div class="blog-footer__flower blog-footer__flower--purple"></div>
+      <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
+      <p class="blog-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
+      <a href="/#contact" class="btn-primary">Work with Me</a>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    background-color: var(--color-beige-500);
+    margin: 0;
+    padding: 0;
+  }
+
+  .blog {
+    padding-top: 80px;
+  }
+
+  /* ── TWO-COLUMN BODY ── */
+  .blog__body {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    padding: 60px 60px 16px;
+    gap: 60px;
+    min-height: calc(100svh - 80px - 266px - 100px);
+  }
+
+  /* ── LEFT: PHOTO ── */
+  .blog__photo-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 16px;
+  }
+
+  .blog__frame-outer {
+    position: relative;
+    width: 300px;
+    aspect-ratio: 404 / 539;
+  }
+
+  /* Yellow rotated rectangle behind the photo */
+  .blog__frame-outer::before {
+    content: '';
+    position: absolute;
+    inset: 4%;
+    border: 8px solid var(--color-yellow-500);
+    transform: rotate(-4.5deg);
+    z-index: -1;
+  }
+
+  .blog__photo {
+    position: absolute;
+    inset: 8%;
+    width: 84%;
+    height: 84%;
+    object-fit: cover;
+    display: block;
+    z-index: 0;
+  }
+
+  .blog__frame-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.2);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── RIGHT: CONTENT ── */
+  .blog__content-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .blog__heading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .blog__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    color: var(--color-brand-400);
+    margin: 0;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+  }
+
+  .blog__pill-wrap {
+    transform: rotate(6deg);
+    margin-top: 8px;
+  }
+
+  .blog__pill {
+    display: inline-block;
+    background-color: var(--color-yellow-500);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    white-space: nowrap;
+  }
+
+  .blog__subtitle {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 660px;
+  }
+
+  /* ── CATEGORY PILLS ── */
+  .blog__categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .blog__cat-btn {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1px solid var(--color-brand-200);
+    background-color: var(--color-brand-50);
+    color: var(--color-brand-400);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .blog__cat-btn--active {
+    background-color: var(--color-brand-400);
+    color: var(--color-brand-50);
+  }
+
+  .blog__divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-brand-900);
+    opacity: 0.2;
+  }
+
+  /* ── QUESTIONS ── */
+  .blog__questions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-brand-200) transparent;
+  }
+
+  .blog__questions::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .blog__questions::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .blog__questions::-webkit-scrollbar-thumb {
+    background-color: var(--color-brand-200);
+    border-radius: 999px;
+  }
+
+  .blog__question-item.is-hidden {
+    display: none;
+  }
+
+  .blog__question-link {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.375rem;
+    color: var(--color-brand-900);
+    text-decoration: none;
+    padding: 14px 0;
+    display: block;
+    line-height: 1.4;
+    transition: color 0.15s ease;
+  }
+
+  .blog__question-link:hover {
+    color: var(--color-brand-400);
+  }
+
+  .blog__question-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-brand-900);
+    opacity: 0.15;
+  }
+
+  /* ── BOTTOM STRIP ── */
+  .blog__bottom-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 60px 28px;
+  }
+
+  .blog__bottom-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .blog__btn-center {
+    width: 420px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .blog__arrow-icon {
+    width: 29px;
+    height: 41px;
+    opacity: 0.7;
+    transform: rotate(130deg) scaleY(-1);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    translate: 0 -50%;
+  }
+
+  .blog__confused-text {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* CSS mail envelope */
+  .blog__mail {
+    margin-left: auto;
+    width: 100px;
+    height: 70px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .blog__mail-body {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-brand-400);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* V-shaped flap using clip */
+  .blog__mail-flap::before,
+  .blog__mail-flap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 51%;
+    height: 50%;
+    border-bottom: 2px solid var(--color-brand-400);
+  }
+
+  .blog__mail-flap::before {
+    left: 0;
+    transform-origin: top left;
+    transform: rotate(32deg);
+  }
+
+  .blog__mail-flap::after {
+    right: 0;
+    transform-origin: top right;
+    transform: rotate(-32deg);
+  }
+
+  /* ── FOOTER ── */
+  .blog-footer {
+    background-color: var(--color-brand-100);
+    background-image:
+      linear-gradient(rgba(110, 57, 151, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 57, 151, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    height: 266px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* CSS flower/asterisk */
+  .blog-footer__flower {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+  }
+
+  .blog-footer__flower::before,
+  .blog-footer__flower::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .blog-footer__flower--yellow {
+    left: 304px;
+    top: 55px;
+    color: var(--color-yellow-500);
+  }
+
+  .blog-footer__flower--yellow::before {
+    width: 28px;
+    height: 10px;
+    background-color: var(--color-yellow-500);
+    transform: translate(-50%, -50%) rotate(0deg);
+    box-shadow: 0 0 0 0 var(--color-yellow-500);
+  }
+
+  .blog-footer__flower--yellow::after {
+    width: 28px;
+    height: 10px;
+    background-color: var(--color-yellow-500);
+    transform: translate(-50%, -50%) rotate(60deg);
+    box-shadow: 0 9px 0 -4px var(--color-yellow-500), 0 -9px 0 -4px var(--color-yellow-500);
+  }
+
+  .blog-footer__flower--purple {
+    right: 355px;
+    top: 96px;
+  }
+
+  .blog-footer__flower--purple::before {
+    width: 28px;
+    height: 10px;
+    background-color: var(--color-brand-200);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .blog-footer__flower--purple::after {
+    width: 28px;
+    height: 10px;
+    background-color: var(--color-brand-200);
+    transform: translate(-50%, -50%) rotate(60deg);
+    box-shadow: 0 9px 0 -4px var(--color-brand-200), 0 -9px 0 -4px var(--color-brand-200);
+  }
+
+  .blog-footer__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-brand-900);
+    margin: 0;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    text-align: center;
+  }
+
+  .blog-footer__sub {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .blog__body {
+      grid-template-columns: 1fr;
+      padding: 40px 24px;
+      gap: 32px;
+    }
+
+    .blog__photo-col {
+      display: none;
+    }
+
+    .blog__bottom-strip {
+      padding: 24px 24px;
+      flex-wrap: wrap;
+    }
+
+    .blog__mail {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const catBtns = document.querySelectorAll<HTMLButtonElement>('.blog__cat-btn');
+  const items = document.querySelectorAll<HTMLLIElement>('.blog__question-item');
+  const list = document.getElementById('blog-questions') as HTMLUListElement;
+
+  function setMaxHeight(visibleItems: HTMLLIElement[]) {
+    const first3 = visibleItems.slice(0, 3);
+    const h = first3.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
+    list.style.maxHeight = h + 'px';
+  }
+
+  function getVisible(): HTMLLIElement[] {
+    return [...items].filter(i => !i.classList.contains('is-hidden')) as HTMLLIElement[];
+  }
+
+  setMaxHeight(getVisible());
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('blog__cat-btn--active'));
+      btn.classList.add('blog__cat-btn--active');
+      const selected = btn.dataset.category || 'All';
+      items.forEach(item => {
+        const matches = selected === 'All' || item.dataset.category === selected;
+        item.classList.toggle('is-hidden', !matches);
+      });
+      list.scrollTop = 0;
+      setMaxHeight(getVisible());
+    });
+  });
+</script>
