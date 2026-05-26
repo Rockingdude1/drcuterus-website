@@ -29,19 +29,18 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
 
       <p class="columnist__mail-text">For sending<br/>your queries,<br/>mail to:</p>
 
-      <span class="columnist__quote-open">"</span>
-      <div class="columnist__quote-box">
-        <p>Knowledge is important. You can have simple, meaningful discussions without any embarrassment.</p>
-      </div>
-      <span class="columnist__quote-close">"</span>
-
-      <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
-
-      <div class="columnist__desc-box">
-        <p>Carrying forward <strong>Dr. Mahindra Watsa</strong> legendary sex column in Mumbai Mirror, every Sunday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
+      <div class=”columnist__quote-box”>
       </div>
 
-      <a href="#" class="btn-primary columnist__cta">Read It Now →</a>
+      <div class="columnist__content-group">
+        <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
+
+        <div class="columnist__desc-box">
+          <p>Carrying forward <strong>Dr. Mahindra Watsa</strong> legendary sex column in Mumbai Mirror, every Sunday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
+        </div>
+
+        <a href="https://mumbaimirror.indiatimes.com/topics/dr-cuterus" target="_blank" rel="noopener" class="btn-primary columnist__cta">Read It Now →</a>
+      </div>
     </div>
 
   </section>
@@ -119,7 +118,7 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
   .columnist__scribble {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -10px;
     width: 100vw;
     height: 90%;
     object-fit: fill;
@@ -130,10 +129,11 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
   /* ── MIRROR TAG: above scribble ── */
   /* left = outer left margin + 25% of 1280px + 216.57px */
   .columnist__mirror-tag {
+    display: none;
     position: absolute;
-    top: 58%;
+    top: 60%;
     left: calc((100% - min(100%, 1280px)) / 2 + min(100%, 1280px) * 0.25 + 216.57px);
-    transform: translateX(-100%) rotate(-29deg);
+    transform: translateX(-100%) rotate(-23deg);
     font-family: var(--font-sans);
     font-size: 0.75rem;
     font-weight: 400;
@@ -168,32 +168,9 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     white-space: nowrap;
   }
 
-  /* Opening quote " */
-  .columnist__quote-open {
-    position: absolute;
-    top: clamp(200px, 33.7%, 360px);
-    left: calc(50% - 259px);
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: 2rem;
-    color: var(--color-black);
-    letter-spacing: -0.06em;
-    line-height: 0.9;
-    z-index: 3;
-  }
-
   /* Quote box */
   .columnist__quote-box {
-    position: absolute;
-    top: clamp(202px, 33.9%, 362px);
-    left: 50%;
-    transform: translateX(-50%);
-    border: 1px solid var(--color-black);
-    border-radius: 100px;
-    padding: 8px 16px;
-    width: min(540px, 90%);
-    z-index: 3;
+    display: none;
   }
 
   .columnist__quote-box p {
@@ -206,29 +183,26 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     line-height: 1.4;
   }
 
-  /* Closing quote " (rotated 180°) */
+  .columnist__quote-open,
   .columnist__quote-close {
+    display: none;
+  }
+
+  /* Group: heading + desc-box + CTA stacked naturally */
+  .columnist__content-group {
     position: absolute;
-    top: clamp(240px, 38.6%, 410px);
-    left: calc(50% + 241px);
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: 2rem;
-    color: var(--color-black);
-    letter-spacing: -0.06em;
-    line-height: 0.9;
-    transform: rotate(180deg);
-    display: inline-block;
+    top: clamp(310px, 48%, 500px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: min(524px, 90%);
     z-index: 3;
   }
 
-  /* "Your Next Door Sexpert." */
   .columnist__heading {
-    position: absolute;
-    top: clamp(310px, 48%, 500px);
-    left: calc(50% + 251px);
-    transform: translateX(-100%);
     font-family: var(--font-display);
     font-weight: 500;
     font-style: italic;
@@ -238,25 +212,20 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     line-height: 0.95;
     margin: 0;
     white-space: nowrap;
-    z-index: 3;
+    text-align: center;
   }
 
   /* Description box */
   .columnist__desc-box {
-    position: absolute;
-    top: clamp(360px, 57%, 580px);
-    left: 50%;
-    transform: translateX(-50%);
     background-color: var(--color-brand-100);
-    padding: 8px 16px;
-    width: min(524px, 90%);
-    z-index: 3;
+    padding: 8px 26px;
+    width: 100%;
   }
 
   .columnist__desc-box p {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2.8svh, 1.5rem);
     color: var(--color-black);
     text-align: center;
     margin: 0;
@@ -267,12 +236,8 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     font-weight: 700;
   }
 
-  /* CTA Button — bottom-anchored so it can NEVER overlap content above */
+  /* CTA Button — flows after desc-box */
   .columnist__cta {
-    position: absolute;
-    bottom: clamp(8px, 1.5%, 20px);
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 1.5rem;
     padding: 12px 24px;
     z-index: 3;
@@ -311,11 +276,7 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     }
 
     .columnist__quote-box {
-      width: min(400px, 90%);
-    }
-
-    .columnist__quote-box p {
-      font-size: 1.125rem;
+      display: none;
     }
 
     .columnist__quote-close {
@@ -399,14 +360,7 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     }
 
     .columnist__quote-box {
-      position: static;
-      transform: none;
-      width: 100%;
-      max-width: 340px;
-    }
-
-    .columnist__quote-box p {
-      font-size: 1rem;
+      display: none;
     }
 
     .columnist__quote-close {

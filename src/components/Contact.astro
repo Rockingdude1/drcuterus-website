@@ -17,13 +17,16 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
   </div>
 
   <div class="contact__content">
-    <img src="/doodles/contact-flower-yellow.svg" class="contact__flower contact__flower--yellow" alt="" />
-    <img src="/doodles/contact-flower-purple.svg" class="contact__flower contact__flower--purple" alt="" />
-
     <div class="contact__text">
-      <h2 class="contact__heading">
-        Found something you liked?<br />Let's talk.
-      </h2>
+      <div class="contact__heading-wrap">
+        <img src="/doodles/contact-flower-yellow.svg" class="contact__flower contact__flower--yellow" alt="" />
+        <img src="/doodles/contact-flower-purple.svg" class="contact__flower contact__flower--purple" alt="" />
+        <h2 class="contact__heading">
+          Found something you liked?<br />Let's talk.
+        </h2>
+      </div>
+
+      </div>
 
       <p class="contact__subheading">
         For collabs, speaking, and partnerships or just to say hi!
@@ -109,6 +112,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
   .contact__content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: 60px 60px 32px 40px;
     position: relative;
     background-color: var(--color-beige-500);
@@ -117,10 +121,15 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
   .contact__text {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
+    justify-content: flex-start;
+    gap: 16px;
     position: relative;
     z-index: 1;
+  }
+
+  .contact__heading-wrap {
+    position: relative;
+    padding: 40px 0 0;
   }
 
   .contact__flower {
@@ -129,17 +138,17 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     height: 46px;
     display: block;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
   }
 
   .contact__flower--yellow {
-    top: 95px;
-    left: 120px;
+    top: 50px;
+    left: 30px;
   }
 
   .contact__flower--purple {
-    top: 160px;
-    right: 260px;
+    top: 85px;
+    right: 180px;
   }
 
   .contact__heading {
@@ -148,7 +157,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     font-style: italic;
     font-size: clamp(2rem, 3.5vw, 2.5rem);
     color: var(--color-brand-900);
-    margin: 60px 0 12px;
+    margin: 0 0 12px;
     line-height: 0.95;
     letter-spacing: -0.06em;
     text-align: center;

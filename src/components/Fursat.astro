@@ -8,15 +8,16 @@ import fursatLogo from '../assets/images/fursat-logo.png';
   <div class="fursat__left">
     <h2 class="fursat__heading">Made a bra for you</h2>
 
-    <div class="fursat__logo-row">
-      <Image src={fursatLogo} alt="Fursat" class="fursat__logo" />
-    </div>
-
-    <div class="fursat__desc-box">
-      <p class="fursat__desc">
-        and I proudly present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
-        <strong>medium-impact bra</strong> designed to hold you (and your bewbies) with love.
-      </p>
+    <div class="fursat__desc-wrap">
+      <div class="fursat__logo-row">
+        <Image src={fursatLogo} alt="Fursat" class="fursat__logo" />
+      </div>
+      <div class="fursat__desc-box">
+        <p class="fursat__desc">
+          and I proudly present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
+          <strong>medium-impact bra</strong> designed to hold you (and your bewbies) with love.
+        </p>
+      </div>
     </div>
 
     <ul class="fursat__features">
@@ -41,7 +42,7 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     </div>
 
     <div class="fursat__cta-wrap">
-      <a href="#" class="btn-primary fursat__cta">Order your Fursat Now</a>
+      <a href="https://letstilt.com/collections/fursat-bras" target="_blank" rel="noopener" class="btn-primary fursat__cta">Order your Fursat Now</a>
       <p class="fursat__cta-sub">and your boobs will thank you.</p>
     </div>
   </div>
@@ -67,23 +68,29 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 80px 40px 60px 60px;
     gap: 20px;
   }
 
-  .fursat__logo-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: -30px;
+  .fursat__desc-wrap {
     position: relative;
-    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .fursat__logo-row {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-15%, -45%);
+    z-index: 2;
   }
 
   .fursat__logo {
     width: 68px;
     height: auto;
     transform: rotate(-10deg);
-    margin-left: -15px;
   }
 
   .fursat__heading {
@@ -121,6 +128,8 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
+    max-width: 520px;
   }
 
   .fursat__feature {
@@ -179,7 +188,6 @@ import fursatLogo from '../assets/images/fursat-logo.png';
   /* RIGHT — single photo */
   .fursat__right {
     overflow: hidden;
-    padding: 40px 0;
     background-color: var(--color-beige-500);
     display: flex;
     align-items: center;
@@ -198,7 +206,9 @@ import fursatLogo from '../assets/images/fursat-logo.png';
   .fursat__photo {
     width: 100%;
     height: 100%;
+    max-height: 100svh;
     object-fit: contain;
+    object-position: right bottom;
     display: block;
   }
 

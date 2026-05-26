@@ -7,7 +7,8 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
 
   <!-- Mobile-only: heading at top -->
   <div class="content__mobile-header">
-    <p class="content__mobile-sub">Building an audience across platforms — because your feed deserves more science, less drama.</p>
+    <p class="content__mobile-sub content__mobile-sub--hinglish">Building an audience across platforms. Shayad meri wajah se aapko apne phone ki volume kam karni padi ho,<br/>YOU SHOULD NOT!</p>
+    <p class="content__mobile-sub content__mobile-sub--english">Building an audience across platforms. Possibly responsible for making you turn your volume down,<br/>YOU SHOULD NOT!</p>
     <h2 class="content__mobile-heading">How you will find me while scrolling on your phone</h2>
   </div>
 
@@ -155,7 +156,8 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
 
   <!-- Bottom strip -->
   <div class="content__strip">
-    <p class="content__strip-sub">Building an audience across platforms — because your feed deserves more science, less drama.</p>
+    <p class="content__strip-sub content__strip-sub--hinglish">Building an audience across platforms. Shayad meri wajah se aapko apne phone ki volume kam karni padi ho,<br/>YOU SHOULD NOT!</p>
+    <p class="content__strip-sub content__strip-sub--english">Building an audience across platforms. Possibly responsible for making you turn your volume down,<br/>YOU SHOULD NOT!</p>
     <h2 class="content__strip-heading">How you will find me while scrolling on your phone</h2>
   </div>
 
@@ -505,7 +507,19 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
     color: var(--color-brand-900);
     margin: 0;
     text-align: right;
-    max-width: 700px;
+    white-space: pre-line;
+  }
+
+  .content__strip-sub--english {
+    display: none;
+  }
+
+  :global([data-lang="english"]) .content__strip-sub--english {
+    display: block;
+  }
+
+  :global([data-lang="english"]) .content__strip-sub--hinglish {
+    display: none;
   }
 
   .content__strip-heading {
@@ -560,6 +574,18 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
       flex-direction: column;
       gap: 12px;
       padding: 20px 20px 8px;
+    }
+
+    .content__mobile-sub--english {
+      display: none !important;
+    }
+
+    :global([data-lang="english"]) .content__mobile-sub--english {
+      display: inline-block !important;
+    }
+
+    :global([data-lang="english"]) .content__mobile-sub--hinglish {
+      display: none !important;
     }
 
     /* Subtitle in rotated yellow pill (matches Figma) */

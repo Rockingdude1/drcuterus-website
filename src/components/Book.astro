@@ -41,7 +41,7 @@ const languages = [
   <div class="book__left">
     <div class="book__quote-wrap">
       <blockquote class="book__quote">
-        <span class="book__quote-mark">"</span>Even though everyone has a body, nobody wants<br>to talk about it. Especially those 'private' bits.<span class="book__quote-mark book__quote-mark--close">"</span>
+        <span class="book__quote-mark">“</span>   Even though everyone has a body, nobody wants to talk about it. Especially those 'private' bits.<span class="book__quote-mark book__quote-mark--close">”</span>
       </blockquote>
     </div>
 
@@ -85,7 +85,7 @@ const languages = [
 
   <!-- Mobile row 4 / Desktop col 3 row 2: buy button -->
   <div class="book__buy-wrap">
-    <a href="https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1?crid=1AYTCM5XEFSTN&dib=eyJ2IjoiMSJ9.Mv4OnhyViSBEM-ohLGYmOwP4lWA4KrK2DdIA29vA-T1vbmhtg8Nv4RnFjuhOFoAzqrE7JqvjGOl9enOFKUvTU_qkCwTFZU7Q3iD3mq3i54kTS65KOL0JTQ1MnvfT5FoqkHIBaPFd-sy-4qPwUTEfXw.z42SQNkoKwz6iuqjJ7kO2oXu0cILjyBBtxIeeIlMYow&dib" target="_blank" rel="noopener" class="btn-primary book__buy-btn" id="book-buy-btn">Buy My Book →</a>
+    <a href="#" class="btn-primary book__buy-btn" id="book-buy-btn">Buy My Book →</a>
   </div>
 
   <!-- Mobile row 5 / Desktop col 1 row 2: who should read this -->
@@ -110,7 +110,7 @@ const languages = [
     background-color: var(--color-brand-100);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    grid-template-rows: 1fr auto auto;
+    grid-template-rows: 3fr auto auto 7fr;
     min-height: 100svh;
     padding-top: 80px;
     position: relative;
@@ -118,12 +118,13 @@ const languages = [
   }
 
   /* Explicit desktop grid placement */
-  .book__right   { grid-column: 3; grid-row: 1; }
-  .book__left    { grid-column: 1; grid-row: 1; }
-  .book__center  { grid-column: 2; grid-row: 1 / 3; }
-  .book__buy-wrap{ grid-column: 3; grid-row: 2; }
-  .book__who     { grid-column: 1; grid-row: 2; }
-  .book__reviews { grid-column: 1 / -1; grid-row: 3; }
+  /* Row 1 (1fr): top spacer — Row 4 (1fr): reviews — extra height splits equally top/bottom */
+  .book__right   { grid-column: 3; grid-row: 2; }
+  .book__left    { grid-column: 1; grid-row: 2; }
+  .book__center  { grid-column: 2; grid-row: 2 / 4; }
+  .book__buy-wrap{ grid-column: 3; grid-row: 3; }
+  .book__who     { grid-column: 1; grid-row: 3; }
+  .book__reviews { grid-column: 1 / -1; grid-row: 4; }
 
   /* LEFT */
   .book__left {
@@ -136,10 +137,10 @@ const languages = [
 
   .book__quote-wrap {
     background-color: var(--color-yellow-500);
-    padding: 12px 16px;
+    padding: 6px 10px;
     border-radius: 4px;
     position: relative;
-    max-width: 420px;
+    color: var(--color-brand-900);
   }
 
   .book__quote-mark {
@@ -154,7 +155,6 @@ const languages = [
   }
 
   .book__quote-mark--close {
-    transform: rotate(180deg);
     display: inline-block;
     vertical-align: -0.3em;
   }
@@ -162,7 +162,7 @@ const languages = [
   .book__quote {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: var(--color-brand-900);
     margin: 4px 0 0;
     line-height: 1.5;
@@ -325,7 +325,7 @@ const languages = [
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 16px 20px 40px;
+    padding: 70px 20px 40px;
   }
 
   .book__cover {
@@ -483,29 +483,6 @@ const languages = [
 
   :global([data-lang="english"]) .book__who-hinglish {
     display: none;
-  }
-
-  /* TABLET (769–1024px) */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .book__left {
-      padding: 16px 16px 32px 32px;
-    }
-
-    .book__who {
-      padding: 16px 16px 32px 32px;
-    }
-
-    .book__cover {
-      width: min(240px, 30vw);
-    }
-
-    .book__lang-arrow {
-      display: none;
-    }
-
-    .book__quote-wrap {
-      max-width: 100%;
-    }
   }
 
   /* MOBILE */
