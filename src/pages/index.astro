@@ -70,19 +70,6 @@ import doctorPhotoUrl from '../assets/images/doctor-photo.png?url';
 
   main > * {
     scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
-    @media (max-width: 768px) {
-  html, body {
-    height: auto;
-    overflow: visible;
-  }
-  main {
-    height: auto;
-    overflow-y: visible;
-    scroll-snap-type: none;
-  }
-  main > * {
-    scroll-snap-align: none;
-  }
-}
 </style>
