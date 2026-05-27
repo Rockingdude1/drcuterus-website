@@ -32,6 +32,8 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
               class="blog__photo"
               widths={[400, 700]}
               sizes="340px"
+              loading="eager"
+              fetchpriority="high"
             />
             <img src="/doodles/blog-frame.svg" class="blog__frame-svg" alt="" aria-hidden="true" />
           </div>
