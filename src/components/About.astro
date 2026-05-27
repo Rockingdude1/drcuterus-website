@@ -665,6 +665,11 @@ const pills = [
     arrow.style.visibility = hide ? 'hidden' : '';
   }
 
-  checkSexEdOverlap();
+  const aboutPhoto = document.querySelector<HTMLImageElement>('.about__photo');
+  if (aboutPhoto?.complete) {
+    checkSexEdOverlap();
+  } else {
+    aboutPhoto?.addEventListener('load', checkSexEdOverlap);
+  }
   window.addEventListener('resize', checkSexEdOverlap);
 </script>
