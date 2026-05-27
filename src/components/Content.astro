@@ -160,11 +160,12 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
               <img src="https://img.youtube.com/vi/3n2_HZ_JRTU/mqdefault.jpg" alt="Dr. Cuterus YouTube video" class="content__vid-img" />
               <span class="content__vid-play" aria-hidden="true">&#9654;</span>
             </a>
-            <a class="content__vid-thumb" href="https://youtu.be/x3veBgcMzuU?si=CjSevBvW3ssvy_3B" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
+            <a class="content__vid-thumb content__vid-thumb--second" href="https://youtu.be/x3veBgcMzuU?si=CjSevBvW3ssvy_3B" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
               <img src="https://img.youtube.com/vi/x3veBgcMzuU/mqdefault.jpg" alt="Dr. Cuterus YouTube video" class="content__vid-img" />
               <span class="content__vid-play" aria-hidden="true">&#9654;</span>
             </a>
           </div>
+          <a href="https://www.youtube.com/@DrCuterus" target="_blank" rel="noopener" class="content__cta content__cta--yt-mobile">Subscribe Now</a>
 
 
         </div>
@@ -677,6 +678,10 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     .content__mobile-controls {
       display: none !important;
     }
+
+    .content__cta--yt-mobile {
+      display: none !important;
+    }
   }
 
   /* ── TABLET (769–1024px) ── */
@@ -831,6 +836,40 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     /* Phone frame matches desktop width on mobile */
     .content__frame {
       width: min(268px, calc(100vw - 48px));
+    }
+
+    /* Instagram: remove flex:1 so grid doesn't stretch; cap thumbnail height */
+    .content__grid2 {
+      flex: none;
+      gap: 16px;
+    }
+
+    .content__thumb {
+      max-height: 160px;
+    }
+
+    .content__thumb:last-child {
+      justify-self: end;
+    }
+
+    /* YouTube: hide second video, fix stretching container, show subscribe CTA */
+    .content__vid-thumb--second {
+      display: none;
+    }
+
+    .content__vids {
+      flex: none;
+      margin-top: 12px;
+    }
+
+    .content__vid-thumb {
+      flex: none;
+      aspect-ratio: 16 / 9;
+    }
+
+    .content__cta--yt-mobile {
+      display: block;
+      margin-top: 25px;
     }
 
     /* Hide desktop strip */
