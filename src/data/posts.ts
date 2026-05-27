@@ -59,27 +59,6 @@ Never douche. Your vagina doesn't need help cleaning itself — douching disrupt
 If something seems different from your normal, trust your instincts and get it checked.`,
   },
   {
-    slug: "can-you-get-pregnant-on-your-period",
-    question: "Can you get pregnant on your period?",
-    category: "Reproductive Health",
-    excerpt: "Short answer: yes. Longer answer: it depends on your cycle. Here's the biology explained simply.",
-    body: `Yes, it is possible — though less likely than at other times in your cycle.
-
-**Here's why:**
-Sperm can survive inside the reproductive tract for up to 5 days. If you have a short cycle (say, 21 days) and have sex during your period, sperm could still be alive when you ovulate — which could be only a week after your period started.
-
-**The myth of "safe days":**
-There are no guaranteed safe days if you're not using contraception. Cycles vary, ovulation timing can shift due to stress, illness, or just randomness, and sperm are surprisingly persistent.
-
-**What affects your risk:**
-- Cycle length — shorter cycles = higher risk
-- Cycle regularity — irregular cycles make tracking ovulation unreliable
-- How long your period lasts
-
-**Bottom line:**
-If you don't want to get pregnant, use contraception every time — regardless of where you are in your cycle. The menstrual cycle is not a reliable birth control method on its own.`,
-  },
-  {
     slug: "what-does-the-hymen-actually-do",
     question: "What does the hymen actually do?",
     category: "Anatomy",
@@ -102,6 +81,27 @@ Honestly, we're not entirely sure. It may play a minor protective role in infanc
 
 **Why does this matter?**
 The myths around the hymen are used to control and shame people — particularly women. They have no basis in anatomy. A person's worth, character, and "purity" cannot be determined by a piece of tissue.`,
+  },
+  {
+    slug: "can-you-get-pregnant-on-your-period",
+    question: "Can you get pregnant on your period?",
+    category: "Reproductive Health",
+    excerpt: "Short answer: yes. Longer answer: it depends on your cycle. Here's the biology explained simply.",
+    body: `Yes, it is possible — though less likely than at other times in your cycle.
+
+**Here's why:**
+Sperm can survive inside the reproductive tract for up to 5 days. If you have a short cycle (say, 21 days) and have sex during your period, sperm could still be alive when you ovulate — which could be only a week after your period started.
+
+**The myth of "safe days":**
+There are no guaranteed safe days if you're not using contraception. Cycles vary, ovulation timing can shift due to stress, illness, or just randomness, and sperm are surprisingly persistent.
+
+**What affects your risk:**
+- Cycle length — shorter cycles = higher risk
+- Cycle regularity — irregular cycles make tracking ovulation unreliable
+- How long your period lasts
+
+**Bottom line:**
+If you don't want to get pregnant, use contraception every time — regardless of where you are in your cycle. The menstrual cycle is not a reliable birth control method on its own.`,
   },
   {
     slug: "how-does-the-pill-work",

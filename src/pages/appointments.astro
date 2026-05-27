@@ -21,7 +21,7 @@ import clinicImage from '../assets/images/clinic-image.png';
     <div class="appt-hero-outer">
       <div class="appt-hero-top">
         <p class="appt-hero__label">Online consultations available</p>
-        <h1 class="appt-hero__heading">Does any of these sound like you?</h1>
+        <h1 class="appt-hero__heading">Does any of these<br/> sound like you?</h1>
       </div>
 
       <!-- Purple grid tag cloud — full viewport width -->
@@ -35,7 +35,7 @@ import clinicImage from '../assets/images/clinic-image.png';
       </div>
 
       <div class="appt-hero-bottom">
-        <p class="appt-hero__tagline">For all these and more, you deserve a doctor who actually listens.</p>
+        <p class="appt-hero__tagline">For all these and more, you deserve a <br/>doctor who actually listens.</p>
         <a href="#" class="btn-primary appt-hero__cta">Book Via WhatsApp →</a>
         <p class="appt-hero__disclaimer">*All consultations are confidential and judgment-free.</p>
       </div>
@@ -192,12 +192,17 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
   .appt-hero__cta {
     font-size: 1.5rem;
     padding: 8px 20px;
+    background-color: var(--color-brand-300);
+  }
+
+  .appt-hero__cta:hover {
+    background-color: var(--color-brand-900);
   }
 
   .appt-hero__disclaimer {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -267,6 +272,11 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     font-size: 1.5rem;
     padding: 8px 20px;
     align-self: flex-start;
+    background-color: var(--color-brand-300);
+  }
+
+  .appt-book__cta:hover {
+    background-color: var(--color-brand-900);
   }
 
   /* ── FOOTER ── */
@@ -282,6 +292,10 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     align-items: center;
     justify-content: center;
     gap: 10px;
+  }
+
+  .appt-footer > .btn-primary {
+    margin-top: -4px;
   }
 
   .appt-footer__heading {
@@ -336,11 +350,11 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     }
 
     /* Mobile positions from Figma (pixel-based for 390px frame) */
-    .appt-tag--p1 { left: 22px;  top: 26px;  transform: rotate(-5.77deg); }
-    .appt-tag--p2 { left: 203px; top: 65px;  transform: rotate(1.26deg);  }
-    .appt-tag--p3 { left: 143px; top: 150px; transform: none; }
-    .appt-tag--p4 { left: 13px;  top: 94px;  transform: rotate(1.09deg);  }
-    .appt-tag--p5 { left: 43px;  top: 203px; transform: rotate(-4.06deg); }
+    .appt-tag--p1 { left: 40px;  top: 40px;  transform: rotate(-5.77deg); }
+    .appt-tag--p2 { left: 180px; top: 65px;  transform: rotate(1.26deg);  }
+    .appt-tag--p3 { left: 143px; top: 138px; transform: none; }
+    .appt-tag--p4 { left: 30px;  top: 90px;  transform: rotate(1.09deg);  }
+    .appt-tag--p5 { left: 43px;  top: 190px; transform: rotate(-4.06deg); }
     .appt-tag--p6 { display: none; }
 
     .appt-hero__tagline {

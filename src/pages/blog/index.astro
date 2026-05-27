@@ -37,6 +37,11 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
             />
             <img src="/doodles/blog-frame.svg" class="blog__frame-svg" alt="" aria-hidden="true" />
           </div>
+          <!-- Mobile only: mail doodle bottom-right of photo -->
+          <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="blog__mail-cta blog__mail-cta--inline" aria-label="Ask your query via email">
+            <img src="/doodles/ask%20your%20query%20no%20hover.svg" alt="" class="blog__mail-img blog__mail-img--default" />
+            <img src="/doodles/ask%20your%20query%20on%20hover.svg.svg" alt="Ask your query" class="blog__mail-img blog__mail-img--hover" />
+          </a>
         </div>
 
         <!-- RIGHT -->
@@ -52,15 +57,15 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
             This is where I answer the questions that flood my DMs, about periods, bodies, sex, and everything the internet gets wrong.
           </p>
 
+          <div class="blog__subtitle-divider"></div>
+
           <div class="blog__categories" id="blog-categories">
-            {categories.map((cat, i) => (
+            {categories.slice(0, 3).map((cat, i) => (
               <button class={`blog__cat-btn${i === 0 ? ' blog__cat-btn--active' : ''}`} data-category={cat}>
                 {cat}
               </button>
             ))}
           </div>
-
-          <div class="blog__divider"></div>
 
           <ul class="blog__questions" id="blog-questions">
             {posts.map((post) => (
@@ -80,7 +85,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
             <a href="#" class="btn-primary">Book an Appointment</a>
             <img src="/doodles/arrow-3.svg" class="blog__arrow-icon" alt="" width="29" height="41" />
           </div>
-          <p class="blog__confused-text">Still confused?<br /> That's what I'm here for.</p>
+          <p class="blog__confused-text">Still confused? That's what <br/>I'm here for.</p>
         </div>
         <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="blog__mail-cta" aria-label="Ask your query via email">
           <img src="/doodles/ask%20your%20query%20no%20hover.svg" alt="" class="blog__mail-img blog__mail-img--default" />
@@ -91,8 +96,6 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 
     <!-- Footer -->
     <div class="blog-footer">
-      <img src="/doodles/contact-flower-yellow.svg" class="blog-footer__flower blog-footer__flower--yellow" alt="" aria-hidden="true" />
-      <img src="/doodles/contact-flower-purple.svg" class="blog-footer__flower blog-footer__flower--purple" alt="" aria-hidden="true" />
       <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
       <p class="blog-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
@@ -177,6 +180,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     align-items: flex-start;
     gap: 20px;
     flex-wrap: wrap;
+    position: relative;
   }
 
   .blog__heading {
@@ -188,11 +192,16 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     margin: 0;
     letter-spacing: -0.06em;
     line-height: 0.95;
+    position: relative;
+    z-index: 1;
   }
 
   .blog__pill-wrap {
+    position: absolute;
+    right: 0;
+    top: -38px;
     transform: rotate(6deg);
-    margin-top: 8px;
+    z-index: 0;
   }
 
   .blog__pill {
@@ -213,7 +222,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     font-size: 1.1rem;
     color: var(--color-brand-900);
     margin: 0;
-    line-height: 1.5;
+    line-height: 16px;
     max-width: 660px;
   }
 
@@ -241,6 +250,13 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
   .blog__cat-btn--active {
     background-color: var(--color-brand-400);
     color: var(--color-brand-50);
+  }
+
+  .blog__subtitle-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-black);
+    margin: -10px 0;
   }
 
   .blog__divider {
@@ -286,7 +302,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     font-size: 1.375rem;
     color: var(--color-brand-900);
     text-decoration: none;
-    padding: 14px 0;
+    padding: 8px 0;
     display: block;
     line-height: 1.4;
     transition: color 0.15s ease;
@@ -342,6 +358,11 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     color: var(--color-brand-900);
     margin: 0;
     line-height: 1.4;
+  }
+
+  /* Inline mail CTA (mobile only) — hidden on desktop */
+  .blog__mail-cta--inline {
+    display: none;
   }
 
   /* CSS mail envelope */
@@ -423,6 +444,10 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     z-index: 1;
   }
 
+  .blog-footer > .btn-primary {
+    margin-top: -4px;
+  }
+
   .blog-footer__heading {
     font-family: var(--font-display);
     font-weight: 500;
@@ -483,8 +508,22 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     .blog__photo-col {
       order: 2;
       display: flex;
-      justify-content: center;
-      padding-top: 0;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding-top: 16px;
+      padding-left: 16px;
+      gap: 16px;
+    }
+
+    /* Show inline mail CTA on mobile, hide the one in bottom strip */
+    .blog__mail-cta--inline {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .blog__bottom-strip .blog__mail-cta:not(.blog__mail-cta--inline) {
+      display: none;
     }
 
     .blog__frame-outer {
@@ -501,24 +540,33 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 
     .blog__bottom-left {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
-      gap: 12px;
+      justify-content: space-between;
       width: 100%;
     }
 
     .blog__confused-text {
       order: 1;
+      margin-top: 20px;
     }
 
     .blog__btn-center {
       order: 2;
       width: auto;
-      justify-content: flex-start;
+      justify-content: flex-end;
+      position: relative;
+      margin-top: 40px;
     }
 
     .blog__arrow-icon {
-      display: none;
+      display: block;
+      position: absolute;
+      left: -86px;
+      top: 50%;
+      translate: 0 -50%;
+      transform: rotate(70deg);
+      opacity: 0.7;
     }
 
     .blog__mail-cta {
