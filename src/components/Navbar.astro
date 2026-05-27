@@ -220,7 +220,13 @@ const currentPath = Astro.url.pathname;
   @media (max-width: 768px) {
     .navbar {
       padding: 0 20px;
+      height: 56px;
       grid-template-columns: 1fr auto;
+      background: rgba(247, 240, 224, 0.97);
+    }
+
+    .navbar__logo {
+      font-size: 1.5rem;
     }
 
     /* Hide desktop nav (center column collapses) */
