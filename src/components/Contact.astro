@@ -72,12 +72,10 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
 <div class="contact__pattern-strip">
   <span class="contact__strip-copy">© 2026 Tanaya Narendra. All rights reserved.</span>
   <span class="contact__strip-credit">Designed &amp; Developed by <a href="https://mail.google.com/mail/?view=cm&to=sanvikhandelwal2005@gmail.com" target="_blank" rel="noopener" class="contact__strip-link">ReWired Labs</a></span>
-  <span></span>
 </div>
 
 <style>
   .contact__pattern-strip {
-    height: 48px;
     background-color: var(--color-brand-100);
     background-image:
       linear-gradient(rgba(110, 57, 151, 0.08) 1px, transparent 1px),
@@ -87,7 +85,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     align-items: center;
     justify-content: space-between;
     padding: 0 60px;
-    position: relative;
+    min-height: 48px;
   }
 
   .contact__strip-copy {
@@ -104,9 +102,6 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     font-weight: 400;
     color: var(--color-brand-900);
     opacity: 0.9;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .contact__strip-link {
@@ -117,6 +112,16 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
 
   .contact__strip-link:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .contact__pattern-strip {
+      flex-direction: column-reverse;
+      align-items: center;
+      text-align: center;
+      padding: 16px 20px;
+      gap: 8px;
+    }
   }
 
   .contact {
@@ -348,15 +353,17 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
 
   /* MOBILE */
   @media (max-width: 768px) {
-    /* Switch from grid to flex column so height distributes correctly */
     .contact {
       display: flex;
       flex-direction: column;
-      overflow: visible;
+      height: 100svh;
+      padding-top: 56px;
+      overflow: hidden;
     }
 
+    /* Photo fully visible below navbar */
     .contact__photo-col {
-      height: clamp(200px, 32vh, 260px);
+      height: 30svh;
       flex-shrink: 0;
     }
 
@@ -364,20 +371,20 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       min-height: auto;
     }
 
-    /* Content fills all space below the photo */
+    /* Content fills remaining space */
     .contact__content {
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      padding: clamp(24px, 5.5vw, 40px) 24px 8px;
+      padding: 16px 20px 8px;
     }
 
-    /* Text column stacks naturally — no flex: 1 so height = content */
     .contact__text {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 12px;
+      gap: 10px;
     }
 
     .contact__heading-wrap {
@@ -387,13 +394,13 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     .contact__heading {
       margin-top: 0;
       text-align: center;
-      font-size: clamp(2rem, 9.5vw, 3.2rem);
+      font-size: clamp(1.75rem, 8vw, 2.5rem);
       line-height: 0.9;
     }
 
     .contact__subheading {
-      font-size: clamp(1.05rem, 3.8vw, 1.35rem);
-      margin-bottom: 16px;
+      font-size: 0.9375rem;
+      margin-bottom: 0;
       line-height: 1.25;
       text-wrap: balance;
     }
@@ -401,7 +408,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     .contact__ctas {
       justify-content: center;
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     .contact__ctas :global(a) {
@@ -412,18 +419,18 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     .contact__samosa {
       align-self: stretch;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 0;
     }
 
     .contact__samosa-text {
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-size: 1.1rem;
       line-height: 1.1;
     }
 
     .contact__samosa-img {
-      width: clamp(96px, 26vw, 130px);
-      height: clamp(96px, 26vw, 130px);
+      width: clamp(80px, 22vw, 108px);
+      height: clamp(80px, 22vw, 108px);
     }
 
     .contact__arrow {
@@ -446,8 +453,8 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     }
 
     .contact__footer {
-      margin-top: 20px;
-      padding-top: 12px;
+      margin-top: 8px;
+      padding-top: 8px;
     }
 
     .contact__socials {
@@ -459,7 +466,38 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     .contact__email {
       text-align: center;
       line-height: 1.35;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+    }
+  }
+
+  /* Small phones (iPhone SE etc.) */
+  @media (max-width: 768px) and (max-height: 700px) {
+    .contact__photo-col {
+      height: 26svh;
+    }
+
+    .contact__content {
+      padding: 10px 20px 8px;
+    }
+
+    .contact__text {
+      gap: 8px;
+    }
+
+    .contact__heading {
+      font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .contact__subheading {
+      font-size: 0.875rem;
+    }
+
+    .contact__samosa {
+      display: none;
+    }
+
+    .contact__footer {
+      margin-top: 4px;
     }
   }
 </style>
