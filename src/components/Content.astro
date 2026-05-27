@@ -8,10 +8,11 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
 <section class="content" id="content">
 
+
   <!-- Mobile-only: heading at top -->
   <div class="content__mobile-header">
-    <p class="content__mobile-sub content__mobile-sub--hinglish">Building an audience across platforms. Shayad meri wajah se aapko apne phone ki volume kam karni padi ho, YOU SHOULD NOT!</p>
-    <p class="content__mobile-sub content__mobile-sub--english">Building an audience across platforms. Possibly responsible for making you turn your volume down, YOU SHOULD NOT!</p>
+    <p class="content__mobile-sub content__mobile-sub--hinglish">Mujhe dekhte hi phone ki volume kam karna band karo!</p>
+    <p class="content__mobile-sub content__mobile-sub--english">Stop lowering your volume when you see me!</p>
     <h2 class="content__mobile-heading">How you will find me while scrolling on your phone</h2>
   </div>
 
@@ -810,11 +811,9 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
       transform: scaleX(-1);
     }
 
-    /* Phones: fills remaining space, phone scales to fit */
+    /* Phones: always clips phone at bottom like desktop */
     .content__phones {
-      flex: 1;
-      min-height: 0;
-      height: auto;
+      height: min(calc(100svh - 260px), 440px);
       overflow: hidden;
       padding: 8px 20px 0;
       justify-content: center;
