@@ -56,18 +56,26 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
           <p class="content__bio">Made for sharing 100% Science with 0% Sharam.</p>
 
-          <div class="content__stats">
-            <div class="content__stat">
+          <div class="content__stats content__stats--ig">
+            <!-- Stat 1: heart reveals 1.9M followers -->
+            <div class="content__stat content__stat--reveal">
               <b class="content__stat-num">1.9 M</b>
               <span class="content__stat-label">followers</span>
+              <span class="content__stat-heart" aria-hidden="true">
+                <img src="/doodles/fursat-bullets.svg" width="44" height="44" alt="" />
+              </span>
             </div>
-            <div class="content__stat">
-              <b class="content__stat-num">1.9 M</b>
-              <span class="content__stat-label">followers</span>
+            <!-- Stat 2: heart reveals 992 posts -->
+            <div class="content__stat content__stat--reveal">
+              <b class="content__stat-num">992</b>
+              <span class="content__stat-label">posts</span>
+              <span class="content__stat-heart" aria-hidden="true">
+                <img src="/doodles/fursat-bullets.svg" width="44" height="44" alt="" />
+              </span>
             </div>
-            <div class="content__stat">
-              <b class="content__stat-num">1.9 M</b>
-              <span class="content__stat-label">followers</span>
+            <!-- Stat 3: click to reveal card -->
+            <div class="content__stat content__stat--ctr">
+              <span class="content__stat-ctr-label">Click to reveal</span>
             </div>
           </div>
 
@@ -94,23 +102,26 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
         <div class="content__island"></div>
         <div class="content__screen content__screen--podcast">
 
-          <div class="content__podcast-header">
-            <div class="content__podcast-art">
-              <Image src={podcastPhoto} alt="The Dr. Cuterus Podcast" class="content__podcast-art-img" width={72} height={72} />
-            </div>
-            <div class="content__podcast-info">
-              <b class="content__podcast-title">The Dr. Cuterus<br/>Podcast</b>
-              <span class="content__podcast-artist">Dr. Tanaya Narendra</span>
-            </div>
+          <!-- Large album art -->
+          <div class="content__pod-art">
+            <Image src={podcastPhoto} alt="The Dr. Cuterus Podcast" class="content__pod-art-img" width={220} height={220} />
           </div>
 
-          <div class="content__episodes">
-            <a class="content__ep-row" href="https://open.spotify.com/episode/6ban0UjZqxmk8Klp4DWMfm?si=90f19016f6774fa4" target="_blank" rel="noopener">The one where Cuterus got interviewed!</a>
-            <a class="content__ep-row" href="https://open.spotify.com/episode/6noxsifWOTzW172FibdnbI?si=738d6190414d434e" target="_blank" rel="noopener">Painful Sex: What you need to know</a>
-            <a class="content__ep-row" href="https://open.spotify.com/episode/3T8kz33x7AvpdC3U3MPX8x?si=472a11bc09824049" target="_blank" rel="noopener">HPV — all you need to know!</a>
+          <!-- Title + artist -->
+          <p class="content__pod-title">The Dr. Cuterus Podcast</p>
+          <p class="content__pod-artist">Dr. Tanaya Narendra</p>
+
+          <!-- Listen Now + rating -->
+          <div class="content__pod-actions">
+            <a href="https://open.spotify.com/show/6e1Hu3JzBxBqyXfMpXVRoS" target="_blank" rel="noopener" class="content__pod-listen">Listen Now</a>
+            <span class="content__pod-rating">Ratings: 4.8</span>
           </div>
 
-          <a href="https://open.spotify.com/show/6e1Hu3JzBxBqyXfMpXVRoS" target="_blank" rel="noopener" class="content__cta content__cta--white">Listen Now</a>
+          <!-- Availability footer bar -->
+          <div class="content__pod-footer">
+            <p class="content__pod-avail">Available on Spotify<br/>and Apple Podcasts</p>
+            <a href="https://open.spotify.com/show/6e1Hu3JzBxBqyXfMpXVRoS" target="_blank" rel="noopener" class="content__pod-trailer">Watch Trailer</a>
+          </div>
 
         </div>
         <div class="content__home-bar content__home-bar--light"></div>
@@ -140,18 +151,26 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
           <p class="content__bio">Made for sharing 100% Science with 0% Sharam.</p>
 
-          <div class="content__stats">
-            <div class="content__stat">
-              <b class="content__stat-num">1.9 M</b>
-              <span class="content__stat-label">followers</span>
+          <div class="content__stats content__stats--yt">
+            <!-- Stat 1: postcard reveals 1.9M subscribers -->
+            <div class="content__stat content__stat--postcard">
+              <div class="content__postcard">
+                <b class="content__stat-num">1.9 M</b>
+                <span class="content__stat-label">subscribers</span>
+              </div>
+              <img src="/doodles/ask your query no hover.svg" class="content__postcard-env" width="52" height="52" alt="" />
             </div>
-            <div class="content__stat">
-              <b class="content__stat-num">1.9 M</b>
-              <span class="content__stat-label">followers</span>
+            <!-- Stat 2: postcard reveals video count -->
+            <div class="content__stat content__stat--postcard">
+              <div class="content__postcard">
+                <b class="content__stat-num">200+</b>
+                <span class="content__stat-label">videos</span>
+              </div>
+              <img src="/doodles/ask your query no hover.svg" class="content__postcard-env" width="52" height="52" alt="" />
             </div>
-            <div class="content__stat">
-              <b class="content__stat-num">1.9 M</b>
-              <span class="content__stat-label">followers</span>
+            <!-- Stat 3: click to reveal card -->
+            <div class="content__stat content__stat--ctr">
+              <span class="content__stat-ctr-label">Click to reveal</span>
             </div>
           </div>
 
@@ -191,6 +210,9 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     padding-top: 80px;
     overflow: hidden;
     height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   /* ── PHONES ROW ── */
@@ -301,18 +323,130 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
   }
 
   .content__screen--ig {
-    background: #d4b8ef;
+    background: var(--color-brand-400);
+    color: #fefefe;
+  }
+
+  /* Remove stat dividers on Instagram / YouTube screens */
+  .content__screen--ig .content__stats,
+  .content__screen--yt .content__stats {
+    border-top: none;
+    border-bottom: none;
+  }
+
+  /* Tighter vertical padding for YouTube stats so thumbnails fit */
+  .content__screen--yt .content__stats {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  /* ── POSTCARD REVEAL (YouTube stats) ── */
+  .content__stat--postcard {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .content__postcard {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    background: #ffe07f;
     color: #1c1417;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: transform 1.2s ease-out, opacity 0.8s ease;
+  }
+
+  .content__postcard-env {
+    position: relative;
+    z-index: 1;
+    width: 52px;
+    height: auto;
+    display: block;
+    transform: rotate(-6deg);
+  }
+
+  .content__stat--postcard.revealed .content__postcard {
+    transform: translateX(-50%) translateY(calc(-100% - 6px));
+    opacity: 1;
+  }
+
+  /* Heart reveal */
+  .content__stat--reveal {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .content__stat-heart {
+    position: absolute;
+    inset: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .content__stat-heart img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .content__stat--reveal.revealed .content__stat-heart {
+    opacity: 0;
+    transform: scale(1.6) rotate(20deg);
+    pointer-events: none;
+  }
+
+  /* Click to reveal card (stat 3) */
+  .content__stat--ctr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content__stat-ctr-label {
+    background: var(--color-yellow-400, #ffe07f);
+    color: #1c1417;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    padding: 4px 8px;
+    line-height: 1.3;
+    text-align: center;
   }
 
   .content__screen--podcast {
     background: #1e0f34;
     color: #fefefe;
+    padding-left: 14px;
+    padding-right: 14px;
+    gap: 8px;
+  }
+
+  .content__screen--podcast .content__pod-art {
+    width: 75%;
+    align-self: center;
   }
 
   .content__screen--yt {
     background: var(--color-beige-500);
     color: #1c1417;
+    gap: 6px;
   }
 
   /* ── HOME BAR ── */
@@ -384,7 +518,7 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
   .content__bio {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     line-height: 1.4;
     color: inherit;
     margin: 0;
@@ -467,83 +601,102 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     background: rgba(0, 0, 0, 0.22);
   }
 
-  /* ── PODCAST HEADER ── */
-  .content__podcast-header {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .content__podcast-art {
-    width: 72px;
-    height: 72px;
-    border-radius: 8px;
-    flex-shrink: 0;
+  /* ── PODCAST SCREEN (new layout) ── */
+  .content__pod-art {
+    width: 100%;
+    aspect-ratio: 1;
+    background: white;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
-  .content__podcast-art-img {
+  .content__pod-art-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .content__podcast-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .content__podcast-title {
+  .content__pod-title {
     font-family: var(--font-sans);
     font-weight: 700;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: white;
-    line-height: 1.25;
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
   }
 
-  .content__podcast-artist {
+  .content__pod-artist {
     font-family: var(--font-sans);
     font-weight: 400;
     font-size: 0.8125rem;
     color: rgba(255, 255, 255, 0.8);
-  }
-
-  .content__podcast-stats {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
     margin: 0;
   }
 
-  /* ── PODCAST EPISODE ROWS ── */
-  .content__episodes {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-  }
-
-  .content__ep-row {
-    background: white;
-    border-radius: 6px;
-    height: 56px;
+  .content__pod-actions {
     display: flex;
     align-items: center;
-    padding: 0 12px;
-    font-family: var(--font-display);
-    font-size: 0.72rem;
+    justify-content: space-between;
+  }
+
+  .content__pod-listen {
+    background: var(--color-brand-400);
+    color: white;
+    font-family: var(--font-sans);
     font-weight: 500;
-    color: var(--color-brand-500);
+    font-size: 0.9375rem;
+    padding: 4px 16px;
+    border-radius: 8px;
     text-decoration: none;
-    line-height: 1.3;
+    display: inline-block;
     transition: background 0.15s ease;
   }
 
-  .content__ep-row:hover {
+  .content__pod-listen:hover {
+    background: var(--color-brand-500);
+  }
+
+  .content__pod-rating {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: white;
+  }
+
+  .content__pod-footer {
+    margin-top: 8px;
+    margin-bottom: -16px;
+    background: #adadad;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .content__pod-avail {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #0b0809;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .content__pod-trailer {
     background: var(--color-yellow-500);
+    color: #0b0809;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 0.7rem;
+    padding: 2px 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
   }
 
   /* ── YOUTUBE: hide bio to make room for thumbnails + button ── */
@@ -556,7 +709,7 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     display: flex;
     flex-direction: column;
     gap: 8px;
-    flex: 1;
+    flex: none;
   }
 
   .content__vid-thumb {
@@ -564,7 +717,8 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     position: relative;
     border-radius: 6px;
     overflow: hidden;
-    flex: 1;
+    flex: none;
+    aspect-ratio: 16 / 9;
     text-decoration: none;
   }
 
@@ -896,4 +1050,36 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
   document.getElementById('content-prev')?.addEventListener('click', () => showSlide(current - 1));
   document.getElementById('content-next')?.addEventListener('click', () => showSlide(current + 1));
+
+  // ── Instagram heart reveals: one-way click, auto-close after 5s ──
+  document.querySelectorAll<HTMLElement>('.content__stat--reveal').forEach(el => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    el.addEventListener('click', () => {
+      if (el.classList.contains('revealed')) return;
+      el.classList.add('revealed');
+      timer = setTimeout(() => {
+        el.classList.remove('revealed');
+        timer = null;
+      }, 5000);
+    });
+  });
+
+  // ── YouTube postcard reveals: toggle click, auto-close after 5s ──
+  document.querySelectorAll<HTMLElement>('.content__stat--postcard').forEach(el => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    function close() {
+      el.classList.remove('revealed');
+      if (timer) { clearTimeout(timer); timer = null; }
+    }
+
+    el.addEventListener('click', () => {
+      if (el.classList.contains('revealed')) {
+        close();
+      } else {
+        el.classList.add('revealed');
+        timer = setTimeout(close, 5000);
+      }
+    });
+  });
 </script>
