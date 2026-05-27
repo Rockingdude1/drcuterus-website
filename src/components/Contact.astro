@@ -64,13 +64,16 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
           <a href="#" class="contact__social-link">Youtube</a>
           <a href="#" class="contact__social-link">Spotify</a>
         </p>
-        <p class="contact__copyright">© 2026 Tanaya Narendra. All rights reserved.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="contact__pattern-strip"></div>
+<div class="contact__pattern-strip">
+  <span class="contact__strip-copy">© 2026 Tanaya Narendra. All rights reserved.</span>
+  <span class="contact__strip-credit">Designed &amp; Developed by <a href="https://mail.google.com/mail/?view=cm&to=sanvikhandelwal2005@gmail.com" target="_blank" rel="noopener" class="contact__strip-link">ReWired Labs</a></span>
+  <span></span>
+</div>
 
 <style>
   .contact__pattern-strip {
@@ -80,6 +83,40 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       linear-gradient(rgba(110, 57, 151, 0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(110, 57, 151, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    position: relative;
+  }
+
+  .contact__strip-copy {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-brand-900);
+    opacity: 0.85;
+  }
+
+  .contact__strip-credit {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-brand-900);
+    opacity: 0.9;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contact__strip-link {
+    color: var(--color-brand-400);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .contact__strip-link:hover {
+    text-decoration: underline;
   }
 
   .contact {

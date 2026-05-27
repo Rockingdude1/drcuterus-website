@@ -1,11 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import bookCoverEn from '../assets/images/book-cover-en.jpg';
+import bookCoverHindi from '../assets/images/book-cover-hindi.jpeg';
+import bookCoverPunjabi from '../assets/images/book-cover-punjabi.jpeg';
 
 const languages = [
   { label: "English", href: "#", coverSrc: bookCoverEn.src },
-  { label: "Hindi", href: "#", coverSrc: "/images/book-cover-hindi-placeholder.svg" },
-  { label: "Punjabi", href: "#", coverSrc: "/images/book-cover-punjabi-placeholder.svg" },
+  { label: "Hindi", href: "#", coverSrc: bookCoverHindi.src },
+  { label: "Punjabi", href: "#", coverSrc: bookCoverPunjabi.src },
 ];
 ---
 
@@ -581,7 +583,10 @@ const languages = [
       const cover = el.dataset.cover || '';
 
       langCurrentText.textContent = label;
-      if (cover) bookCoverImg.src = cover;
+      if (cover) {
+        bookCoverImg.srcset = '';
+        bookCoverImg.src = cover;
+      }
       if (bookBuyBtn) bookBuyBtn.href = href;
 
       langDropdown.classList.remove('is-open');
