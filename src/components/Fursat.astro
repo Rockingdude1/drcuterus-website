@@ -233,12 +233,16 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     .fursat {
       display: flex;
       flex-direction: column;
+      height: 100svh;
+      padding-top: 56px;
+      overflow: hidden;
     }
 
-    /* Photo moves to top */
+    /* Photo moves to top, fully visible below navbar */
     .fursat__right {
       order: 1;
-      height: 55svh;
+      flex-shrink: 0;
+      height: 43svh;
       padding: 0;
       min-height: unset;
     }
@@ -248,17 +252,28 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     }
 
     .fursat__photo {
+      width: 100%;
+      height: 100%;
+      max-height: unset;
       object-fit: cover;
       object-position: center top;
     }
 
+    /* Left fills remaining space, content centered */
     .fursat__left {
       order: 2;
-      padding: 24px 20px 40px;
-      gap: 16px;
+      flex: 1;
+      padding: 12px 20px 16px;
+      gap: 8px;
     }
 
-    /* Reorder left children: logo → desc → features → heading → cta */
+    /* Space above desc-wrap for the absolutely-positioned logo to peek out */
+    .fursat__desc-wrap {
+      margin-top: 24px;
+      width: 100%;
+      max-width: 100%;
+    }
+
     .fursat__logo-row {
       order: 1;
       margin-bottom: 0;
@@ -267,17 +282,36 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     .fursat__desc-box {
       order: 2;
       max-width: 100%;
+      padding: 8px 14px;
+    }
+
+    .fursat__desc {
+      font-size: 0.875rem;
+      line-height: 1.4;
     }
 
     .fursat__features {
       order: 3;
+      gap: 4px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .fursat__feature {
+      font-size: 0.875rem;
+      gap: 8px;
+    }
+
+    .fursat__bullet {
+      width: 18px;
+      height: 18px;
     }
 
     .fursat__heading {
       order: 4;
       color: var(--color-brand-900);
-      font-size: clamp(2.5rem, 10vw, 3rem);
-      text-align: left;
+      font-size: clamp(1.5rem, 7vw, 2rem);
+      text-align: center;
       max-width: 100%;
     }
 
@@ -285,11 +319,49 @@ import fursatLogo from '../assets/images/fursat-logo.png';
       order: 5;
       align-items: center;
       max-width: 100%;
+      gap: 4px;
+    }
+
+    .fursat__cta {
+      font-size: 0.9375rem;
+      padding: 8px 16px;
+    }
+
+    .fursat__cta-sub {
+      font-size: 0.75rem;
     }
 
     /* Hide quote box on mobile — not in Figma design */
     .fursat__quote-box {
       display: none;
+    }
+  }
+
+  /* Small phones (iPhone SE, etc.) */
+  @media (max-width: 768px) and (max-height: 700px) {
+    .fursat__right {
+      height: 38svh;
+    }
+
+    .fursat__left {
+      padding: 8px 20px 12px;
+      gap: 6px;
+    }
+
+    .fursat__desc-wrap {
+      margin-top: 16px;
+    }
+
+    .fursat__heading {
+      font-size: clamp(1.25rem, 6vw, 1.5rem);
+    }
+
+    .fursat__desc {
+      font-size: 0.8rem;
+    }
+
+    .fursat__feature {
+      font-size: 0.8rem;
     }
   }
 </style>
