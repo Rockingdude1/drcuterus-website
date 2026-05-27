@@ -44,10 +44,11 @@ const pills = [
         </strong>
       </p>
     </div>
-    <p class="about__bio">Bodies are fascinating. And talking about them? Completely normal. That's exactly what I'm here for. To lead with 100% science and 0% hesitation, and of course, fun!</p>
+    <p class="about__bio about__bio--hinglish">Bodies fascinatinghoti hai. Aur unke baare mein baat karna? Bilkul normal hai. Aur mai exactly yahi karti hu. To lead with 100% science and 0% sharam, and of course, thodi si bakchodi!</p>
+    <p class="about__bio about__bio--english">Bodies are fascinating. And talking about them? Completely normal. That's exactly what I'm here for. To lead with 100% science and 0% hesitation, and of course, fun!</p>
     <div class="about__ctas">
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary about__btn">Work With Me</a>
-      <a href="#" class="btn-outline about__btn">Book appointment</a>
+      <a href="#" class="btn-outline about__btn">Book an appointment</a>
     </div>
   </div>
 
@@ -219,6 +220,18 @@ const pills = [
     line-height: 1.5;
     margin: 0 0 32px 0;
     max-width: clamp(260px, 28vw, 420px);
+  }
+
+  .about__bio--english {
+    display: none;
+  }
+
+  :global([data-lang="english"]) .about__bio--english {
+    display: block;
+  }
+
+  :global([data-lang="english"]) .about__bio--hinglish {
+    display: none;
   }
 
   .about__ctas {
