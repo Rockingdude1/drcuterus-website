@@ -1,0 +1,649 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import { Image } from 'astro:assets';
+import billgatesImg from '../assets/images/billgates.png';
+import ndtvImg from '../assets/images/ndtv.png';
+import rajshaminiImg from '../assets/images/rajshamini.png';
+import introStoryImg from '../assets/images/intro story.png';
+import cosmoindiaImg from '../assets/images/cosmoindia.png';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Partnerships — Dr. Cuterus</title>
+    <meta name="description" content="Dr. Tanaya Narendra in the news, on stage, award winner, and media appearances." />
+  </head>
+  <body>
+    <Navbar />
+
+    <div class="gazette">
+
+      <!-- ── MASTHEAD ── -->
+      <div class="gazette__masthead">
+        <h1 class="gazette__title">THE DR. CUTERUS GAZETTE</h1>
+        <div class="gazette__rule"></div>
+        <div class="gazette__subheader">
+          <span class="gazette__sub-item">IN THE NEWS</span>
+          <span class="gazette__star">★</span>
+          <span class="gazette__sub-item">ON STAGE</span>
+          <span class="gazette__star">★</span>
+          <span class="gazette__sub-item">AWARDS</span>
+          <span class="gazette__star">★</span>
+          <span class="gazette__sub-item">ON THE RECORD</span>
+        </div>
+        <div class="gazette__rule"></div>
+      </div>
+
+      <!--
+        ── MAIN CONTENT GRID ──
+        Persistent 2-column layout mirroring the Figma reference:
+          LEFT  (387px): Intro story → divider → NDTV (full content)
+          RIGHT (rest):  Gates box  → divider → Forbes|Cosmo → Raj Shamani box
+        Raj Shamani lives only in the right column, NOT full-width.
+      -->
+      <div class="gazette__main-grid">
+
+        <!-- ════════ LEFT COLUMN ════════ -->
+        <div class="gazette__left-col">
+
+          <!-- Intro story -->
+          <div class="gazette__intro">
+            <h2 class="gazette__article-title">The doctor who turned the internet into a classroom</h2>
+            <div class="gazette__intro-photo-wrap">
+              <Image
+                src={introStoryImg}
+                alt="Dr. Tanaya Narendra"
+                class="gazette__intro-photo"
+                widths={[400, 600]}
+                sizes="387px"
+              />
+            </div>
+            <p class="gazette__caption">Dr. Tanaya Narendra · @dr_cuterus</p>
+            <p class="gazette__body-text">Okay, yes, I've been in a few places. Here's where you can find me; other than your Instagram feed at 2am.</p>
+          </div>
+
+          <!-- Column divider between intro and NDTV -->
+          <div class="gazette__col-rule"></div>
+
+          <!-- NDTV — full content, full image -->
+          <div class="gazette__ndtv">
+            <h2 class="gazette__article-title">At NDTV Banega Swastha India</h2>
+            <div class="gazette__ndtv-image-wrap">
+              <Image
+                src={ndtvImg}
+                alt="Dr. Tanaya at NDTV Banega Swastha India"
+                class="gazette__ndtv-image"
+                widths={[400, 600]}
+                sizes="370px"
+              />
+            </div>
+            <p class="gazette__body-text">A special Menstrual Hygiene Day episode was held featuring campaign ambassador Ayushmann Khurrana. The discussion focused on breaking long-standing taboos around menstruation and encouraging women to adopt science-backed and practical hygiene solutions in their everyday lives. It highlighted the importance of sustainable and reusable menstrual products, while also drawing attention to the connection between menstrual hygiene and uterine health. Experts and speakers discussed common issues such as UTIs and explained how poor menstrual and intimate hygiene practices can increase health risks. The conversation also addressed several mistakes and misconceptions that many women continue to overlook.</p>
+          </div>
+
+        </div><!-- end .gazette__left-col -->
+
+        <!-- ════════ RIGHT COLUMN ════════ -->
+        <div class="gazette__right-col">
+
+          <!-- Gates bordered article -->
+          <article class="gazette__gates">
+            <div class="gazette__gates-text">
+              <p class="gazette__body-text">Dr. Tanaya was invited by the Bill &amp; Melinda Gates Foundation to be a Global Goals Goalkeeper — a prestigious global initiative tied to the United Nations' goals for a healthier, more equal world. As part of this, she sat down with Bill Gates himself for a direct conversation on maternal health, child mortality, and the future of public health education. It's a rare honour that puts her in the company of world leaders, scientists, and changemakers.</p>
+              <h3 class="gazette__article-title gazette__article-title--gates">At the Bill &amp; Melinda Gates Foundation, Global Goals Goalkeeper</h3>
+            </div>
+            <div class="gazette__gates-image-wrap">
+              <Image
+                src={billgatesImg}
+                alt="Dr. Tanaya Narendra with Bill Gates"
+                class="gazette__gates-image"
+                widths={[400, 700]}
+                sizes="364px"
+              />
+            </div>
+          </article>
+
+          <!-- Column divider between Gates and Forbes/Cosmo -->
+          <div class="gazette__col-rule"></div>
+
+          <!-- Forbes + Cosmo side by side -->
+          <div class="gazette__forbes-cosmo">
+
+            <div class="gazette__forbes">
+              <h2 class="gazette__article-title">Among Forbes India Top 100 Digital Stars for Two Consecutive Years</h2>
+              <p class="gazette__body-text">Forbes India featured Dr Tanaya Narendra in its prestigious Top 100 Digital Stars list for both 2023 and 2024, recognising her as one of the few healthcare professionals to receive this honour consistently. This list celebrates the most influential and impactful voices on the internet in India. Known widely online as "Dr. Cuterus," she has built a large audience by simplifying conversations around women's health, sexual wellness, anatomy, and medical myths in an accessible and stigma-free way.</p>
+            </div>
+
+            <div class="gazette__vdivider" aria-hidden="true"></div>
+
+            <div class="gazette__cosmo">
+              <div class="gazette__cosmo-image-wrap">
+                <Image
+                  src={cosmoindiaImg}
+                  alt="Dr. Tanaya Narendra in Cosmopolitan India"
+                  class="gazette__cosmo-image"
+                  widths={[300, 500]}
+                  sizes="221px"
+                />
+              </div>
+              <div class="gazette__cosmo-text">
+                <h3 class="gazette__article-title gazette__article-title--cosmo">Cosmopolitan India Recognises Dr. Tanaya Narendra as One of India's Top 25 Disruptors</h3>
+                <p class="gazette__body-text gazette__body-text--sm">Recognising voices that were challenging long-standing norms and changing conversations in the country.</p>
+              </div>
+            </div>
+
+          </div><!-- end .gazette__forbes-cosmo -->
+
+          <!-- Raj Shamani — only in right column -->
+          <article class="gazette__raj">
+            <div class="gazette__raj-text">
+              <h3 class="gazette__article-title gazette__article-title--raj">Dr. Tanaya Narendra Talks Sexual Health on Raj Shamani's Podcast</h3>
+              <p class="gazette__body-text">Dr Tanaya Narendra recently appeared on Episode 147 of Figuring Out with Raj Shamani, one of India's most popular podcasts. During the episode, Dr. Tanaya spoke openly about sexual health, contraception, body awareness, and the urgent need for better sex education in India. The discussion aimed to break common myths and encourage young audiences to approach these topics with more awareness and less shame.</p>
+            </div>
+            <div class="gazette__raj-image-wrap">
+              <Image
+                src={rajshaminiImg}
+                alt="Dr. Tanaya Narendra on Figuring Out with Raj Shamani"
+                class="gazette__raj-image"
+                widths={[400, 700]}
+                sizes="337px"
+              />
+            </div>
+          </article>
+
+        </div><!-- end .gazette__right-col -->
+
+      </div><!-- end .gazette__main-grid -->
+
+      <div class="gazette__rule gazette__rule--footer"></div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="partnerships-footer">
+      <img src="/doodles/contact-flower-yellow.svg" class="partnerships-footer__flower partnerships-footer__flower--yellow" alt="" aria-hidden="true" />
+      <img src="/doodles/contact-flower-purple.svg" class="partnerships-footer__flower partnerships-footer__flower--purple" alt="" aria-hidden="true" />
+      <p class="partnerships-footer__heading">Found something you liked? Let's talk.</p>
+      <p class="partnerships-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    background-color: var(--color-beige-500);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── WRAPPER ── */
+  .gazette {
+    padding-top: 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 48px;
+    box-sizing: border-box;
+  }
+
+  /* ── HORIZONTAL RULES ── */
+  .gazette__rule {
+    height: 1px;
+    background-color: rgba(28, 20, 23, 0.45);
+    margin: 0;
+  }
+
+  .gazette__rule--footer {
+    margin-top: 40px;
+  }
+
+  /* Rule inside a column (between articles) */
+  .gazette__col-rule {
+    height: 1px;
+    background-color: rgba(28, 20, 23, 0.45);
+    margin: 16px 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .gazette__masthead {
+    padding-top: 20px;
+  }
+
+  .gazette__title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-brand-900);
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    margin: 0 0 14px;
+    text-align: center;
+  }
+
+  .gazette__subheader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 14px 0;
+    flex-wrap: wrap;
+  }
+
+  .gazette__sub-item {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+    color: rgba(28, 20, 23, 0.69);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .gazette__star {
+    color: rgba(28, 20, 23, 0.69);
+    font-size: 1.25rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* ── SHARED TYPOGRAPHY ── */
+  .gazette__article-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.1rem, 1.6vw, 1.75rem);
+    color: var(--color-brand-400);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    margin: 0 0 12px;
+    text-align: justify;
+  }
+
+  .gazette__article-title--gates {
+    font-size: clamp(1.1rem, 1.6vw, 1.75rem);
+  }
+
+  .gazette__article-title--cosmo {
+    font-size: clamp(1rem, 1.3vw, 1.5rem);
+  }
+
+  .gazette__article-title--raj {
+    font-size: clamp(1.1rem, 1.6vw, 1.75rem);
+  }
+
+  .gazette__body-text {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(0.875rem, 1.05vw, 1.05rem);
+    color: var(--color-brand-900);
+    line-height: 1.45;
+    text-align: justify;
+    margin: 0 0 10px;
+  }
+
+  .gazette__body-text--sm {
+    font-size: 0.875rem;
+  }
+
+  .gazette__caption {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--color-brand-900);
+    margin: 6px 0 8px;
+  }
+
+  /* ── MAIN GRID: persistent 2-column ── */
+  .gazette__main-grid {
+    display: grid;
+    grid-template-columns: 387px 1fr;
+    align-items: start;
+    padding-top: 16px;
+  }
+
+  /* ── LEFT COLUMN ── */
+  .gazette__left-col {
+    padding-right: 20px;
+    border-right: 1px solid rgba(28, 20, 23, 0.45);
+  }
+
+  .gazette__intro-photo-wrap {
+    border: 2px solid var(--color-brand-900);
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+
+  .gazette__intro-photo {
+    width: 100%;
+    height: 172px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gazette__ndtv-image-wrap {
+    border: 1px solid var(--color-black);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .gazette__ndtv-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .gazette__right-col {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Gates bordered article */
+  .gazette__gates {
+    display: grid;
+    grid-template-columns: 1fr 364px;
+    border: 1px solid var(--color-brand-900);
+    overflow: hidden;
+  }
+
+  .gazette__gates-text {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .gazette__gates-image-wrap {
+    border-left: 1px solid var(--color-black);
+    overflow: hidden;
+  }
+
+  .gazette__gates-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    min-height: 320px;
+  }
+
+  /* Forbes + Cosmo side-by-side grid */
+  .gazette__forbes-cosmo {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    align-items: stretch;
+    margin-bottom: 16px;
+  }
+
+  .gazette__vdivider {
+    background: rgba(28, 20, 23, 0.45);
+    align-self: stretch;
+    width: 1px;
+  }
+
+  .gazette__forbes {
+    padding-right: 20px;
+  }
+
+  .gazette__cosmo {
+    display: grid;
+    grid-template-columns: 55% 1fr;
+    gap: 14px;
+    align-items: stretch;
+    padding-left: 20px;
+  }
+
+  .gazette__cosmo-image-wrap {
+    border: 1px solid var(--color-black);
+    overflow: hidden;
+  }
+
+  .gazette__cosmo-image {
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .gazette__cosmo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Raj Shamani — right column only */
+  .gazette__raj {
+    display: grid;
+    grid-template-columns: 1fr 337px;
+    border: 1px solid var(--color-brand-900);
+    overflow: hidden;
+  }
+
+  .gazette__raj-text {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .gazette__raj-image-wrap {
+    border-left: 1px solid var(--color-black);
+    overflow: hidden;
+  }
+
+  .gazette__raj-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 260px;
+  }
+
+  /* ── TABLET (769–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .gazette {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+
+    .gazette__main-grid {
+      grid-template-columns: 260px 1fr;
+    }
+
+    .gazette__gates {
+      grid-template-columns: 1fr 240px;
+    }
+
+    .gazette__gates-image {
+      min-height: 280px;
+    }
+
+    .gazette__raj {
+      grid-template-columns: 1fr 240px;
+    }
+
+    .gazette__raj-image {
+      min-height: 240px;
+    }
+  }
+
+  /* ── MOBILE (≤768px) ── */
+  @media (max-width: 768px) {
+    .gazette {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .gazette__subheader {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 0;
+      padding: 10px 12px;
+      margin-left: -20px;
+      margin-right: -20px;
+      overflow: hidden;
+    }
+
+    .gazette__sub-item {
+      font-size: 0.6rem;
+      white-space: nowrap;
+    }
+
+    .gazette__star {
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* Stack columns vertically on mobile */
+    .gazette__main-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gazette__left-col {
+      border-right: none;
+      padding-right: 0;
+      border-bottom: 1px solid rgba(28, 20, 23, 0.3);
+      padding-bottom: 20px;
+    }
+
+    .gazette__right-col {
+      padding-left: 0;
+      padding-top: 20px;
+    }
+
+    .gazette__intro-photo {
+      height: 200px;
+    }
+
+    .gazette__ndtv-image {
+      height: 200px;
+    }
+
+    .gazette__gates {
+      grid-template-columns: 1fr;
+    }
+
+    .gazette__gates-image-wrap {
+      border-left: none;
+      border-top: 1px solid var(--color-black);
+      height: 200px;
+    }
+
+    .gazette__gates-image {
+      min-height: 200px;
+    }
+
+    .gazette__forbes-cosmo {
+      grid-template-columns: 1fr;
+    }
+
+    .gazette__vdivider {
+      display: none;
+    }
+
+    .gazette__forbes {
+      padding-right: 0;
+      border-bottom: 1px solid rgba(28, 20, 23, 0.3);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .gazette__cosmo {
+      padding-left: 0;
+      grid-template-columns: 160px 1fr;
+    }
+
+    .gazette__cosmo-image {
+      height: 200px;
+    }
+
+    .gazette__raj {
+      grid-template-columns: 1fr;
+    }
+
+    .gazette__raj-image-wrap {
+      border-left: none;
+      border-top: 1px solid var(--color-black);
+      height: 220px;
+    }
+
+    .gazette__raj-image {
+      min-height: 220px;
+    }
+  }
+
+  /* ── FOOTER ── */
+  .partnerships-footer {
+    background-color: var(--color-brand-100);
+    background-image:
+      linear-gradient(rgba(110, 57, 151, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 57, 151, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    height: 266px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .partnerships-footer__flower {
+    position: absolute;
+    width: 48px;
+    height: 46px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .partnerships-footer__flower--yellow {
+    left: clamp(20px, 6vw, 80px);
+    top: clamp(30px, 4vh, 55px);
+  }
+
+  .partnerships-footer__flower--purple {
+    right: clamp(20px, 6vw, 80px);
+    top: clamp(60px, 8vh, 96px);
+  }
+
+  .partnerships-footer__heading,
+  .partnerships-footer__sub,
+  .partnerships-footer > .btn-primary {
+    position: relative;
+    z-index: 1;
+  }
+
+  .partnerships-footer__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-brand-900);
+    margin: 0;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    text-align: center;
+  }
+
+  .partnerships-footer__sub {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    text-align: center;
+  }
+</style>
