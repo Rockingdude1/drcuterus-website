@@ -108,7 +108,7 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     font-family: var(--font-display);
     font-weight: 500;
     font-style: italic;
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     color: var(--color-brand-900);
     letter-spacing: -0.06em;
     line-height: 0.95;
@@ -246,7 +246,7 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
 
   /* CTA Button — flows after desc-box */
   .columnist__cta {
-    font-size: 1.5rem;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
     padding: 12px 24px;
     z-index: 3;
   }
@@ -272,10 +272,6 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
 
     .columnist__badge {
       left: 32px;
-    }
-
-    .columnist__badge span {
-      font-size: 1.25rem;
     }
 
     /* Scale down the ± px offsets so content fits the narrower right column */
@@ -312,14 +308,28 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
-    .columnist {
+    /* Outer fills exactly one screen */
+    .columnist-outer {
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
-      min-height: unset;
+      overflow-x: hidden;
+      overflow-y: visible;
     }
 
+    /* Section stretches to fill outer, photo on top then content below */
+    .columnist {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      min-height: unset;
+      max-height: unset;
+    }
+
+    /* Photo fills ~62% of screen — yellow badge stays top-left */
     .columnist__photo-col {
-      height: 55svh;
+      height: 62svh;
       flex-shrink: 0;
       margin-left: 0;
     }
@@ -330,12 +340,14 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     }
 
     .columnist__badge {
-      top: 16px;
-      left: 16px;
+      top: 64px;
+      left: 12px;
+      padding: 5px 10px;
+      z-index: 3;
     }
 
     .columnist__badge span {
-      font-size: 1.25rem;
+      font-size: clamp(0.875rem, 4vw, 1.15rem);
     }
 
     .columnist__mirror-tag,
@@ -349,19 +361,22 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
       top: 0;
       left: 0;
       width: 100%;
-      height: 55svh;
+      height: 62svh;
       object-fit: fill;
       pointer-events: none;
       z-index: 2;
     }
 
+    /* Right col: flex:1 fills remaining space, balanced padding keeps it centered */
     .columnist__right {
+      flex: 1;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 24px 24px 48px;
-      gap: 16px;
+      justify-content: center;
+      padding: 20px 20px 28px;
+      gap: 12px;
       min-height: unset;
     }
 
@@ -369,43 +384,24 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
       display: none;
     }
 
-    .columnist__quote-open {
-      position: static;
-      transform: none;
-      align-self: flex-start;
-      margin-bottom: -28px;
-      margin-left: 8px;
-      font-size: 2rem;
-      z-index: 1;
-    }
-
     .columnist__quote-box {
       display: none;
     }
 
-    .columnist__quote-close {
-      position: static;
-      transform: rotate(180deg);
-      align-self: flex-end;
-      margin-top: -28px;
-      margin-right: 8px;
-      font-size: 2rem;
-      z-index: 1;
-    }
-
-    /* Override desktop absolute positioning so content flows after the photo */
+    /* Override desktop absolute positioning so content flows naturally */
     .columnist__content-group {
       position: static;
       transform: none;
       left: auto;
       top: auto;
       width: 100%;
+      gap: 12px;
     }
 
     .columnist__heading {
       position: static;
       transform: none;
-      font-size: clamp(2.25rem, 10vw, 2.75rem);
+      font-size: clamp(1.75rem, 8vw, 2.2rem);
       text-align: center;
       white-space: normal;
     }
@@ -414,18 +410,20 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
       position: static;
       transform: none;
       width: 100%;
-      max-width: 340px;
+      max-width: 100%;
+      padding: 8px 16px;
     }
 
     .columnist__desc-box p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       text-align: center;
     }
 
     .columnist__cta {
       position: static;
       transform: none;
-      font-size: 1.125rem;
+      font-size: 1rem;
+      padding: 10px 20px;
     }
   }
 </style>
