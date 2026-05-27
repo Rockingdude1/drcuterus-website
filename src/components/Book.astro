@@ -467,8 +467,10 @@ const languages = [
     .book {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       min-height: 100svh;
-      padding-top: 80px;
+      padding-top: 56px;
+      padding-bottom: 20px;
       overflow: visible;
     }
 
@@ -479,25 +481,25 @@ const languages = [
     }
 
     .book__tag {
-      font-size: 0.72rem;
-      padding: 4px 9px;
+      font-size: 0.68rem;
+      padding: 3px 8px;
     }
 
-    /* Title: scales for narrow viewport */
+    /* Title: tighter for mobile */
     .book__title {
-      font-size: clamp(1.65rem, 7.8vw, 2.4rem);
+      font-size: clamp(1.35rem, 6.5vw, 1.85rem);
     }
 
     /* Rating: stars + text side by side */
     .book__rating {
       flex-direction: row;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .book__star {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
     /* Underline SVG is absolutely positioned and breaks in mobile flow */
@@ -505,15 +507,18 @@ const languages = [
       display: none;
     }
 
-    /* 0 top padding so tags sit flush at the navbar bottom (section already offsets 80px) */
     .book__right {
-      padding: 0 20px 0;
-      gap: 8px;
+      padding: 0 16px 0;
+      gap: 6px;
     }
 
     .book__left {
-      padding: 4px 20px 0;
-      gap: 6px;
+      padding: 4px 16px 0;
+      gap: 4px;
+    }
+
+    .book__lang-label {
+      font-size: 0.875rem;
     }
 
     .book__quote-wrap {
@@ -525,32 +530,34 @@ const languages = [
     }
 
     .book__center {
-      padding: 8px 20px 0;
+      padding: 6px 16px 0;
       justify-content: center;
     }
 
     .book__cover {
-      width: min(200px, 54vw);
+      width: min(155px, 42vw);
       margin: 0 auto;
       display: block;
     }
 
     .book__buy-wrap {
-      padding: 8px 20px 0;
+      padding: 6px 16px 12px;
       justify-content: center;
     }
 
     .book__buy-btn {
-      font-size: 1.1rem;
-      padding: 12px 28px;
+      font-size: 1rem;
+      padding: 10px 24px;
     }
 
     .book__who {
-      padding: 12px 20px 16px;
+      padding: 8px 16px 12px;
     }
 
     .book__who-title {
       text-align: left;
+      font-size: 1rem;
+      margin-bottom: 6px;
     }
 
     .book__who-arrow {
@@ -559,6 +566,22 @@ const languages = [
 
     .book__who-answer {
       text-align: left;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Extra-compact for small phones (e.g. iPhone SE, ~667px tall) */
+  @media (max-width: 768px) and (max-height: 700px) {
+    .book__cover {
+      width: min(130px, 36vw);
+    }
+
+    .book__who {
+      padding: 4px 16px 8px;
+    }
+
+    .book__who-answer {
+      font-size: 0.75rem;
     }
   }
 </style>
