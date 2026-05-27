@@ -23,19 +23,21 @@ const languages = [
     <h2 class="book__title">
       Everything Nobody Tells You About Your Body
     </h2>
-    <p class="book__author">By Tanaya Narendra</p>
-    <div class="book__rating">
-      <div class="book__stars" aria-label="4.5 out of 5 stars">
-        <span class="book__star">★</span>
-        <span class="book__star">★</span>
-        <span class="book__star">★</span>
-        <span class="book__star">★</span>
-        <span class="book__star book__star--half">★</span>
+    <div class="book__author-rating">
+      <p class="book__author">By Tanaya Narendra</p>
+      <div class="book__rating">
+        <div class="book__stars" aria-label="4.5 out of 5 stars">
+          <span class="book__star">★</span>
+          <span class="book__star">★</span>
+          <span class="book__star">★</span>
+          <span class="book__star">★</span>
+          <span class="book__star book__star--half">★</span>
+        </div>
+        <p class="book__rating-text">
+          4.5 rating on <span class="book__goodreads">GoodReads</span>
+          <img src="/doodles/book-underline.svg" class="book__goodreads-underline" alt="" />
+        </p>
       </div>
-      <p class="book__rating-text">
-        4.5 rating on <span class="book__goodreads">GoodReads</span>
-        <img src="/doodles/book-underline.svg" class="book__goodreads-underline" alt="" />
-      </p>
     </div>
   </div>
 
@@ -48,7 +50,7 @@ const languages = [
     </div>
 
     <div class="book__lang-section">
-      <p class="book__lang-label">Select Language.</p>
+      <p class="book__lang-label">Select Language</p>
       <div class="book__lang-selector" id="lang-selector">
         <span class="book__lang-read">READ IN</span>
         <button class="book__lang-current" id="lang-btn" aria-haspopup="listbox" aria-expanded="false">
@@ -467,9 +469,9 @@ const languages = [
     .book {
       display: flex;
       flex-direction: column;
-      min-height: 100svh;
+      height: 100svh;
       padding-top: 80px;
-      overflow: visible;
+      overflow: hidden;
     }
 
     /* Both tags on one row — smaller pill to fit */
@@ -488,12 +490,18 @@ const languages = [
       font-size: clamp(1.65rem, 7.8vw, 2.4rem);
     }
 
-    /* Rating: stars + text side by side */
+    .book__author-rating {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* Rating stays column on mobile (stars top, text below) */
     .book__rating {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
     }
 
     .book__star {
@@ -514,6 +522,15 @@ const languages = [
     .book__left {
       padding: 4px 20px 0;
       gap: 6px;
+      align-items: center;
+    }
+
+    .book__lang-section {
+      align-items: center;
+    }
+
+    .book__lang-label {
+      text-align: center;
     }
 
     .book__quote-wrap {
@@ -527,12 +544,16 @@ const languages = [
     .book__center {
       padding: 8px 20px 0;
       justify-content: center;
+      flex: 1;
+      min-height: 0;
     }
 
     .book__cover {
-      width: min(210px, 56vw);
-      height: min(315px, 84vw);
-      object-fit: cover;
+      width: auto;
+      height: 100%;
+      max-width: 56vw;
+      max-height: min(315px, 84vw);
+      object-fit: contain;
       margin: 0 auto;
       display: block;
     }
