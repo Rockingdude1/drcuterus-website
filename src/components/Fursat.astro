@@ -192,6 +192,7 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 80px;
   }
 
   .fursat__photo-wrap {
@@ -206,9 +207,9 @@ import fursatLogo from '../assets/images/fursat-logo.png';
   .fursat__photo {
     width: 100%;
     height: 100%;
-    max-height: 100svh;
+    max-height: calc(100svh - 80px);
     object-fit: contain;
-    object-position: right bottom;
+    object-position: right center;
     display: block;
   }
 

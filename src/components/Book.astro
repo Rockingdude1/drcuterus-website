@@ -41,7 +41,7 @@ const languages = [
   <div class="book__left">
     <div class="book__quote-wrap">
       <blockquote class="book__quote">
-        <span class="book__quote-mark">“</span>   Even though everyone has a body, nobody wants to talk about it. Especially those 'private' bits.<span class="book__quote-mark book__quote-mark--close">”</span>
+        <span class="book__quote-mark">“</span>   Even though everyone has a body, nobody wants to talk about it. Especially those ‘private’ bits.<span class="book__quote-mark book__quote-mark--close">”</span>
       </blockquote>
     </div>
 
@@ -99,10 +99,6 @@ const languages = [
     </p>
   </div>
 
-  <!-- Reviews banner -->
-  <div class="book__reviews">
-    <p class="book__reviews-text">Reviews' coming soon — stay tuned!</p>
-  </div>
 </section>
 
 <style>
@@ -112,7 +108,7 @@ const languages = [
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 3fr auto auto 7fr;
     min-height: 100svh;
-    padding-top: 80px;
+    padding-top: 100px;
     position: relative;
     overflow: hidden;
   }
@@ -124,7 +120,6 @@ const languages = [
   .book__center  { grid-column: 2; grid-row: 2 / 4; }
   .book__buy-wrap{ grid-column: 3; grid-row: 3; }
   .book__who     { grid-column: 1; grid-row: 3; }
-  .book__reviews { grid-column: 1 / -1; grid-row: 4; }
 
   /* LEFT */
   .book__left {
@@ -137,7 +132,7 @@ const languages = [
 
   .book__quote-wrap {
     background-color: var(--color-yellow-500);
-    padding: 6px 10px;
+    padding: 6px 6px;
     border-radius: 4px;
     position: relative;
     color: var(--color-brand-900);
@@ -165,7 +160,7 @@ const languages = [
     font-size: 1.25rem;
     color: var(--color-brand-900);
     margin: 4px 0 0;
-    line-height: 1.5;
+    line-height: 1.2;
   }
 
   .book__lang-section {
@@ -317,7 +312,7 @@ const languages = [
     color: var(--color-brand-900);
     margin: 0;
     text-align: right;
-    line-height: 1.5;
+    line-height: 1.3;
   }
 
   /* CENTER */
@@ -329,7 +324,7 @@ const languages = [
   }
 
   .book__cover {
-    width: min(300px, 40vw);
+    width: min(360px, 40vw);
     height: auto;
     object-fit: cover;
     box-shadow: 0 2px 8px 4px rgba(61,31,92,0.2);
@@ -452,26 +447,6 @@ const languages = [
     padding: 14px 28px;
   }
 
-  /* REVIEWS BANNER */
-  .book__reviews {
-    background-color: var(--color-beige-500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    border-top: 1px solid rgba(61,31,92,0.1);
-  }
-
-  .book__reviews-text {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.25rem, 2.5vw, 2rem);
-    color: var(--color-brand-400);
-    margin: 0;
-    letter-spacing: -0.06em;
-  }
-
   /* ── LANGUAGE VARIANTS ── */
   .book__who-english {
     display: none;
@@ -492,18 +467,51 @@ const languages = [
       flex-direction: column;
       min-height: 100svh;
       padding-top: 80px;
+      overflow: visible;
     }
 
-    /* DOM order: right → left → center → buy-wrap → who → reviews */
+    /* Both tags on one row — smaller pill to fit */
+    .book__tags {
+      flex-wrap: nowrap;
+      gap: 6px;
+    }
 
+    .book__tag {
+      font-size: 0.72rem;
+      padding: 4px 9px;
+    }
+
+    /* Title: scales for narrow viewport */
+    .book__title {
+      font-size: clamp(1.65rem, 7.8vw, 2.4rem);
+    }
+
+    /* Rating: stars + text side by side */
+    .book__rating {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .book__star {
+      font-size: 1.4rem;
+    }
+
+    /* Underline SVG is absolutely positioned and breaks in mobile flow */
+    .book__goodreads-underline {
+      display: none;
+    }
+
+    /* 0 top padding so tags sit flush at the navbar bottom (section already offsets 80px) */
     .book__right {
-      padding: 24px 24px 0;
-      gap: 12px;
+      padding: 0 20px 0;
+      gap: 8px;
     }
 
     .book__left {
-      padding: 20px 24px 0;
-      gap: 12px;
+      padding: 4px 20px 0;
+      gap: 6px;
     }
 
     .book__quote-wrap {
@@ -515,18 +523,18 @@ const languages = [
     }
 
     .book__center {
-      padding: 20px 24px 0;
+      padding: 8px 20px 0;
       justify-content: center;
     }
 
     .book__cover {
-      width: min(240px, 70vw);
+      width: min(200px, 54vw);
       margin: 0 auto;
       display: block;
     }
 
     .book__buy-wrap {
-      padding: 24px 24px 0;
+      padding: 8px 20px 0;
       justify-content: center;
     }
 
@@ -536,7 +544,7 @@ const languages = [
     }
 
     .book__who {
-      padding: 24px 24px 16px;
+      padding: 12px 20px 16px;
     }
 
     .book__who-title {
@@ -549,10 +557,6 @@ const languages = [
 
     .book__who-answer {
       text-align: left;
-    }
-
-    .book__reviews {
-      margin-top: 16px;
     }
   }
 </style>

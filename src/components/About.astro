@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import doctorPhoto from '../assets/images/doctor-photo.png';
 
 const pills = [
-  { text: "Fellow,\nRSPH", style: "yellow", ellipse: "elipse-1", top: "18.4%", left: "49.7%", rotate: "9.91deg", tx: "0", extraClass: "about__pill--rsph" },
+  { text: "Fellow RSPH", style: "yellow", ellipse: "elipse-1", top: "18.4%", left: "49.7%", rotate: "9.91deg", tx: "0", extraClass: "about__pill--rsph" },
   { text: "hosts a podcast", style: "plain", top: "26%", left: "56.3%", tx: "0" },
   { text: "makes sex ed \nsafe since 2019", style: "plain", top: "13%", left: "73.5%", rotate: "3deg", tx: "-50%", extraStyle: "text-align:center;white-space:pre-line;" },
   { text: "award-winning\n creator", style: "plain", top: "26.3%", left: "78.4%", tx: "-100%" },
@@ -47,7 +47,7 @@ const pills = [
         src={doctorPhoto}
         alt="Dr. Tanaya Narendra — Dr. Cuterus"
         class="about__photo"
-        widths={[400, 600, 900]}
+        widths={[450, 650, 950]}
         sizes="(max-width: 768px) 80vw, 45vw"
       />
     </div>
@@ -83,33 +83,35 @@ const pills = [
   </div>
 
   <div class="about__pills-mobile" aria-hidden="true">
-    <span class="about__pill about__pill--yellow" style="top:51.6%;left:11%;--rotate:9.91deg;">
+
+    <!-- CIRCLES -->
+    <span class="about__pill about__pill--yellow" style="top:50%;left:2%;--rotate:9.91deg;">
       <img src="/doodles/elipse-1.svg" class="about__pill-ellipse" alt="" />
       <img src="/doodles/elipse-outline-1.svg" class="about__pill-ellipse-outline" alt="" />
       embryologist
     </span>
 
-    <span class="about__pill about__pill--purple-200" style="top:72.9%;left:73.3%;--rotate:-7.58deg;">
-      <img src="/doodles/elipse-2.svg" class="about__pill-ellipse" alt="" />
-      <img src="/doodles/elipse-outline-2.svg" class="about__pill-ellipse-outline" alt="" />
-      Doctor
-    </span>
-
-    <span class="about__pill about__pill--purple" style="top:68.3%;left:4.9%;--rotate:7.36deg;">
+    <span class="about__pill about__pill--purple" style="top:70%;left:0%;--rotate:7.36deg;">
       <img src="/doodles/elipse-3.svg" class="about__pill-ellipse" alt="" />
       <img src="/doodles/elipse-outline-3.svg" class="about__pill-ellipse-outline" alt="" />
       Oxford-trained
     </span>
 
-    <span class="about__pill about__pill--plain" style="top:57.7%;left:5.9%;">hosts a podcast</span>
+    <span class="about__pill about__pill--purple-200 about__pill--bestseller" style="top:68%;left:63%;--rotate:-5deg;">
+      <img src="/doodles/elipse-2.svg" class="about__pill-ellipse" alt="" />
+      <img src="/doodles/elipse-outline-2.svg" class="about__pill-ellipse-outline" alt="" />
+      Best-Selling<br />Author
+    </span>
 
-    <span class="about__pill about__pill--plain" style="top:53%;right:3.6%;left:auto;--tx:0;text-align:right;">award-winning<br />creator</span>
+    <!-- PLAIN TEXT (with arrows) -->
+    <span class="about__pill about__pill--plain" style="top:62%;left:3%;">hosts a podcast</span>
+    <span class="about__pill about__pill--plain about__pill--sexed" style="top:48%;left:58%;text-align:center;">makes sex ed<br />safe since 2019</span>
+    <span class="about__pill about__pill--plain" style="top:58%;right:5%;left:auto;--tx:0;text-align:right;">award-winning<br />creator</span>
 
-    <span class="about__pill about__pill--plain" style="top:45.3%;right:6.7%;left:auto;--tx:0;text-align:right;font-size:clamp(0.65rem,2.8vw,0.8rem);">authored a book to answer<br />what people are shy to ask</span>
-
-    <img src="/doodles/arrow-6.svg" class="about__arrow about__arrow--m1" alt="" />
+    <!-- ARROWS -->
+    <img src="/doodles/arrow-2.svg" class="about__arrow about__arrow--m1" alt="" />
     <img src="/doodles/arrow-2.svg" class="about__arrow about__arrow--m2" alt="" />
-    <img src="/doodles/arrow-1.svg" class="about__arrow about__arrow--m3" alt="" />
+    <img src="/doodles/arrow-2.svg" class="about__arrow about__arrow--m3" alt="" />
   </div>
 </section>
 
@@ -143,7 +145,7 @@ const pills = [
   .about__meet {
     font-family: var(--font-sans);
     font-weight: 300;
-    font-size: clamp(2.25rem, 3.1vw, 2.5rem);
+    font-size: clamp(1.5rem, 2.1vw, 1.9rem);
     color: var(--color-brand-900);
     margin: 0 0 0 0;
   }
@@ -152,13 +154,13 @@ const pills = [
     display: flex;
     flex-direction: column;
     margin: 0 0 8px 0;
-    line-height: 0.88;
+    line-height: 0.78;
     gap: 0;
   }
 
   .about__name-first {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 700;
     font-style: italic;
     font-size: clamp(2.5rem, 5.6vw, 4rem);
     color: var(--color-black);
@@ -179,7 +181,7 @@ const pills = [
     font-size: clamp(1.5rem, 2.1vw, 1.9rem);
     color: var(--color-brand-900);
     margin: 0 0 28px 0;
-    line-height: 1.4;
+    line-height: 1.0;
     text-align: right;
   }
 
@@ -355,7 +357,7 @@ const pills = [
     left: 48%;
     width: 89px;
     height: 81px;
-    transform: rotate(130deg) scaleX(-1);
+    transform: rotate(0deg) scaleX(1);
   }
 
   /* Mobile-only intro text */
@@ -376,27 +378,35 @@ const pills = [
 
   /* Mobile arrow positions (only used when pills-mobile is visible) */
   .about__arrow--m1 {
-    top: 50.6%;
-    left: 44.9%;
-    transform: rotate(39.46deg) scaleY(-1);
-    width: 50px;
-    height: 60px;
+    top: 52%;
+    left: 55%;
+    transform: rotate(0deg);
+    width: 23px;
+    height: 65px;
   }
 
   .about__arrow--m2 {
-    top: 60.9%;
-    left: 20%;
-    transform: rotate(-42.24deg);
+    top: 64%;
+    left: 22%;
+    transform: rotate(-90deg);
     width: 23px;
-    height: 78px;
+    height: 65px;
   }
 
   .about__arrow--m3 {
-    top: 58.4%;
-    left: 73.3%;
-    transform: rotate(90deg) scaleY(-1);
-    width: 60px;
-    height: 63px;
+    top: 63%;
+    left: 70%;
+    transform: rotate(0deg);
+    width: 23px;
+    height: 65px;
+  }
+
+  /* Taller ellipse for two-line "Best-Selling Author" pill */
+  .about__pill--bestseller .about__pill-ellipse {
+    height: 280%;
+  }
+  .about__pill--bestseller .about__pill-ellipse-outline {
+    height: 260%;
   }
 
   /* Mobile tags */
@@ -485,6 +495,9 @@ const pills = [
 
     .about__heyi {
       display: block;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 2px;
     }
 
     .about__name {
@@ -498,19 +511,19 @@ const pills = [
     }
 
     .about__aka {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       text-align: center;
       margin-bottom: 16px;
     }
 
     .about__ctas {
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .about__btn {
-      font-size: 0.95rem;
-      padding: 10px 18px;
+      font-size: 1rem;
+      padding: 6px 12px;
     }
 
     .about__right {
@@ -541,6 +554,10 @@ const pills = [
       inset: 0;
       z-index: 3;
       pointer-events: none;
+    }
+
+    .about__pills-mobile .about__pill {
+      font-size: 1rem;
     }
   }
 </style>

@@ -169,6 +169,7 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
     background-color: var(--color-beige-500);
     padding-top: 80px;
     overflow: hidden;
+    height: 100svh;
   }
 
   /* ── PHONES ROW ── */
@@ -660,11 +661,11 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
       border-right: 1.5px solid var(--color-brand-400);
     }
 
-    /* Phones: carousel mode */
+    /* Phones: carousel mode — clipped at bottom so phone bezel is cut off */
     .content__phones {
-      height: auto;
-      overflow: visible;
-      padding: 8px 20px 24px;
+      height: clamp(340px, 50svh, 420px);
+      overflow: hidden;
+      padding: 8px 20px 0;
       justify-content: center;
     }
 

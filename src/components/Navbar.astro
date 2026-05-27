@@ -24,13 +24,12 @@ const currentPath = Astro.url.pathname;
     ))}
   </nav>
 
-  <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary navbar__cta">Work With Me</a>
-
-  <!-- Desktop lang toggle (always visible on desktop, rightmost) -->
-  <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language">Aa</button>
-
-  <!-- Mobile toggle — shows "Menu" when closed, becomes lang button when open -->
-  <button class="navbar__toggle" id="mobile-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
+  <!-- Right group: CTA + lang toggle (desktop) / menu toggle (mobile) -->
+  <div class="navbar__right">
+    <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary navbar__cta">Work With Me</a>
+    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language">Aa</button>
+    <button class="navbar__toggle" id="mobile-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
+  </div>
 </header>
 
 <!-- Mobile full-page overlay -->
@@ -56,9 +55,9 @@ const currentPath = Astro.url.pathname;
     left: 0;
     right: 0;
     z-index: 300;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     padding: 0 60px;
     height: 80px;
     background: rgba(247, 240, 224, 0.1);
@@ -75,14 +74,21 @@ const currentPath = Astro.url.pathname;
     color: var(--color-black);
     text-decoration: none;
     white-space: nowrap;
-    flex-shrink: 0;
+  }
+
+  /* ── RIGHT GROUP: CTA + lang toggle (desktop) / menu toggle (mobile) ── */
+  .navbar__right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-self: end;
   }
 
   /* ── DESKTOP NAV ── */
   .navbar__nav {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.7rem;
   }
 
   .navbar__link {
@@ -108,13 +114,13 @@ const currentPath = Astro.url.pathname;
   .navbar__link--active::after {
     content: "";
     position: absolute;
-    left: -6px;
-    right: -6px;
+    left: -12px;
+    right: -12px;
     top: 50%;
     transform: translateY(-50%);
     height: 28px;
     background-color: var(--color-brand-100);
-    border-radius: 15px;
+    border-radius: 20px;
     z-index: -1;
   }
 
@@ -125,7 +131,7 @@ const currentPath = Astro.url.pathname;
   }
 
   .navbar__cta:hover {
-    background-color: var(--color-brand-400) !important;
+    background-color: var(--color-brand-500) !important;
   }
 
   /* ── LANGUAGE TOGGLE (desktop) ── */
@@ -214,13 +220,15 @@ const currentPath = Astro.url.pathname;
   @media (max-width: 768px) {
     .navbar {
       padding: 0 20px;
+      grid-template-columns: 1fr auto;
     }
 
-    /* Hide desktop nav, desktop lang toggle, desktop CTA */
+    /* Hide desktop nav (center column collapses) */
     .navbar__nav {
       display: none;
     }
 
+    /* Hide desktop-only controls */
     .lang-toggle {
       display: none;
     }
@@ -284,8 +292,8 @@ const currentPath = Astro.url.pathname;
     .mobile-menu__link--active::after {
       content: "";
       position: absolute;
-      left: -6px;
-      right: -6px;
+      left: -12px;
+      right: -12px;
       top: 50%;
       transform: translateY(-50%);
       height: 28px;

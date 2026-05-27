@@ -51,6 +51,9 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
   <!-- MIRROR TAG: above scribble -->
   <span class="columnist__mirror-tag">Mumbai mirror's sexpert</span>
 
+  <!-- MOBILE SCRIBBLE: shown only on mobile -->
+  <img src="/doodles/mobile-columnist-scribble.svg" class="columnist__scribble-mobile" alt="" aria-hidden="true" />
+
 </div>
 
 <style>
@@ -110,6 +113,11 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     letter-spacing: -0.06em;
     line-height: 0.95;
     white-space: nowrap;
+  }
+
+  /* ── MOBILE SCRIBBLE: hidden on desktop ── */
+  .columnist__scribble-mobile {
+    display: none;
   }
 
   /* ── SCRIBBLE: full viewport width ── */
@@ -335,6 +343,18 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
       display: none;
     }
 
+    .columnist__scribble-mobile {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 55svh;
+      object-fit: fill;
+      pointer-events: none;
+      z-index: 2;
+    }
+
     .columnist__right {
       position: relative;
       display: flex;
@@ -371,6 +391,15 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
       margin-right: 8px;
       font-size: 2rem;
       z-index: 1;
+    }
+
+    /* Override desktop absolute positioning so content flows after the photo */
+    .columnist__content-group {
+      position: static;
+      transform: none;
+      left: auto;
+      top: auto;
+      width: 100%;
     }
 
     .columnist__heading {
