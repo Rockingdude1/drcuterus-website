@@ -627,4 +627,44 @@ const pills = [
   }
   updateAboutScale();
   window.addEventListener('resize', updateAboutScale);
+
+  function checkSexEdOverlap(): void {
+    if (window.innerWidth > 768) return;
+    const photo = document.querySelector<HTMLImageElement>('.about__photo');
+    const pill = document.querySelector<HTMLElement>('.about__pill--sexed');
+    const arrow = document.querySelector<HTMLElement>('.about__arrow--m1');
+    if (!photo || !pill || !arrow) return;
+
+    const elRect = photo.getBoundingClientRect();
+    const naturalW = photo.naturalWidth;
+    const naturalH = photo.naturalHeight;
+    if (!naturalW || !naturalH) return;
+
+    // Calculate actual rendered image bounds (object-fit: contain, object-position: bottom center)
+    const scale = Math.min(elRect.width / naturalW, elRect.height / naturalH);
+    const renderedW = naturalW * scale;
+    const renderedH = naturalH * scale;
+    const imageLeft = elRect.left + (elRect.width - renderedW) / 2;
+    const imageTop = elRect.bottom - renderedH;
+
+    const GAP = 5;
+    const expanded = {
+      top: imageTop - GAP,
+      bottom: elRect.bottom + GAP,
+      left: imageLeft - GAP,
+      right: imageLeft + renderedW + GAP,
+    };
+
+    function overlaps(el: HTMLElement): boolean {
+      const r = el.getBoundingClientRect();
+      return !(r.bottom < expanded.top || r.top > expanded.bottom || r.right < expanded.left || r.left > expanded.right);
+    }
+
+    const hide = overlaps(pill) || overlaps(arrow);
+    pill.style.visibility = hide ? 'hidden' : '';
+    arrow.style.visibility = hide ? 'hidden' : '';
+  }
+
+  checkSexEdOverlap();
+  window.addEventListener('resize', checkSexEdOverlap);
 </script>
