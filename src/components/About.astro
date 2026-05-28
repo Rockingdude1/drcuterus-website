@@ -26,12 +26,12 @@ const logos = [
 <section class="about" id="about">
 
   <!-- ─── PHOTO COLLAGE ─── -->
-  <img src={mainSvg}      alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
-  <img src={sareeSvg}     alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
-  <img src={biilboardSvg} alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
-  <img src={doctorSvg}    alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
-  <img src={podcastSvg}   alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
-  <img src={divingSvg}    alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
+  <img src={mainSvg}      width="494" height="625" alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
+  <img src={sareeSvg}     width="151" height="198" alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
+  <img src={biilboardSvg} width="201" height="231" alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
+  <img src={doctorSvg}    width="140" height="176" alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
+  <img src={podcastSvg}   width="277" height="189" alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
+  <img src={divingSvg}    width="173" height="230" alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
 
 
   <!-- "India's Favourite Sex Educator" badge -->
@@ -139,12 +139,12 @@ const logos = [
     z-index: 2;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    will-change: transform;
   }
 
   /* main polaroid — large centre piece */
   .about__photo--main {
     width: 33%;
+    max-width: 450px;
     left: 18.29%;   /* centre ~34.79% */
     top: 14.48%;
     transform: rotate(-1.87deg);
@@ -155,6 +155,7 @@ const logos = [
   /* saree — small, top-left */
   .about__photo--saree {
     width: 10.61%;
+    max-width: 140px;
     left: 7.31%;    /* centre 12.61% */
     top: 18.45%;
     transform: rotate(3.25deg);
@@ -164,6 +165,7 @@ const logos = [
   /* billboard — tilted, mid-left */
   .about__photo--billboard {
     width: 15.59%;
+    max-width: 205px;
     left: 4.7%;    /* centre 9.12% */
     top: 39.23%;
     transform: rotate(15.88deg);
@@ -173,6 +175,7 @@ const logos = [
   /* doctor — bottom-left */
   .about__photo--doctor {
     width: 12.82%;
+    max-width: 168px;
     left: 12.2%;    /* centre 16.61% */
     top: 65.02%;
     transform: rotate(9.68deg);
@@ -182,6 +185,7 @@ const logos = [
   /* podcast — landscape, lower-right of collage */
   .about__photo--podcast {
     width: 19.73%;
+    max-width: 258px;
     left: 49.79%;   /* centre 59.66% */
     top: 56.12%;
     transform: rotate(8.09deg);
@@ -191,6 +195,7 @@ const logos = [
   /* diving — upper-right of collage */
   .about__photo--diving {
     width: 12.46%;
+    max-width: 165px;
     left: 49.42%;   /* centre 55.65% */
     top: 28.44%;
     transform: rotate(-2.18deg);
@@ -448,12 +453,6 @@ const logos = [
      Slightly scale down the collage and text
   ───────────────────────────────────────────── */
   @media (max-width: 1024px) and (min-width: 769px) {
-    .about__photo--main      { width: 30%; }
-    .about__photo--saree     { width: 9%;  }
-    .about__photo--billboard { width: 10%; }
-    .about__photo--doctor    { width: 7.5%;}
-    .about__photo--podcast   { width: 17%; }
-    .about__photo--diving    { width: 11%; }
     .about__badge { font-size: clamp(14px, 2.2vw, 28px); }
   }
 
@@ -464,69 +463,71 @@ const logos = [
   ───────────────────────────────────────────── */
   @media (max-width: 768px) {
 
-    /* ── photos ── */
+    /* ── photos — exact Figma mobile positions (402×832 canvas) ── */
 
-    /* main: centre-x 47.6 %, top 10.2 %, width 54 % */
+    /* main: centre 47.6%, width 60% (Figma: 240px / 402px canvas) */
     .about__photo--main {
-      width: 54%;
-      left: 20.6%;    /* 47.6 - 54/2 */
-      top: 10.2%;
+      width: 60%;
+      left: 17.7%;
+      top: calc(10.25% + 20px);
     }
 
-    /* saree: centre-x 13.8 %, top 11.2 %, width 19.9 % */
+    /* saree: top-left, overlaps main left edge */
     .about__photo--saree {
-      width: 19.9%;
-      left: 3.85%;    /* 13.8 - 19.9/2 */
-      top: 11.2%;
+      width: 21.3%;
+      left: 3.2%;
+      top: calc(11.24% + 20px);
     }
 
-    /* billboard: moved in so it's visible, close to main */
+    /* billboard: intentionally bleeds off the left edge (Figma: -4.5%) */
     .about__photo--billboard {
-      width: 21.7%;
-      left: 1%;
-      top: 23%;
+      width: 28.6%;
+      left: -4.5%;
+      top: calc(23% + 20px);
     }
 
-    /* doctor: centre-x 18.6 %, top 36.9 %, width 16.5 % */
+    /* doctor: lower-left cluster */
     .about__photo--doctor {
-      width: 16.5%;
-      left: 10.35%;
-      top: 36.9%;
+      width: 19.9%;
+      left: 8.7%;
+      top: calc(36.9% + 20px);
     }
 
-    /* podcast: centre-x 84.6 %, top 32.4 %, width 36.9 % */
+    /* podcast: intentionally bleeds off the right edge (Figma: ~104% total) */
     .about__photo--podcast {
-      width: 36.9%;
-      left: 66.15%;
-      top: 32.4%;
+      width: 39.6%;
+      left: 64.7%;
+      top: calc(32.4% + 20px);
     }
 
-    /* diving: centre-x 79.4 %, top 15.8 %, width 23.3 % */
+    /* diving: upper-right, outside main photo bounds so clearly visible */
     .about__photo--diving {
-      width: 23.3%;
-      left: 67.75%;
-      top: 15.8%;
+      width: 24.4%;
+      left: 70.2%;
+      top: calc(15.9% + 20px);
     }
-
 
     /* ── photo labels ── */
     .about__img-label { font-size: 12px; }
-    .about__img-label--rtfrb { left: 24.9%; top: 9%;   }
-    .about__img-label--btc   { left: 70.5%; top: 44.2%;}
+    .about__img-label--rtfrb { left: 25%; top: calc(8.33% + 20px); }
+    .about__img-label--btc   { left: 64%; top: calc(44% + 20px);   }
 
     /* ── badge ── */
+    /* top = photo_top + 82% of photo_height
+       photo_height = 60vw × (625/494) = 75.9vw → 82% = 62vw
+       vw-based so badge stays on the photo on all phone heights */
     .about__badge {
       left: 47.5%;
-      top: 37.9%;
+      top: calc(10.25% + 20px + 62vw);
       transform: translateX(-50%);
       font-size: 16px;
     }
 
-    /* ── stars: reposition for mobile ── */
-    .about__star--1 { width: 32px; left: 11.7%; top: 10.0%; }
-    .about__star--2 { width: 36px; left: 80.0%; top: 16.5%; }
-    .about__star--3 { display: block; width: 32px; left: 10.5%; top: 34.5%; }
-    .about__star--4 { width: 28px; left: 66.0%; top: 43.0%; }
+    /* ── stars: Figma mobile positions ── */
+    .about__star--1 { width: 32px; left: 13.9%; top: calc(9.38% + 20px); }
+    .about__star--2 { width: 36px; left: 65.2%; top: calc(29.39% + 20px); }
+    .about__star--3 { display: block; width: 32px; left: 21.4%; top: calc(41.53% + 20px); }
+    .about__star--4 { display: none; }
 
     /* ── highlight bar: hidden on mobile ── */
     .about__highlight-bar { display: none; }
@@ -538,13 +539,13 @@ const logos = [
       text-align: center;
       transform: translateX(-50%);
     }
-    .about__headline--1 { left: 50%; top: 49.2%; }
-    .about__headline--2 { left: 50%; top: 55.1%; }
+    .about__headline--1 { left: 50%; top: 51%; }
+    .about__headline--2 { left: 50%; top: 57%; }
 
     /* ── pill ── */
     .about__pill-wrap {
       left: 50%;
-      top: 61.2%;
+      top: 63%;
       transform: translateX(-50%) rotate(-5.99deg);
     }
     .about__pill-bakchodi { font-size: clamp(16px, 5vw, 20px); }
@@ -556,7 +557,7 @@ const logos = [
       display: block;
       position: absolute;
       left: 50%;
-      top: 68%;
+      top: 70%;
       width: 79%;
       transform: translateX(-50%);
       font-family: var(--font-sans);
@@ -575,7 +576,7 @@ const logos = [
     /* ── CTA ── */
     .about__cta-wrap {
       left: 50%;
-      top: 78.5%;
+      top: 80%;
       transform: translateX(-50%);
     }
     .about__cta { font-size: clamp(15px, 4.5vw, 20px); }
