@@ -9,6 +9,9 @@ import Columnist from '../components/Columnist.astro';
 import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
 import doctorPhotoUrl from '../assets/images/doctor-photo.png?url';
+import { getImage } from 'astro:assets';
+import mainImg from '../assets/images/main.jpg';
+const mainHeroPreload = await getImage({ src: mainImg, width: 800, format: 'webp' });
 ---
 
 <html lang="en">
@@ -17,6 +20,7 @@ import doctorPhotoUrl from '../assets/images/doctor-photo.png?url';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href={mainHeroPreload.src} type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href={doctorPhotoUrl} />
 
     <title>Dr. Cuterus - Dr. Tanaya Narendra</title>
