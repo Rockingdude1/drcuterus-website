@@ -4,6 +4,9 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
 import podcastPhoto from '../assets/images/podcast-photo.jpg';
 import igThumb1 from '../assets/images/content-instagram-1.png';
 import igThumb2 from '../assets/images/content-instagram-2.png';
+import youtubeAvatar from '../assets/images/content-youtube.jpg';
+import ytThumb1 from '../assets/images/yt-thumb-1.jpg';
+import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
 ---
 
 <section class="content" id="content">
@@ -137,10 +140,12 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
           <div class="content__profile">
             <div class="content__avatar">
-              <img
-                src="/images/content-youtube.jpg"
+              <Image
+                src={youtubeAvatar}
                 alt="Dr. Tanaya Narendra YouTube"
                 class="content__avatar-img"
+                width={52}
+                height={52}
               />
             </div>
             <div class="content__profile-text">
@@ -176,11 +181,11 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
           <div class="content__vids">
             <a class="content__vid-thumb" href="https://youtu.be/3n2_HZ_JRTU?si=3Fx699a-dClP04YG" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
-              <img src="https://img.youtube.com/vi/3n2_HZ_JRTU/mqdefault.jpg" alt="Dr. Cuterus YouTube video" class="content__vid-img" />
+              <Image src={ytThumb1} alt="Dr. Cuterus YouTube video" class="content__vid-img" width={320} height={180} />
               <span class="content__vid-play" aria-hidden="true">&#9654;</span>
             </a>
             <a class="content__vid-thumb content__vid-thumb--second" href="https://youtu.be/x3veBgcMzuU?si=CjSevBvW3ssvy_3B" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
-              <img src="https://img.youtube.com/vi/x3veBgcMzuU/mqdefault.jpg" alt="Dr. Cuterus YouTube video" class="content__vid-img" />
+              <Image src={ytThumb2} alt="Dr. Cuterus YouTube video" class="content__vid-img" width={320} height={180} />
               <span class="content__vid-play" aria-hidden="true">&#9654;</span>
             </a>
           </div>

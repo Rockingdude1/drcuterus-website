@@ -346,20 +346,20 @@ import fursat4 from '../assets/images/fursat-4.png';
       max-width: 90%;
     }
 
-    /* Side padding so image is centred with breathing room */
     .fursat__right {
-      padding: 80px 40px 40px;
+      background-color: #ffe07f;
+      padding-top: 80px;
+      align-items: center;
+      justify-content: center;
     }
 
     .fursat__photo-wrap {
-      height: 100%;
-      overflow: hidden;
+      width: 100%;
+      height: clamp(250px, 65svh, 500px);
     }
 
-    /* Contained + centred on tablet — no cropping */
     .fursat__frame--variant .fursat__photo {
       object-fit: contain;
-      object-position: center center;
     }
   }
 

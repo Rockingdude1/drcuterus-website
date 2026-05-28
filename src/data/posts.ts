@@ -11,8 +11,8 @@ export const posts: Post[] = [
     slug: "why-does-my-period-hurt",
     question: "Why does my period hurt?",
     category: "Menstrual Health",
-    excerpt: "Period pain is one of the most common questions I get. Here's the real answer — and when to actually worry.",
-    body: `Period pain (dysmenorrhoea) happens because your uterus contracts to shed its lining. These contractions are triggered by hormone-like chemicals called prostaglandins. The higher the prostaglandin levels, the stronger the contractions — and the more pain you feel.
+    excerpt: "Period pain is one of the most common questions I get. Here's the real answer - and when to actually worry.",
+    body: `Period pain (dysmenorrhoea) happens because your uterus contracts to shed its lining. These contractions are triggered by hormone-like chemicals called prostaglandins. The higher the prostaglandin levels, the stronger the contractions - and the more pain you feel.
 
 **Is it normal?**
 Mild cramping is normal. But pain that stops you from going to school, work, or living your life is not something you should just "push through." That level of pain deserves a proper check-up.
