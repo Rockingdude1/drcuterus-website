@@ -52,7 +52,7 @@
     #loader-title { left: 32px; }
   }
   @media (max-width: 768px) {
-    #loader-title { left: 20px; }
+    #loader-title { left: 20px; font-size: min(17.9vw, 30vh); }
   }
 </style>
 
@@ -118,7 +118,7 @@
       const fromRect   = title.getBoundingClientRect();
       const navRect    = navLogo?.getBoundingClientRect();
       const targetSize = navLogo ? parseFloat(getComputedStyle(navLogo).fontSize) : 30;
-      const targetTop  = navRect?.top  ?? 24;
+      const targetTop  = navRect ? navRect.top + (navRect.height - targetSize) / 2 : 24;
       const targetLeft = navRect?.left ?? 60;
 
       title.style.transition = 'none';
