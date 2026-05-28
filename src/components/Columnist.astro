@@ -34,7 +34,7 @@ import backDoorImg  from '../assets/images/back of door.jpg';
         <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
 
         <div class="columnist__desc-box">
-          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
+          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries.<span class="columnist__desc-extra"> Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</span></p>
         </div>
 
         <a href="https://mumbaimirror.indiatimes.com/topics/dr-cuterus"
@@ -82,7 +82,7 @@ import backDoorImg  from '../assets/images/back of door.jpg';
   .columnist__knock {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(0.875rem, 1.1vw, 1.1rem);
+    font-size: clamp(1.2rem, 1.1vw, 1.1rem);
     color: var(--color-brand-900);
     margin: 0 0 10px 0;
     letter-spacing: 0;
@@ -249,55 +249,69 @@ import backDoorImg  from '../assets/images/back of door.jpg';
 
   /* ── MOBILE (≤768px) ── */
   @media (max-width: 768px) {
+    /* Outer still fills at least the full screen.
+       scroll-margin-top: 0 prevents the previous section from peeking
+       at the top when scroll-snap snaps to this section. */
     .columnist-outer {
       min-height: 100svh;
+      scroll-margin-top: 0;
     }
 
+    /*
+     * Flatten the two-column structure into a single centered column.
+     * All items: knock → door → badge → heading → text → CTA
+     * are laid out together with a fixed gap.
+     * Extra space (on taller phones) accumulates as equal top/bottom margins
+     * via justify-content: center — never between the items.
+     */
     .columnist {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       min-height: 100svh;
       max-height: unset;
+      padding: 20px;
+      gap: 12px;
+      box-sizing: border-box;
     }
 
-    /* Door: centred above content */
-    .columnist__door-col {
-      height: auto;
-      flex-shrink: 0;
-      flex-direction: column;
-      padding-left: 0;
-      padding-top: 12px;
-      padding-bottom: 0;
-      align-items: center;
-      justify-content: flex-start;
-      overflow: visible;
+    /* Remove both column wrappers from the layout — their children
+       become direct flex children of .columnist */
+    .columnist__door-col,
+    .columnist__right {
+      display: contents;
+    }
+
+    /* Hide the extra sentences on mobile — keep only the first sentence */
+    .columnist__desc-extra {
+      display: none;
     }
 
     .columnist__knock {
-      font-size: 0.875rem;
-      margin-bottom: 8px;
+      font-size: 0.9rem;
+      margin: 0;
       text-align: center;
     }
 
     .columnist__door-scene {
-      /* Smaller door so all content (door + text + CTA) fits in one screen */
-      width: min(290px, 78vw);
-      height: calc(min(290px, 78vw) * (711 / 486));
-      margin: 0;
+      width: min(270px, 68vw);
+      height: calc(min(270px, 68vw) * (711 / 486));
+      flex-shrink: 0;
     }
 
-    /* Content fills remaining height */
-    .columnist__right {
-      flex: 1;
-      padding: 20px 20px 28px;
-      align-items: center;
-      justify-content: center;
-    }
-
+    /* Content group: badge + heading + text + CTA, tight together */
     .columnist__content-group {
-      gap: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       width: 100%;
       max-width: 380px;
+    }
+
+    .columnist__badge {
+      padding: 6px 18px;
     }
 
     .columnist__badge span {
@@ -309,9 +323,17 @@ import backDoorImg  from '../assets/images/back of door.jpg';
     .columnist__heading {
       font-size: clamp(1.75rem, 8vw, 2.2rem);
       white-space: normal;
+      text-align: center;
+      margin: 0;
     }
 
-    .columnist__desc-box p { font-size: 0.9rem; }
+    .columnist__desc-box {
+      padding: 6px 18px;
+      width: 100%;
+    }
+
+    .columnist__desc-box p { font-size: 0.875rem; }
+
     .columnist__cta { font-size: 1rem; padding: 10px 20px; }
   }
 </style>
