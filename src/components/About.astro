@@ -21,8 +21,6 @@ const logos = [
   { src: '/logos/umich.svg',           alt: 'University of Michigan'              },
 ];
 
-// 4-pointed star path centred on a 74×70 viewBox
-const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
 ---
 
 <section class="about" id="about">
@@ -35,13 +33,6 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   <img src={podcastSvg}   alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
   <img src={divingSvg}    alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
 
-  <!-- Decorative dots (coloured circles near photos) -->
-  <span class="about__dot about__dot--purple about__dot--d1" aria-hidden="true"></span>
-  <span class="about__dot about__dot--gold   about__dot--d2" aria-hidden="true"></span>
-  <span class="about__dot about__dot--purple about__dot--d3" aria-hidden="true"></span>
-  <span class="about__dot about__dot--purple about__dot--d4" aria-hidden="true"></span>
-  <span class="about__dot about__dot--gold   about__dot--d5" aria-hidden="true"></span>
-
   <!-- Caption labels on photos -->
   <p class="about__img-label about__img-label--rtfrb" aria-hidden="true">Real Talk For Real Bodies</p>
   <p class="about__img-label about__img-label--btc"   aria-hidden="true">Beyond The Clinic</p>
@@ -52,16 +43,11 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
     <span>Sex Educator</span>
   </div>
 
-  <!-- Stars -->
-  <div class="about__star about__star--1" aria-hidden="true">
-    <svg viewBox="0 0 74 70" xmlns="http://www.w3.org/2000/svg"><path d={STAR} fill="#FFD700"/></svg>
-  </div>
-  <div class="about__star about__star--2" aria-hidden="true">
-    <svg viewBox="0 0 74 70" xmlns="http://www.w3.org/2000/svg"><path d={STAR} fill="#FFD700"/></svg>
-  </div>
-  <div class="about__star about__star--3" aria-hidden="true">
-    <svg viewBox="0 0 74 70" xmlns="http://www.w3.org/2000/svg"><path d={STAR} fill="#FFD700"/></svg>
-  </div>
+  <!-- Stars — scattered across the collage -->
+  <img src="/doodles/star about.svg" class="about__star about__star--1" aria-hidden="true" />
+  <img src="/doodles/star about.svg" class="about__star about__star--2" aria-hidden="true" />
+  <img src="/doodles/star about.svg" class="about__star about__star--3" aria-hidden="true" />
+  <img src="/doodles/star about.svg" class="about__star about__star--4" aria-hidden="true" />
 
   <!-- ─── RIGHT-SIDE TEXT ─── -->
 
@@ -158,8 +144,8 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
 
   /* main polaroid — large centre piece */
   .about__photo--main {
-    width: 35.84%;
-    left: 16.87%;   /* centre 34.79% */
+    width: 33%;
+    left: 18.29%;   /* centre ~34.79% */
     top: 14.48%;
     transform: rotate(-1.87deg);
     transform-origin: center center;
@@ -177,8 +163,8 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
 
   /* billboard — tilted, mid-left */
   .about__photo--billboard {
-    width: 11.59%;
-    left: 3.33%;    /* centre 9.12% */
+    width: 15.59%;
+    left: 4.7%;    /* centre 9.12% */
     top: 39.23%;
     transform: rotate(15.88deg);
     z-index: 1;
@@ -186,7 +172,7 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
 
   /* doctor — bottom-left */
   .about__photo--doctor {
-    width: 8.82%;
+    width: 12.82%;
     left: 12.2%;    /* centre 16.61% */
     top: 65.02%;
     transform: rotate(9.68deg);
@@ -212,26 +198,6 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   }
 
   /* ─────────────────────────────────────────────
-     DECORATIVE DOTS
-  ───────────────────────────────────────────── */
-  .about__dot {
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    z-index: 4;
-  }
-  .about__dot--purple { background-color: var(--color-brand-400); }
-  .about__dot--gold   { background-color: var(--color-yellow-500); }
-
-  /* desktop positions */
-  .about__dot--d1 { left: 9.94%;  top: 17.54%; }   /* near saree */
-  .about__dot--d2 { left: 12.73%; top: 41.79%; }   /* near billboard */
-  .about__dot--d3 { left: 14.66%; top: 64.2%;  }   /* near doctor */
-  .about__dot--d4 { left: 54.45%; top: 27.15%; }   /* near diving */
-  .about__dot--d5 { left: 60.28%; top: 56.87%; }   /* near podcast */
-
-  /* ─────────────────────────────────────────────
      PHOTO LABELS
   ───────────────────────────────────────────── */
   .about__img-label {
@@ -249,13 +215,13 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   .about__img-label--rtfrb {
     left: 21.19%;
     top: 12.77%;
-    transform: rotate(-1.87deg);
+    transform: rotate(-2deg);
   }
 
   .about__img-label--btc {
     left: 53.95%;
     top: 75.58%;
-    transform: rotate(8.09deg);
+    transform: rotate(15deg);
   }
 
   /* ─────────────────────────────────────────────
@@ -263,13 +229,13 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   ───────────────────────────────────────────── */
   .about__badge {
     position: absolute;
-    left: 24.55%;
-    top: 73.27%;
+    left: 28.55%;
+    top: 70.27%;
     background: var(--color-brand-100);
     padding: 4px 8px;
     font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: clamp(16px, 2.72vw, 34px);
+    font-weight: 400;
+    font-size: clamp(16px, 2.72vw, 28px);
     color: var(--color-brand-900);
     display: flex;
     flex-direction: column;
@@ -280,43 +246,24 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   }
 
   /* ─────────────────────────────────────────────
-     STARS
+     STAR DECORATIONS
   ───────────────────────────────────────────── */
   .about__star {
     position: absolute;
-    width: 5.78%;  /* ≈74px on 1280 */
+    display: block;
+    height: auto;
+    pointer-events: none;
     z-index: 4;
   }
-  .about__star svg { display: block; width: 100%; height: auto; }
 
-  .about__star--1 {
-    left: 42.61%;  /* centre 45.5% */
-    top: 51.07%;
-    transform: rotate(8.16deg);
-  }
-  .about__star--2 {
-    left: 12.33%;  /* centre 15.22% */
-    top: 81.26%;
-    transform: rotate(8.16deg);
-  }
-  .about__star--3 {
-    left: 12.41%;  /* centre 15.3% */
-    top: 15.3%;
-    transform: rotate(8.16deg);
-  }
-
-  /* ─────────────────────────────────────────────
-     HIGHLIGHT BAR (behind bio text)
-  ───────────────────────────────────────────── */
-  .about__highlight-bar {
-    position: absolute;
-    left: 71.49%;
-    top: 42.19%;
-    width: 23.75%;
-    height: 6.49%;  /* ≈54px on 832 */
-    background: var(--color-brand-100);
-    z-index: 4;
-  }
+  /* top-left, above/left of saree photo */
+  .about__star--1 { width: 60px; left: 15.03%;  top: 15.7%; }
+  /* right side of collage, between main and diving photo */
+  .about__star--2 { width: 50px; left: 47.0%;  top: 28.0%; }
+  /* lower-left, below billboard photo */
+  .about__star--3 { width: 44px; left: 3.75%;  top: 63.5%; }
+  /* lower-center, between doctor and podcast */
+  .about__star--4 { width: 64px; left: 47.5%;  top: 61.2%; }
 
   /* ─────────────────────────────────────────────
      HEADLINES
@@ -326,7 +273,7 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
     margin: 0;
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--color-brand-400);
     font-size: clamp(32px, 5vw, 64px);
     line-height: 1.25;
@@ -351,9 +298,8 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   ───────────────────────────────────────────── */
   .about__pill-wrap {
     position: absolute;
-    left: 78.13%;
-    top: 31.85%;
-    z-index: 5;
+    left: 80.13%;
+    top: 33.85%;
     transform: rotate(-5.99deg);
   }
   .about__pill-bakchodi {
@@ -361,7 +307,7 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
     border-radius: 999px;
     padding: 8px 16px;
     font-family: var(--font-sans);
-    font-weight: 500;
+    font-weight: 400;
     font-size: clamp(14px, 1.875vw, 24px);
     color: var(--color-black);
     white-space: nowrap;
@@ -373,16 +319,17 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   ───────────────────────────────────────────── */
   .about__bio-wrap {
     position: absolute;
-    left: 71.49%;
+    right: 60px;
+    left: auto;
     top: 42.55%;
-    width: 23.75%;
+    width: 25%;
     z-index: 5;
   }
 
   .about__bio {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: clamp(13px, 1.875vw, 24px);
+    font-size: clamp(13px, 1.875vw, 20px);
     color: var(--color-brand-900);
     text-align: right;
     margin: 0;
@@ -410,7 +357,8 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   ───────────────────────────────────────────── */
   .about__cta-wrap {
     position: absolute;
-    left: 80.39%;
+    right: 60px;
+    left: auto;
     top: 67.07%;
     z-index: 5;
   }
@@ -425,9 +373,9 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
   ───────────────────────────────────────────── */
   .about__scroll {
     position: absolute;
-    left: 82.34%;
+    right: 60px;
+    left: auto;
     top: 85.21%;
-    transform: translateX(-50%);
     z-index: 5;
     display: inline-flex;
     align-items: center;
@@ -514,10 +462,10 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
 
     /* ── photos ── */
 
-    /* main: centre-x 47.6 %, top 10.2 %, width 57.5 % */
+    /* main: centre-x 47.6 %, top 10.2 %, width 54 % */
     .about__photo--main {
-      width: 57.5%;
-      left: 18.85%;   /* 47.6 - 57.5/2 */
+      width: 54%;
+      left: 20.6%;    /* 47.6 - 54/2 */
       top: 10.2%;
     }
 
@@ -528,10 +476,10 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
       top: 11.2%;
     }
 
-    /* billboard: centre-x 9.8 %, top 23 %, width 21.7 % */
+    /* billboard: moved in so it's visible, close to main */
     .about__photo--billboard {
       width: 21.7%;
-      left: -1.05%;   /* slightly off-screen left, matches Figma */
+      left: 1%;
       top: 23%;
     }
 
@@ -556,18 +504,11 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
       top: 15.8%;
     }
 
-    /* ── dots (13 px on mobile) ── */
-    .about__dot { width: 13px; height: 13px; }
-    .about__dot--d1 { left: 8.9%;  top: 10.7%; }
-    .about__dot--d2 { left: 16.6%; top: 24.5%; }
-    .about__dot--d3 { left: 15.1%; top: 36.4%; }
-    .about__dot--d4 { left: 77.2%; top: 15.1%; }
-    .about__dot--d5 { left: 85.6%; top: 32.8%; }
 
     /* ── photo labels ── */
     .about__img-label { font-size: 12px; }
     .about__img-label--rtfrb { left: 24.9%; top: 9%;   }
-    .about__img-label--btc   { left: 53.5%; top: 45.2%;}
+    .about__img-label--btc   { left: 70.5%; top: 44.2%;}
 
     /* ── badge ── */
     .about__badge {
@@ -577,12 +518,11 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
       font-size: 16px;
     }
 
-    /* ── stars (41 px on 402 px canvas = 10.2 % width) ── */
-    .about__star { width: 10.2%; }
-
-    .about__star--1 { left: 16.3%;  top: 41.5%; transform: rotate(8.16deg); }
-    .about__star--2 { left: 60.1%;  top: 29.4%; transform: rotate(8.16deg); }
-    .about__star--3 { left:  8.8%;  top:  9.4%; transform: rotate(8.16deg); }
+    /* ── stars: reposition for mobile ── */
+    .about__star--1 { width: 32px; left: 11.7%; top: 10.0%; }
+    .about__star--2 { width: 36px; left: 80.0%; top: 16.5%; }
+    .about__star--3 { width: 32px; left: 10.5%; top: 34.5%; }
+    .about__star--4 { width: 28px; left: 66.0%; top: 43.0%; }
 
     /* ── highlight bar: hidden on mobile ── */
     .about__highlight-bar { display: none; }
@@ -639,6 +579,7 @@ const STAR = "M37 0 L44 26 L74 35 L44 44 L37 70 L30 44 L0 35 L30 26 Z";
     /* ── scroll ── */
     .about__scroll {
       left: 50%;
+      right: auto;
       top: auto;
       bottom: 8.5%;  /* ≈ (8.33 % + 6 px) from bottom, staying above ticker */
       transform: translateX(-50%);
