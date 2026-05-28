@@ -4,9 +4,8 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import { Image } from 'astro:assets';
 import blogPhoto from '../../assets/images/blog-photo.jpg';
-import { posts } from '../../data/posts';
 
-const categories = ['All', ...new Set(posts.map(p => p.category))];
+const categories = ['All', 'Menstrual Health', 'Vaginal Health', 'Anatomy', 'Reproductive Health', 'Contraception'];
 ---
 
 <html lang="en">
@@ -66,7 +65,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
           <div class="blog__subtitle-divider"></div>
 
           <div class="blog__categories" id="blog-categories">
-            {categories.slice(0, 3).map((cat, i) => (
+            {categories.map((cat, i) => (
               <button class={`blog__cat-btn${i === 0 ? ' blog__cat-btn--active' : ''}`} data-category={cat}>
                 {cat}
               </button>
@@ -74,12 +73,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
           </div>
 
           <ul class="blog__questions" id="blog-questions">
-            {posts.map((post) => (
-              <li class="blog__question-item" data-category={post.category}>
-                <a href={`/blog/${post.slug}`} class="blog__question-link">{post.question}</a>
-                <div class="blog__question-divider"></div>
-              </li>
-            ))}
+            <li class="blog__coming-soon">Coming soon.</li>
           </ul>
         </div>
       </div>
@@ -299,6 +293,16 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 
   .blog__question-item.is-hidden {
     display: none;
+  }
+
+  .blog__coming-soon {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    opacity: 0.45;
+    padding: 16px 0;
+    list-style: none;
   }
 
   .blog__question-link {
@@ -565,32 +569,10 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
 
 <script>
   const catBtns = document.querySelectorAll<HTMLButtonElement>('.blog__cat-btn');
-  const items = document.querySelectorAll<HTMLLIElement>('.blog__question-item');
-  const list = document.getElementById('blog-questions') as HTMLUListElement;
-
-  function setMaxHeight(visibleItems: HTMLLIElement[]) {
-    const first3 = visibleItems.slice(0, 3);
-    const h = first3.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
-    list.style.maxHeight = h + 'px';
-  }
-
-  function getVisible(): HTMLLIElement[] {
-    return [...items].filter(i => !i.classList.contains('is-hidden')) as HTMLLIElement[];
-  }
-
-  setMaxHeight(getVisible());
-
   catBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       catBtns.forEach(b => b.classList.remove('blog__cat-btn--active'));
       btn.classList.add('blog__cat-btn--active');
-      const selected = btn.dataset.category || 'All';
-      items.forEach(item => {
-        const matches = selected === 'All' || item.dataset.category === selected;
-        item.classList.toggle('is-hidden', !matches);
-      });
-      list.scrollTop = 0;
-      setMaxHeight(getVisible());
     });
   });
 </script>
