@@ -1,215 +1,176 @@
 ---
-import { Image } from 'astro:assets';
-import columnistPhoto from '../assets/images/columnist-photo.jpg';
+import frontDoorSvg from '../assets/images/front of door.svg?url';
+import backDoorSvg  from '../assets/images/back of door.svg?url';
 ---
 
 <div class="columnist-outer" id="columnist">
-
   <section class="columnist">
 
-    <!-- LEFT: PHOTO -->
-    <div class="columnist__photo-col">
-      <div class="columnist__badge">
-        <span class="columnist__badge-hinglish">answering sex queries with</span>
-        <span class="columnist__badge-hinglish">aaj ki taaza khabhar</span>
-        <span class="columnist__badge-english">your Sunday paper just got</span>
-        <span class="columnist__badge-english">a lot more interesting</span>
+    <!-- LEFT: DOOR ANIMATION -->
+    <div class="columnist__door-col">
+      <p class="columnist__knock">Knock to meet her.</p>
+      <div class="columnist__door-scene">
+        <!-- Back face — revealed as front door swings open -->
+        <img src={backDoorSvg}  alt="" class="columnist__door-back" aria-hidden="true" />
+        <!-- Front face — rotates open on click, hinge on left edge -->
+        <img src={frontDoorSvg} alt="Click to open the door"
+             class="columnist__door-front" id="columnist-door-front"
+             role="button" tabindex="0" />
       </div>
-      <Image
-        src={columnistPhoto}
-        alt="Dr. Tanaya Narendra holding Mumbai Mirror"
-        class="columnist__photo"
-        widths={[600, 1100]}
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 42vw, 40vw"
-      />
     </div>
 
     <!-- RIGHT: CONTENT -->
     <div class="columnist__right">
-
-      <p class="columnist__mail-text">For sending<br/>your queries,<br/>mail to:</p>
-
-      <div class=”columnist__quote-box”>
-      </div>
-
       <div class="columnist__content-group">
+
+        <div class="columnist__badge">
+          <span class="columnist__badge-hinglish">answering sex queries with</span>
+          <span class="columnist__badge-hinglish">aaj ki taaza khabhar</span>
+          <span class="columnist__badge-english">your Sunday paper just got</span>
+          <span class="columnist__badge-english">a lot more interesting</span>
+        </div>
+
         <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
 
         <div class="columnist__desc-box">
-          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror, every Sunday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
+          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
         </div>
 
-        <a href="https://mumbaimirror.indiatimes.com/topics/dr-cuterus" target="_blank" rel="noopener" class="btn-primary columnist__cta">Read It Now →</a>
+        <a href="https://mumbaimirror.indiatimes.com/topics/dr-cuterus"
+           target="_blank" rel="noopener"
+           class="btn-primary columnist__cta">Read It Now →</a>
+
       </div>
     </div>
 
   </section>
-
-  <!-- SCRIBBLE: full viewport width, above section -->
-  <img src="/doodles/columnist-scribble.svg" class="columnist__scribble" alt="" aria-hidden="true" />
-
-  <!-- MIRROR TAG: above scribble -->
-  <span class="columnist__mirror-tag">Mumbai mirror's sexpert</span>
-
-  <!-- MOBILE SCRIBBLE: shown only on mobile -->
-  <img src="/doodles/mobile-columnist-scribble.svg" class="columnist__scribble-mobile" alt="" aria-hidden="true" />
-
 </div>
 
 <style>
-  /* ── OUTER: full viewport width ── */
+  /* ── OUTER ── */
   .columnist-outer {
     position: relative;
     overflow: hidden;
     background-color: var(--color-beige-500);
     width: 100%;
+    scroll-margin-top: 80px; /* accounts for sticky navbar on hash navigation */
   }
 
-  /* ── SECTION: full-bleed grid — photo bleeds left, content fills right ── */
+  /* ── SECTION: two-column grid ── */
   .columnist {
     width: 100%;
     display: grid;
-    grid-template-columns: max(42vw, calc((100vw - 1280px) / 2 + 537.6px)) 1fr;
-    height: 100svh;
+    grid-template-columns: max(42vw, 574px) 1fr;
+    min-height: 100svh;
     max-height: 900px;
+  }
+
+  /* ── LEFT: DOOR COLUMN ── */
+  .columnist__door-col {
     position: relative;
-  }
-
-  /* ── LEFT: PHOTO ── */
-  .columnist__photo-col {
-    position: relative;
-    overflow: hidden;
-    /* no margin hack needed — grid column formula handles left bleed */
-  }
-
-  .columnist__photo {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 80px);
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-
-  .columnist__badge {
-    position: absolute;
-    top: calc(8.33% + 63px);
-    left: 61px;
-    background-color: var(--color-yellow-500);
-    padding: 8px 12px;
-    z-index: 2;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 88px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  /* ── KNOCK TEXT ── */
+  .columnist__knock {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(0.875rem, 1.1vw, 1.1rem);
+    color: var(--color-brand-900);
+    margin: 0 0 10px 0;
+    letter-spacing: 0;
+  }
+
+  /* ── 3-D PERSPECTIVE WRAPPER ── */
+  .columnist__door-scene {
+    position: relative;
+    width: 486px;
+    height: 711px;
+    /* perspective on parent so the door looks 3-D as it rotates */
+    perspective: 1200px;
+    perspective-origin: 0% 50%; /* vanishing point at left edge = hinge */
+  }
+
+  .columnist__door-back,
+  .columnist__door-front {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+  }
+
+  /* ── FRONT DOOR — the panel that swings open ── */
+  .columnist__door-front {
+    transform-origin: left center; /* hinge on the left */
+    transition: transform 0.85s cubic-bezier(0.4, 0, 0.1, 1),
+                filter  0.85s ease;
+    cursor: pointer;
+    will-change: transform;
+  }
+
+  /* Hover hint: door nudges ajar so users know it's interactive */
+  .columnist__door-front:not(.door--open):hover {
+    transform: rotateY(-9deg);
+  }
+  .columnist__door-front:not(.door--open):focus-visible {
+    outline: 3px solid var(--color-brand-400);
+    outline-offset: 4px;
+    transform: rotateY(-9deg);
+  }
+
+  /* Opened state: door swings ~87° around its left (hinge) edge */
+  .columnist__door-front.door--open {
+    transform: rotateY(-87deg);
+    filter: drop-shadow(-14px 6px 28px rgba(0, 0, 0, 0.45));
+  }
+
+  /* ── RIGHT: CONTENT ── */
+  .columnist__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 60px 40px 20px;
+  }
+
+  /* Content group stacks vertically, centred */
+  .columnist__content-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: min(524px, 100%);
+  }
+
+  /* Badge / pill */
+  .columnist__badge {
+    background-color: var(--color-yellow-500);
+    padding: 8px 24px;
+    border-radius: 999px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .columnist__badge span {
     font-family: var(--font-display);
     font-weight: 500;
     font-style: italic;
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-size: clamp(1.1rem, 2vw, 1.75rem);
     color: var(--color-brand-900);
     letter-spacing: -0.06em;
     line-height: 0.95;
     white-space: nowrap;
   }
 
-  /* ── MOBILE SCRIBBLE: hidden on desktop ── */
-  .columnist__scribble-mobile {
-    display: none;
-  }
-
-  /* ── SCRIBBLE: full viewport width ── */
-  /* width:100vw + object-fit:fill overrides the SVG's intrinsic 1281×770 aspect ratio */
-  /* which would otherwise cap the width at ~1244px on larger screens */
-  .columnist__scribble {
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 100vw;
-    height: 90%;
-    object-fit: fill;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* ── MIRROR TAG: above scribble ── */
-  /* left = outer left margin + 25% of 1280px + 216.57px */
-  .columnist__mirror-tag {
-    display: none;
-    position: absolute;
-    top: 60%;
-    left: calc((100% - min(100%, 1280px)) / 2 + min(100%, 1280px) * 0.25 + 216.57px);
-    transform: translateX(-100%) rotate(-23deg);
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--color-white);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 3;
-  }
-
-  /* ── RIGHT: CONTENT ── */
-  .columnist__right {
-    position: relative;
-  }
-
-  /* "For sending your queries, mail to:" */
-  .columnist__mail-text {
-    display: none;
-    position: absolute;
-    top: clamp(120px, 19.4%, 200px);
-    left: calc(50% + 89px);
-    transform: translateX(-50%);
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: var(--color-brand-900);
-    text-align: center;
-    line-height: 1.3;
-    margin: 0;
-    z-index: 3;
-    white-space: nowrap;
-  }
-
-  /* Quote box */
-  .columnist__quote-box {
-    display: none;
-  }
-
-  .columnist__quote-box p {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: var(--color-black);
-    text-align: center;
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .columnist__quote-open,
-  .columnist__quote-close {
-    display: none;
-  }
-
-  /* Group: heading + desc-box + CTA stacked naturally */
-  .columnist__content-group {
-    position: absolute;
-    top: clamp(310px, 48%, 500px);
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-    width: min(524px, 90%);
-    z-index: 3;
-  }
-
+  /* Heading */
   .columnist__heading {
     font-family: var(--font-display);
     font-weight: 500;
@@ -233,197 +194,139 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
   .columnist__desc-box p {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: clamp(1rem, 2.8svh, 1.5rem);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     color: var(--color-black);
     text-align: center;
     margin: 0;
     line-height: 1.4;
   }
 
-  .columnist__desc-box strong {
-    font-weight: 700;
-  }
+  .columnist__desc-box strong { font-weight: 700; }
 
-  /* CTA Button — flows after desc-box */
+  /* CTA */
   .columnist__cta {
     font-size: clamp(1.125rem, 2vw, 1.5rem);
     padding: 12px 24px;
-    z-index: 3;
   }
 
   /* ── LANGUAGE VARIANTS ── */
-  .columnist__badge-english {
-    display: none;
-  }
-
-  :global([data-lang="english"]) .columnist__badge-english {
-    display: inline;
-  }
-
-  :global([data-lang="english"]) .columnist__badge-hinglish {
-    display: none;
-  }
+  .columnist__badge-english { display: none; }
+  :global([data-lang="english"]) .columnist__badge-english  { display: inline; }
+  :global([data-lang="english"]) .columnist__badge-hinglish { display: none; }
 
   /* ── TABLET (769–1024px) ── */
   @media (max-width: 1024px) and (min-width: 769px) {
     .columnist {
-      grid-template-columns: 40vw 1fr;
+      grid-template-columns: 42vw 1fr;
     }
 
-    .columnist__badge {
-      left: 32px;
+    .columnist__door-col {
+      padding-left: 32px;
+      padding-top: 100px;
     }
 
-    /* Scale down the ± px offsets so content fits the narrower right column */
-    .columnist__quote-open {
-      left: max(4px, calc(50% - 180px));
+    .columnist__door-scene {
+      /* scale door proportionally: keeps ~35 vw wide, height follows 486:711 ratio */
+      width: clamp(260px, 35vw, 420px);
+      height: calc(clamp(260px, 35vw, 420px) * (711 / 486));
     }
 
-    .columnist__quote-box {
-      display: none;
-    }
-
-    .columnist__quote-close {
-      left: min(calc(100% - 4px), calc(50% + 170px));
-    }
-
-    .columnist__heading {
-      left: calc(50% + 180px);
-      font-size: clamp(1.75rem, 2.8vw, 2.5rem);
-    }
-
-    .columnist__desc-box {
-      width: min(400px, 90%);
-    }
-
-    .columnist__desc-box p {
-      font-size: 1.125rem;
-    }
-
-    .columnist__cta {
-      font-size: 1.125rem;
-      padding: 10px 20px;
-    }
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    /* Outer fills exactly one screen */
-    .columnist-outer {
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: visible;
-    }
-
-    /* Section stretches to fill outer, photo on top then content below */
-    .columnist {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      height: auto;
-      min-height: unset;
-      max-height: unset;
-    }
-
-    /* Photo fills ~62% of screen — yellow badge stays top-left */
-    .columnist__photo-col {
-      height: 62svh;
-      flex-shrink: 0;
-      margin-left: 0;
-    }
-
-    .columnist__photo {
-      top: 0;
-      height: 100%;
-    }
-
-    .columnist__badge {
-      top: 64px;
-      left: 12px;
-      padding: 5px 10px;
-      z-index: 3;
-    }
-
-    .columnist__badge span {
-      font-size: clamp(0.875rem, 4vw, 1.15rem);
-    }
-
-    .columnist__mirror-tag,
-    .columnist__scribble {
-      display: none;
-    }
-
-    .columnist__scribble-mobile {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 62svh;
-      object-fit: fill;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* Right col: flex:1 fills remaining space, balanced padding keeps it centered */
     .columnist__right {
-      flex: 1;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px 20px 28px;
-      gap: 12px;
-      min-height: unset;
-    }
-
-    .columnist__mail-text {
-      display: none;
-    }
-
-    .columnist__quote-box {
-      display: none;
-    }
-
-    /* Override desktop absolute positioning so content flows naturally */
-    .columnist__content-group {
-      position: static;
-      transform: none;
-      left: auto;
-      top: auto;
-      width: 100%;
-      gap: 12px;
+      padding: 80px 32px 40px 16px;
     }
 
     .columnist__heading {
-      position: static;
-      transform: none;
-      font-size: clamp(1.75rem, 8vw, 2.2rem);
-      text-align: center;
+      font-size: clamp(1.75rem, 2.8vw, 2.5rem);
       white-space: normal;
     }
 
-    .columnist__desc-box {
-      position: static;
-      transform: none;
-      width: 100%;
-      max-width: 100%;
-      padding: 8px 16px;
+    .columnist__desc-box p { font-size: 1.125rem; }
+    .columnist__cta { font-size: 1.125rem; padding: 10px 20px; }
+  }
+
+  /* ── MOBILE (≤768px) ── */
+  @media (max-width: 768px) {
+    .columnist-outer {
+      min-height: 100svh;
     }
 
-    .columnist__desc-box p {
-      font-size: 0.9rem;
+    .columnist {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      max-height: unset;
+    }
+
+    /* Door: centred above content */
+    .columnist__door-col {
+      height: auto;
+      flex-shrink: 0;
+      flex-direction: column;
+      padding-left: 0;
+      padding-top: 12px;
+      padding-bottom: 0;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: visible;
+    }
+
+    .columnist__knock {
+      font-size: 0.875rem;
+      margin-bottom: 8px;
       text-align: center;
     }
 
-    .columnist__cta {
-      position: static;
-      transform: none;
-      font-size: 1rem;
-      padding: 10px 20px;
+    .columnist__door-scene {
+      /* Smaller door so all content (door + text + CTA) fits in one screen */
+      width: min(290px, 78vw);
+      height: calc(min(290px, 78vw) * (711 / 486));
+      margin: 0;
     }
+
+    /* Content fills remaining height */
+    .columnist__right {
+      flex: 1;
+      padding: 20px 20px 28px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .columnist__content-group {
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .columnist__badge span {
+      font-size: clamp(0.875rem, 4vw, 1.1rem);
+      white-space: normal;
+      text-align: center;
+    }
+
+    .columnist__heading {
+      font-size: clamp(1.75rem, 8vw, 2.2rem);
+      white-space: normal;
+    }
+
+    .columnist__desc-box p { font-size: 0.9rem; }
+    .columnist__cta { font-size: 1rem; padding: 10px 20px; }
   }
 </style>
+
+<script>
+  const door = document.getElementById('columnist-door-front') as HTMLElement | null;
+
+  function toggleDoor() {
+    const isOpen = door!.classList.toggle('door--open');
+    door!.setAttribute('aria-label', isOpen ? 'Close the door' : 'Open the door');
+  }
+
+  door?.addEventListener('click', toggleDoor);
+
+  door?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+      e.preventDefault();
+      toggleDoor();
+    }
+  });
+</script>
