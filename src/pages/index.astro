@@ -8,6 +8,7 @@ import Fursat from '../components/Fursat.astro';
 import Columnist from '../components/Columnist.astro';
 import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
+import Loader from '../components/Loader.astro';
 import doctorPhotoUrl from '../assets/images/doctor-photo.png?url';
 import mainSvgUrl from '../assets/images/main.svg?url';
 ---
@@ -49,6 +50,7 @@ import mainSvgUrl from '../assets/images/main.svg?url';
     </script>
   </head>
   <body>
+    <Loader />
     <Navbar />
     <main>
       <About />
