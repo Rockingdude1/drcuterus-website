@@ -4,8 +4,18 @@
 <div id="page-loader" aria-hidden="true" role="presentation">
   <div class="loader__inner">
     <p class="loader__phrase" id="loader-phrase"></p>
-    <div class="loader__bar">
-      <div class="loader__dot" id="loader-dot"></div>
+
+    <!-- Pill progress bar with heart riding the fill -->
+    <div class="loader__progress">
+      <div class="loader__pill">
+        <div class="loader__fill" id="loader-fill"></div>
+      </div>
+      <div class="loader__heart" id="loader-heart">
+        <svg viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 25C14 25 1 16.5 1 7.5C1 4.08 3.91 1 7.5 1C9.75 1 11.73 2.13 13 3.87C14.27 2.13 16.25 1 18.5 1C22.09 1 25 4.08 25 7.5C25 16.5 14 25 14 25Z"
+                fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
@@ -19,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.7s ease;
   }
 
   #page-loader.fade-out {
@@ -31,12 +41,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 36px;
+    gap: 40px;
     padding: 0 40px;
-    max-width: 720px;
+    max-width: 680px;
     width: 100%;
   }
 
+  /* ── PHRASE ── */
   .loader__phrase {
     font-family: var(--font-display);
     font-weight: 500;
@@ -44,68 +55,116 @@
     font-size: clamp(2rem, 5vw, 3.5rem);
     color: #fff;
     letter-spacing: -0.06em;
-    line-height: 1.05;
+    line-height: 1.1;
     text-align: center;
     margin: 0;
-    min-height: 1.1em;
+    min-height: 2.2em;
   }
 
   .loader__phrase .word {
+    display: inline-block;
     opacity: 0;
-    display: inline;
-    transition: opacity 0.25s ease;
+    transform: scale(1.3);
+    transition: opacity 0.32s ease, transform 0.32s ease;
   }
 
   .loader__phrase .word.visible {
     opacity: 1;
+    transform: scale(1);
   }
 
-  .loader__bar {
+  /* ── PILL PROGRESS ── */
+  .loader__progress {
     position: relative;
     width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 2px;
   }
 
-  .loader__dot {
+  .loader__pill {
+    width: 100%;
+    height: 46px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .loader__fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--color-yellow-500);
+    border-radius: 999px;
+    transition: width 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Heart rides the leading edge of the fill */
+  .loader__heart {
     position: absolute;
     top: 50%;
     left: 0%;
     transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--color-yellow-500);
+    width: 26px;
+    height: 26px;
+    color: var(--color-brand-400);
     transition: left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: left;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .loader__heart svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.2));
+  }
+
+  @media (max-width: 480px) {
+    .loader__inner {
+      padding: 0 24px;
+      gap: 32px;
+    }
+
+    .loader__pill {
+      height: 40px;
+    }
+
+    .loader__heart {
+      width: 22px;
+      height: 22px;
+    }
   }
 </style>
 
 <script>
-  const words = ['Everything', 'nobody', 'told', 'you', 'about', 'Dr. Cuterus'];
-  const WORD_DELAY = 380;   // ms between each word
-  const END_PAUSE  = 700;   // ms to hold after last word before fade
+  const words    = ['Everything', 'nobody', 'told', 'you', 'about', 'Dr. Cuterus'];
+  const WORD_DELAY = 380;
+  const END_PAUSE  = 700;
 
-  const loader  = document.getElementById('page-loader')!;
-  const phrase  = document.getElementById('loader-phrase')!;
-  const dot     = document.getElementById('loader-dot')!;
+  const loader = document.getElementById('page-loader')!;
+  const phrase = document.getElementById('loader-phrase')!;
+  const fill   = document.getElementById('loader-fill')!;
+  const heart  = document.getElementById('loader-heart')!;
 
-  // Build word spans
+  // Build word spans with natural spaces between them
   words.forEach((word, i) => {
     const span = document.createElement('span');
     span.className = 'word';
-    span.textContent = i < words.length - 1 ? word + ' ' : word;
+    span.textContent = word;
     phrase.appendChild(span);
+    if (i < words.length - 1) phrase.appendChild(document.createTextNode(' '));
   });
 
   const spans = phrase.querySelectorAll<HTMLElement>('.word');
 
-  // Reveal each word and move the dot
   spans.forEach((span, i) => {
     setTimeout(() => {
       span.classList.add('visible');
-      dot.style.left = `${((i + 1) / words.length) * 100}%`;
+      const pct = ((i + 1) / words.length) * 100;
+      fill.style.width  = `${pct}%`;
+      heart.style.left  = `${pct}%`;
     }, i * WORD_DELAY);
   });
 
@@ -125,8 +184,7 @@
   setTimeout(() => { animDone = true; dismiss(); }, animDoneAt);
 
   if (document.readyState === 'complete') {
-    pageDone = true;
-    dismiss();
+    pageDone = true; dismiss();
   } else {
     window.addEventListener('load', () => { pageDone = true; dismiss(); }, { once: true });
   }
