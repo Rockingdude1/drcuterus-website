@@ -4,6 +4,30 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import clinicImage from '../assets/images/clinic-image.png';
+
+// Replace these with real Google reviews from her Maps listing
+const reviews = [
+  {
+    text: "Dr. Tanaya is incredibly knowledgeable and makes you feel completely at ease. She addressed all my questions about PCOS and menstrual health without any judgment whatsoever.",
+    name: "Priya M."
+  },
+  {
+    text: "Best consultation I've ever had. She explained everything so clearly — I finally understood what was happening with my body. No question felt too silly or awkward.",
+    name: "Aakriti S."
+  },
+  {
+    text: "I was so nervous before my appointment but Dr. Tanaya was so warm and reassuring. She took her time and genuinely listened. Absolutely recommend her to everyone.",
+    name: "Neha R."
+  },
+  {
+    text: "Had concerns about fertility and egg health — she addressed everything thoroughly without making me feel scared. I left feeling informed and hopeful.",
+    name: "Divya K."
+  },
+  {
+    text: "The consultation was completely confidential and judgment-free, exactly as promised. Dr. Tanaya is the kind of doctor everyone deserves to have access to.",
+    name: "Riya P."
+  }
+];
 ---
 
 <html lang="en">
@@ -49,27 +73,50 @@ import clinicImage from '../assets/images/clinic-image.png';
 
     <!-- SECTION 2: Doctor + booking -->
     <div class="appt-book-outer">
-    <section class="appt-book">
-      <div class="appt-book__photo-wrap">
-        <Image
-          src={clinicImage}
-          alt="Dr. Tanaya Narendra in her clinic"
-          class="appt-book__photo"
-          widths={[400, 700]}
-          sizes="348px"
-        />
-      </div>
+      <section class="appt-book">
+        <div class="appt-book__photo-wrap">
+          <Image
+            src={clinicImage}
+            alt="Dr. Tanaya Narendra in her clinic"
+            class="appt-book__photo"
+            widths={[400, 700]}
+            sizes="348px"
+          />
+        </div>
 
-      <div class="appt-book__content">
-        <h2 class="appt-book__heading">Get One on One Consultations</h2>
+        <div class="appt-book__content">
+          <h2 class="appt-book__heading">Book A Private Consultation</h2>
 
-        <p class="appt-book__bio">
-I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical doctor with over a decade of experience in reproductive and sexual health. I have worked across India and the UK, and bring both clinical rigour and genuine warmth to every consultation. My expertise spans menstrual health, fertility, contraception, STIs, and sexual wellness.
-        </p>
+          <div class="appt-book__pills">
+            <span class="appt-pill">MBBS, MSc (Oxon), FRSPH</span>
+            <span class="appt-pill">Medical Doctor &amp; Embryologist</span>
+            <span class="appt-pill">Fellow, Royal Society for Public Health</span>
+            <span class="appt-pill">10+ Years In Reproductive Health</span>
+          </div>
 
-        <a href="#" class="btn-primary appt-book__cta">Book Via WhatsApp →</a>
-      </div>
-    </section>
+          <!-- Google review carousel -->
+          <div class="appt-review-card">
+            <div class="appt-review__stars">★★★★★</div>
+            <p class="appt-review__text" id="review-text"></p>
+            <div class="appt-review__footer">
+              <span class="appt-review__name" id="review-name"></span>
+              <div class="appt-review__nav">
+                <button class="appt-review__nav-btn" id="review-prev" aria-label="Previous review">
+                  <img src="/doodles/arrow-content.svg" class="appt-review__arrow appt-review__arrow--left" alt="" />
+                </button>
+                <button class="appt-review__nav-btn" id="review-next" aria-label="Next review">
+                  <img src="/doodles/arrow-content.svg" class="appt-review__arrow" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="appt-book__ctas">
+            <a href="#" class="btn-primary appt-book__cta">Book Via WhatsApp →</a>
+            <a href="#" class="btn-outline appt-book__cta appt-book__cta--review">Add a Review →</a>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
@@ -81,6 +128,36 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     <Footer />
   </body>
 </html>
+
+<script define:vars={{ reviews }}>
+  let currentIndex = 0;
+
+  function updateReview() {
+    const textEl = document.getElementById('review-text');
+    const nameEl = document.getElementById('review-name');
+    if (textEl) textEl.textContent = reviews[currentIndex].text;
+    if (nameEl) nameEl.textContent = reviews[currentIndex].name;
+  }
+
+  const prevBtn = document.getElementById('review-prev');
+  const nextBtn = document.getElementById('review-next');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+      updateReview();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % reviews.length;
+      updateReview();
+    });
+  }
+
+  updateReview();
+</script>
 
 <style>
   body {
@@ -105,7 +182,7 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
   }
 
   .appt-hero-bottom {
-    padding-bottom: 40px;
+    padding-bottom: 10px;
   }
 
   .appt-hero__label {
@@ -178,7 +255,7 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     color: var(--color-black);
   }
 
-  /* Desktop positions (moved from inline styles) */
+  /* Desktop positions */
   .appt-tag--p1 { left: 25%;   top: 20%; transform: rotate(-5.77deg); }
   .appt-tag--p2 { left: 26%; top: 40%; transform: rotate(1.26deg);  }
   .appt-tag--p3 { left: 40.9%; top: 28%; }
@@ -251,38 +328,135 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
   }
 
   .appt-book__heading {
     font-family: var(--font-display);
     font-weight: 500;
     font-style: italic;
-    font-size: clamp(2rem, 2.8vw, 2.75rem);
-    color: var(--color-brand-900);
+    font-size: clamp(2rem, 3.75vw, 3rem);
+    color: var(--color-brand-400);
     margin: 0;
     letter-spacing: -0.06em;
     line-height: 0.95;
   }
 
-  .appt-book__bio {
+  /* Credential pills */
+  .appt-book__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .appt-pill {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-brand-400);
+    background-color: var(--color-brand-50);
+    border: 1px solid var(--color-brand-200);
+    border-radius: 9999px;
+    padding: 5px 14px;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+
+  /* Review card */
+  .appt-review-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-black);
+    box-shadow: 1px 2px 6px 2px rgba(0, 0, 0, 0.25);
+    padding: 18px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 180px;
+  }
+
+  .appt-review__stars {
+    font-size: 1.75rem;
+    color: var(--color-yellow-500);
+    text-align: center;
+    letter-spacing: 4px;
+    flex-shrink: 0;
+  }
+
+  .appt-review__text {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--color-brand-900);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .appt-review__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .appt-review__name {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+  }
+
+  .appt-review__nav {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .appt-review__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: opacity 0.15s ease;
+  }
+
+  .appt-review__nav-btn:hover {
+    opacity: 0.75;
+  }
+
+  .appt-review__arrow {
+    width: 27px;
+    height: auto;
+    display: block;
+  }
+
+  .appt-review__arrow--left {
+    transform: scaleX(-1);
+  }
+
+  .appt-book__cta--review {
+    background-color: var(--color-white);
+    border-color: var(--color-brand-900);
+  }
+
+  .appt-book__cta--review:hover {
+    background-color: var(--color-brand-50);
+  }
+
+  /* CTA buttons row */
+  .appt-book__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   .appt-book__cta {
-    font-size: 1.5rem;
-    padding: 8px 20px;
-    align-self: flex-start;
-    background-color: var(--color-brand-300);
-  }
-
-  .appt-book__cta:hover {
-    background-color: var(--color-brand-900);
+    font-size: 1.25rem;
+    padding: 10px 20px;
   }
 
   /* ── FOOTER ── */
@@ -355,12 +529,12 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
       padding: 6px 12px;
     }
 
-    /* Mobile positions from Figma (pixel-based for 390px frame) */
-    .appt-tag--p1 { left: 40px;  top: 40px;  transform: rotate(-5.77deg); }
-    .appt-tag--p2 { left: 180px; top: 65px;  transform: rotate(1.26deg);  }
-    .appt-tag--p3 { left: 143px; top: 138px; transform: none; }
-    .appt-tag--p4 { left: 30px;  top: 90px;  transform: rotate(1.09deg);  }
-    .appt-tag--p5 { left: 43px;  top: 190px; transform: rotate(-4.06deg); }
+    /* Mobile positions from Figma (percentage left for responsiveness) */
+    .appt-tag--p1 { left: 5%;   top: 26px;  transform: rotate(-5.77deg); }
+    .appt-tag--p2 { left: 50%;  top: 65px;  transform: rotate(1.26deg);  }
+    .appt-tag--p3 { left: 36%;  top: 152px; transform: rotate(-0.26deg); }
+    .appt-tag--p4 { left: 3%;   top: 96px;  transform: rotate(1.09deg);  }
+    .appt-tag--p5 { left: 10%;  top: 210px; transform: rotate(-4.06deg); }
     .appt-tag--p6 { display: none; }
 
     .appt-hero__tagline {
@@ -381,19 +555,29 @@ I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical
     .appt-book {
       grid-template-columns: 1fr;
       padding: 40px 24px;
+      gap: 32px;
     }
 
     .appt-book__photo {
-      height: 300px;
+      height: 390px;
     }
 
-    .appt-book__bio {
-      font-size: 1.1rem;
+    .appt-pill {
+      font-size: 0.85rem;
+    }
+
+    .appt-review-card {
+      min-height: 220px;
+    }
+
+    .appt-book__ctas {
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .appt-book__cta {
       font-size: 1rem;
-      padding: 8px 20px;
+      text-align: center;
     }
   }
 </style>
