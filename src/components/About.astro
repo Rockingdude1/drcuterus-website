@@ -27,11 +27,11 @@ const logos = [
 
   <!-- ─── PHOTO COLLAGE ─── -->
   <img src={mainSvg}      alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
-  <img src={sareeSvg}     alt=""                    class="about__photo about__photo--saree"     loading="eager" fetchpriority="low"  aria-hidden="true" />
-  <img src={divingSvg}    alt=""                    class="about__photo about__photo--diving"    loading="eager" fetchpriority="low"  aria-hidden="true" />
-  <img src={biilboardSvg} alt=""                    class="about__photo about__photo--billboard" loading="lazy"                      aria-hidden="true" />
-  <img src={doctorSvg}    alt=""                    class="about__photo about__photo--doctor"    loading="lazy"                      aria-hidden="true" />
-  <img src={podcastSvg}   alt=""                    class="about__photo about__photo--podcast"   loading="lazy"                      aria-hidden="true" />
+  <img src={sareeSvg}     alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
+  <img src={biilboardSvg} alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
+  <img src={doctorSvg}    alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
+  <img src={podcastSvg}   alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
+  <img src={divingSvg}    alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
 
 
   <!-- "India's Favourite Sex Educator" badge -->
@@ -139,6 +139,7 @@ const logos = [
     z-index: 2;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    will-change: transform;
   }
 
   /* main polaroid — large centre piece */
