@@ -472,6 +472,13 @@ const languages = [
       height: 100svh;
       padding-top: 80px;
       overflow: hidden;
+      /* Start invisible so it doesn't peek behind the Columnist section */
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .book.book--reveal {
+      opacity: 1;
     }
 
     /* Both tags on one row — smaller pill to fit */
@@ -543,19 +550,29 @@ const languages = [
 
     .book__center {
       padding: 8px 20px 0;
+      display: flex;
       justify-content: center;
+      align-items: center;
       flex: 1;
       min-height: 0;
     }
 
+    /*
+     * Cover is sized by viewport HEIGHT, not by whatever space flex:1 happens to leave.
+     * clamp(120px, 100svh - 490px, 270px) means:
+     *   - 667px phone → ~177px tall   (small but clear)
+     *   - 750px phone → ~260px tall
+     *   - 812px phone → 270px tall (capped)
+     * width: auto + max-width keeps the aspect ratio intact.
+     */
     .book__cover {
       width: auto;
-      height: 100%;
-      max-width: 56vw;
-      max-height: min(315px, 84vw);
+      height: auto;
+      max-width: min(52vw, 185px);
+      max-height: clamp(120px, calc(100svh - 490px), 270px);
       object-fit: contain;
-      margin: 0 auto;
       display: block;
+      margin: 0 auto;
     }
 
     .book__buy-wrap {
@@ -623,4 +640,23 @@ const languages = [
       langBtn?.setAttribute('aria-expanded', 'false');
     }
   });
+
+  // Mobile only: show/hide Book section based on how much of it is visible.
+  // Keeps it invisible when it's barely peeking behind an adjacent section,
+  // and reveals it only once the user has actually scrolled to it.
+  const bookSection = document.querySelector<HTMLElement>('.book');
+  if (bookSection && window.matchMedia('(max-width: 768px)').matches) {
+    const bookObserver = new IntersectionObserver(
+      (entries) => {
+        const ratio = entries[0].intersectionRatio;
+        if (ratio >= 0.4) {
+          bookSection.classList.add('book--reveal');
+        } else {
+          bookSection.classList.remove('book--reveal');
+        }
+      },
+      { threshold: [0, 0.1, 0.4, 1.0] }
+    );
+    bookObserver.observe(bookSection);
+  }
 </script>
