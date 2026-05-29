@@ -25,75 +25,80 @@ const logos = [
 
 <section class="about" id="about">
 
-  <!-- ─── PHOTO COLLAGE ─── -->
-  <img src={mainSvg}      width="494" height="625" alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
-  <img src={sareeSvg}     width="151" height="198" alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
-  <img src={biilboardSvg} width="201" height="231" alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
-  <img src={doctorSvg}    width="140" height="176" alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
-  <img src={podcastSvg}   width="277" height="189" alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
-  <img src={divingSvg}    width="173" height="230" alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
+  <!-- ─── SCENE: scales as one unit on mobile ─── -->
+  <div class="about__scene">
+
+    <!-- ─── PHOTO COLLAGE ─── -->
+    <img src={mainSvg}      width="494" height="625" alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
+    <img src={sareeSvg}     width="151" height="198" alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
+    <img src={biilboardSvg} width="201" height="231" alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
+    <img src={doctorSvg}    width="140" height="176" alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
+    <img src={podcastSvg}   width="277" height="189" alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
+    <img src={divingSvg}    width="173" height="230" alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
 
 
-  <!-- "India's Favourite Sex Educator" badge -->
-  <div class="about__badge" aria-hidden="true">
-    <span>India's Favourite</span>
-    <span>Sex Educator</span>
-  </div>
-
-  <!-- Stars — scattered across the collage -->
-  <img src="/doodles/star about.svg" class="about__star about__star--1" aria-hidden="true" />
-  <img src="/doodles/star about.svg" class="about__star about__star--2" aria-hidden="true" />
-  <img src="/doodles/star about.svg" class="about__star about__star--3" aria-hidden="true" />
-  <img src="/doodles/star about.svg" class="about__star about__star--4" aria-hidden="true" />
-
-  <!-- ─── RIGHT-SIDE TEXT ─── -->
-
-  <!-- Highlight bar sits behind bio text -->
-  <div class="about__highlight-bar" aria-hidden="true"></div>
-
-  <!-- Headlines -->
-  <p class="about__headline about__headline--1">100% Science.</p>
-  <p class="about__headline about__headline--2">0% Sharam.</p>
-
-  <!-- +Thori si bakchodi pill -->
-  <div class="about__pill-wrap" aria-hidden="true">
-    <div class="about__pill-bakchodi">+Thori si bakchodi</div>
-  </div>
-
-  <!-- Bio — desktop (two-paragraph, right-aligned) -->
-  <div class="about__bio-wrap about__bio-desktop">
-    <div class="about__bio about__bio--hinglish">
-      <p class="about__bio-intro">Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.</p>
-      <p class="about__bio-body">A doctor, author, podcast host, educator, who answers questions people are too shy to ask out loud.</p>
+    <!-- "India's Favourite Sex Educator" badge -->
+    <div class="about__badge" aria-hidden="true">
+      <span>India's Favourite</span>
+      <span>Sex Educator</span>
     </div>
-    <div class="about__bio about__bio--english">
-      <p class="about__bio-intro">Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.</p>
-      <p class="about__bio-body">A doctor, author, podcast host, educator, who answers questions people are too shy to ask out loud.</p>
+
+    <!-- Stars — scattered across the collage -->
+    <img src="/doodles/star about.svg" class="about__star about__star--1" aria-hidden="true" />
+    <img src="/doodles/star about.svg" class="about__star about__star--2" aria-hidden="true" />
+    <img src="/doodles/star about.svg" class="about__star about__star--3" aria-hidden="true" />
+    <img src="/doodles/star about.svg" class="about__star about__star--4" aria-hidden="true" />
+
+    <!-- ─── RIGHT-SIDE TEXT ─── -->
+
+    <!-- Highlight bar sits behind bio text -->
+    <div class="about__highlight-bar" aria-hidden="true"></div>
+
+    <!-- Headlines -->
+    <p class="about__headline about__headline--1">100% Science.</p>
+    <p class="about__headline about__headline--2">0% Sharam.</p>
+
+    <!-- +Thori si bakchodi pill -->
+    <div class="about__pill-wrap" aria-hidden="true">
+      <div class="about__pill-bakchodi">+Thori si bakchodi</div>
     </div>
-  </div>
 
-  <!-- Bio — mobile (single paragraph, shorter, centred) -->
-  <p class="about__bio-mobile about__bio-mobile--hinglish">
-    Hey, I'm <strong>Dr Tanaya Narendra</strong>. Better known as <strong>Dr Cuterus</strong>. A doctor, author, podcast host, educator.
-  </p>
-  <p class="about__bio-mobile about__bio-mobile--english">
-    Hey, I'm <strong>Dr Tanaya Narendra</strong>. Better known as <strong>Dr Cuterus</strong>. A doctor, author, podcast host, educator.
-  </p>
+    <!-- Bio — desktop (two-paragraph, right-aligned) -->
+    <div class="about__bio-wrap about__bio-desktop">
+      <div class="about__bio about__bio--hinglish">
+        <p class="about__bio-intro">Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.</p>
+        <p class="about__bio-body">A doctor, author, podcast host, educator, who answers questions people are too shy to ask out loud.</p>
+      </div>
+      <div class="about__bio about__bio--english">
+        <p class="about__bio-intro">Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.</p>
+        <p class="about__bio-body">A doctor, author, podcast host, educator, who answers questions people are too shy to ask out loud.</p>
+      </div>
+    </div>
 
-  <!-- CTA -->
-  <div class="about__cta-wrap">
-    <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary about__cta">Work With Me</a>
-  </div>
+    <!-- Bio — mobile (single paragraph, shorter, centred) -->
+    <p class="about__bio-mobile about__bio-mobile--hinglish">
+      Hey, I'm <strong>Dr Tanaya Narendra</strong>. Better known as <strong>Dr Cuterus</strong>. A doctor, author, podcast host, educator.
+    </p>
+    <p class="about__bio-mobile about__bio-mobile--english">
+      Hey, I'm <strong>Dr Tanaya Narendra</strong>. Better known as <strong>Dr Cuterus</strong>. A doctor, author, podcast host, educator.
+    </p>
 
-  <!-- Scroll indicator -->
-  <div class="about__scroll">
-    <span>scroll for more</span>
-    <svg class="about__scroll-arrow" width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="1,1 6,8 11,1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
-  </div>
+    <!-- CTA -->
+    <div class="about__cta-wrap">
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary about__cta">Work With Me</a>
+    </div>
 
-  <!-- ─── YELLOW TICKER ─── -->
+    <!-- Scroll indicator -->
+    <div class="about__scroll">
+      <span>scroll for more</span>
+      <svg class="about__scroll-arrow" width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="1,1 6,8 11,1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+
+  </div><!-- /.about__scene -->
+
+  <!-- ─── YELLOW TICKER (outside scene, always at bottom) ─── -->
   <div class="about__ticker" aria-label="Featured in">
     <div class="about__ticker-track">
       {logos.map(l => (
@@ -128,9 +133,18 @@ const logos = [
   }
 
   /* ─────────────────────────────────────────────
+     SCENE — fills section on desktop, scales on mobile
+  ───────────────────────────────────────────── */
+  .about__scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 60px; /* leave room for ticker */
+  }
+
+  /* ─────────────────────────────────────────────
      PHOTOS  (desktop — reference canvas 1280×832)
-     left = center_x - width/2 (so element centres
-     match Figma % positions after rotation)
   ───────────────────────────────────────────── */
   .about__photo {
     position: absolute;
@@ -141,62 +155,56 @@ const logos = [
     backface-visibility: hidden;
   }
 
-  /* main polaroid — large centre piece */
   .about__photo--main {
     width: 33%;
     max-width: 450px;
-    left: 18.29%;   /* centre ~34.79% */
+    left: 18.29%;
     top: 14.48%;
     transform: rotate(-1.87deg);
     transform-origin: center center;
     z-index: 2;
   }
 
-  /* saree — small, top-left */
   .about__photo--saree {
     width: 10.61%;
     max-width: 140px;
-    left: 7.31%;    /* centre 12.61% */
+    left: 7.31%;
     top: 18.45%;
     transform: rotate(3.25deg);
     z-index: 3;
   }
 
-  /* billboard — tilted, mid-left */
   .about__photo--billboard {
     width: 15.59%;
     max-width: 205px;
-    left: 4.7%;    /* centre 9.12% */
+    left: 4.7%;
     top: 39.23%;
     transform: rotate(15.88deg);
     z-index: 1;
   }
 
-  /* doctor — bottom-left */
   .about__photo--doctor {
     width: 12.82%;
     max-width: 168px;
-    left: 12.2%;    /* centre 16.61% */
+    left: 12.2%;
     top: 65.02%;
     transform: rotate(9.68deg);
     z-index: 3;
   }
 
-  /* podcast — landscape, lower-right of collage */
   .about__photo--podcast {
     width: 19.73%;
     max-width: 258px;
-    left: 49.79%;   /* centre 59.66% */
+    left: 49.79%;
     top: 56.12%;
     transform: rotate(8.09deg);
     z-index: 3;
   }
 
-  /* diving — upper-right of collage */
   .about__photo--diving {
     width: 12.46%;
     max-width: 165px;
-    left: 49.42%;   /* centre 55.65% */
+    left: 49.42%;
     top: 28.44%;
     transform: rotate(-2.18deg);
     z-index: 1;
@@ -261,13 +269,9 @@ const logos = [
     z-index: 4;
   }
 
-  /* top-left, above/left of saree photo */
   .about__star--1 { width: 60px; left: 15.03%;  top: 15.7%; }
-  /* right side of collage, between main and diving photo */
   .about__star--2 { width: 50px; left: 47.0%;  top: 28.0%; }
-  /* lower-left, below billboard photo */
   .about__star--3 { display: none; }
-  /* lower-center, between doctor and podcast */
   .about__star--4 { width: 64px; left: 47.5%;  top: 61.2%; }
 
   /* ─────────────────────────────────────────────
@@ -288,13 +292,12 @@ const logos = [
     text-align: right;
   }
 
-  /* Right-anchored so text never clips — staggered inset matches Figma rhythm */
   .about__headline--1 {
-    right: 4.69%;   /* ≈ 60px on 1280px canvas */
+    right: 4.69%;
     top: 19.47%;
   }
   .about__headline--2 {
-    right: 3.28%;   /* ≈ 42px — slightly tighter, matches Figma offset */
+    right: 3.28%;
     top: 25.6%;
   }
 
@@ -354,7 +357,6 @@ const logos = [
   :global([data-lang="english"]) .about__bio--english  { display: block; }
   :global([data-lang="english"]) .about__bio--hinglish { display: none; }
 
-  /* mobile bio — hidden on desktop */
   .about__bio-mobile { display: none; }
 
   /* ─────────────────────────────────────────────
@@ -450,7 +452,6 @@ const logos = [
 
   /* ─────────────────────────────────────────────
      TABLET  (769 – 1024 px)
-     Slightly scale down the collage and text
   ───────────────────────────────────────────── */
   @media (max-width: 1024px) and (min-width: 769px) {
     .about__badge { font-size: clamp(14px, 2.2vw, 28px); }
@@ -458,97 +459,102 @@ const logos = [
 
   /* ─────────────────────────────────────────────
      MOBILE  (≤ 768 px)
-     Reference canvas: 402 × 832 px
-     Photos in top ~45 %, text in bottom ~45 %
+     Scene is fixed 402×772 px design space.
+     JS scales it to fit any phone viewport.
+     All positions are % of 402w × 772h.
   ───────────────────────────────────────────── */
   @media (max-width: 768px) {
 
-    /* ── photos — exact Figma mobile positions (402×832 canvas) ── */
+    /* Scene: fixed design size, JS applies scale() */
+    .about__scene {
+      width: 402px;
+      height: 772px;
+      right: auto;
+      bottom: auto;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);   /* JS will replace this */
+      transform-origin: top center;
+    }
 
-    /* main: centre 47.6%, width 60% (Figma: 240px / 402px canvas) */
+    /* ── photos ── */
     .about__photo--main {
       width: 60%;
+      max-width: none;
       left: 17.7%;
-      top: calc(10.25% + 20px);
+      top: 12.6%;    /* 97px / 772 */
     }
 
-    /* saree: top-left, overlaps main left edge */
     .about__photo--saree {
       width: 21.3%;
+      max-width: none;
       left: 3.2%;
-      top: calc(11.24% + 20px);
+      top: 13.7%;    /* 106px / 772 */
     }
 
-    /* billboard: intentionally bleeds off the left edge (Figma: -4.5%) */
     .about__photo--billboard {
       width: 28.6%;
+      max-width: none;
       left: -4.5%;
-      top: calc(23% + 20px);
+      top: 25.4%;    /* 196px / 772 */
     }
 
-    /* doctor: lower-left cluster */
     .about__photo--doctor {
       width: 19.9%;
+      max-width: none;
       left: 8.7%;
-      top: calc(36.9% + 20px);
+      top: 39.2%;    /* 303px / 772 */
     }
 
-    /* podcast: intentionally bleeds off the right edge (Figma: ~104% total) */
     .about__photo--podcast {
       width: 39.6%;
+      max-width: none;
       left: 64.7%;
-      top: calc(32.4% + 20px);
+      top: 34.6%;    /* 267px / 772 */
     }
 
-    /* diving: upper-right, outside main photo bounds so clearly visible */
     .about__photo--diving {
       width: 24.4%;
+      max-width: none;
       left: 70.2%;
-      top: calc(15.9% + 20px);
+      top: 18.1%;    /* 140px / 772 */
     }
 
-    /* ── photo labels ── */
-    .about__img-label { font-size: 12px; }
-    .about__img-label--rtfrb { left: 25%; top: calc(8.33% + 20px); }
-    .about__img-label--btc   { left: 64%; top: calc(44% + 20px);   }
-
-    /* ── badge ── */
-    /* top = photo_top + 82% of photo_height
-       photo_height = 60vw × (625/494) = 75.9vw → 82% = 62vw
-       vw-based so badge stays on the photo on all phone heights */
+    /* ── badge: fixed px within design canvas ── */
     .about__badge {
       left: 47.5%;
-      top: calc(10.25% + 20px + 62vw);
+      top: 42.5%;    /* ~328px / 772 */
       transform: translateX(-50%);
       font-size: 16px;
     }
 
-    /* ── stars: Figma mobile positions ── */
-    .about__star--1 { width: 32px; left: 13.9%; top: calc(9.38% + 20px); }
-    .about__star--2 { width: 36px; left: 65.2%; top: calc(29.39% + 20px); }
-    .about__star--3 { display: block; width: 32px; left: 21.4%; top: calc(41.53% + 20px); }
+    /* ── stars ── */
+    .about__star--1 { width: 32px; left: 13.9%; top: 11.5%; }
+    .about__star--2 { width: 36px; left: 65.2%; top: 31.6%; }
+    .about__star--3 { display: block; width: 32px; left: 21.4%; top: 43.9%; }
     .about__star--4 { display: none; }
 
-    /* ── highlight bar: hidden on mobile ── */
     .about__highlight-bar { display: none; }
 
-    /* ── headlines ── */
+    /* ── headlines: fixed sizes (scale handles visual resize) ── */
     .about__headline {
-      font-size: clamp(32px, 11.94vw, 48px);
+      font-size: 48px;
       right: auto;
       text-align: center;
       transform: translateX(-50%);
     }
-    .about__headline--1 { left: 50%; top: 51%; }
-    .about__headline--2 { left: 50%; top: 57%; }
+    .about__headline--1 { left: 50%; top: 52%; }
+    .about__headline--2 { left: 50%; top: 59%; }
 
     /* ── pill ── */
     .about__pill-wrap {
       left: 50%;
-      top: 63%;
+      top: 65%;
       transform: translateX(-50%) rotate(-5.99deg);
     }
-    .about__pill-bakchodi { font-size: clamp(16px, 5vw, 20px); }
+    .about__pill-bakchodi {
+      font-size: 20px;
+    }
 
     /* ── bio ── */
     .about__bio-desktop { display: none; }
@@ -557,12 +563,12 @@ const logos = [
       display: block;
       position: absolute;
       left: 50%;
-      top: 70%;
+      top: 72%;
       width: 79%;
       transform: translateX(-50%);
       font-family: var(--font-sans);
       font-weight: 400;
-      font-size: clamp(15px, 4.98vw, 20px);
+      font-size: 20px;
       line-height: 1.2;
       color: var(--color-brand-900);
       text-align: center;
@@ -575,13 +581,14 @@ const logos = [
 
     /* ── CTA ── */
     .about__cta-wrap {
+      right: auto;
       left: 50%;
-      top: 80%;
+      top: 84%;
       transform: translateX(-50%);
     }
-    .about__cta { font-size: clamp(15px, 4.5vw, 20px); }
+    .about__cta { font-size: 18px; }
 
-    /* ── scroll ── */
+    /* ── scroll indicator ── */
     .about__scroll {
       display: none;
     }
@@ -589,6 +596,7 @@ const logos = [
 </style>
 
 <script>
+  /* ── Ticker ── */
   const track = document.querySelector<HTMLElement>('.about__ticker-track');
   if (track) {
     const imgs = Array.from(track.querySelectorAll<HTMLImageElement>('img'));
@@ -607,4 +615,37 @@ const logos = [
       });
     }
   }
+
+  /* ── Mobile scene scaling ──
+     Fits the fixed 402×772 design canvas into any phone screen
+     so all elements (photos, text, stars, pill, CTA) scale together. */
+  const DESIGN_W = 402;
+  const DESIGN_H = 772;
+  const TICKER_H = 60;
+
+  function applyAboutScale() {
+    const scene = document.querySelector<HTMLElement>('.about__scene');
+    if (!scene) return;
+
+    if (window.innerWidth > 768) {
+      scene.style.transform = '';
+      scene.style.top = '';
+      return;
+    }
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const navbarH = (document.querySelector<HTMLElement>('.navbar')?.offsetHeight) ?? 60;
+    const availH = vh - TICKER_H - navbarH;
+    const scale = Math.min(vw / DESIGN_W, availH / DESIGN_H);
+    const scaledH = DESIGN_H * scale;
+    // Centre the scene in the space between navbar and ticker
+    const topOffset = navbarH + (availH - scaledH) / 2;
+
+    scene.style.top = `${topOffset}px`;
+    scene.style.transform = `translateX(-50%) scale(${scale})`;
+  }
+
+  applyAboutScale();
+  window.addEventListener('resize', applyAboutScale);
 </script>
